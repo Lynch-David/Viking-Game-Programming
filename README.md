@@ -32,6 +32,42 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 > [!note]
 > This was a web project so that's why you'll see requirements about logging in and uploading data which for you is irrelevant. Focus more on the requirements describing actions taken for gameplay.
 
+Core Gameplay
+The user shall press the SPACE key to make the Viking jump.
+The user shall hold the SPACE key to charge the jump for greater distance.
+The user shall press A/LEFT ARROW to make the Viking face left.
+The user shall press D/RIGHT ARROW to make the Viking face right.
+The system shall calculate the vertical and horizontal distance based on the duration the SPACE key is held.
+
+Navigation and Progression
+The system shall load the next stage when the Viking reaches a specific height.
+The system shall allow the Viking to fall to previous stages when they miss a platform.
+The system shall reset the Viking to the last stable platform if they fall too far.
+The system shall display a starting screen for the user to begin the game.
+The system shall display a victory screen when the user reaches the top of the structure.
+
+Obstacles
+The system shall introduce icy platforms that reduce the Viking's friction and make stopping difficult.
+The system shall introduce sticky platforms that slow down the Viking's movement.
+The system shall introduce slime platforms that make the Viking bounce upon landing.
+The system shall introduce sloped platforms that cause the Viking to slide.
+The system shall introduce birds that the Viking can collide with, causing them to lose balance.
+The system shall introduce wind mechanics that push the Viking horizontally mid-jump.
+
+Environmental Interactions
+The system shall render walls on both sides of the screen to trap the Viking within the game area.
+The system shall add particle effects when the Viking lands on specific platform types.
+
+UI/UX
+The system shall include a pause screen that the user can access during gameplay.
+The system shall display the Viking's height as a progress indicator on the side of the screen.
+The system shall include a button to return to the main menu from the pause screen.
+The system shall play a celebratory sound effect upon reaching the victory screen.
+
+Persistance
+The system shall track the highest point reached by the Viking as a user record.
+
+
 1. The user shall register to be able to login.
 2. The user shall login to be able to play a game.
 3. The user shall upload a valid deck file.
