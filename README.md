@@ -204,7 +204,7 @@ The GUI will be kept simple and playful, as to make sure the game is easy to und
 
 #### ✏️ Fonts
 
-For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fantasy-esque. For other things, we'll use Dogica, used to display general info/settings and will still keep the retro look.
+For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fantasy-esque font. For other things, we'll use Dogica, used to display general info/settings and will still keep the retro look.
 
 -   [Alagard](https://www.dafont.com/alagard.font)
 -   [Dogica](https://www.dafont.com/dogica.font)
