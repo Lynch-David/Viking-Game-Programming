@@ -192,7 +192,7 @@ For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fan
 
 All sounds were taken from [freesound.org](https://freesound.org) for the actions pertaining to cards.
 
--   [Jump King Soundtrack](https://www.youtube.com/playlist?list=PLutiWwcCdAw0AJd5osbs6L4y0TOontBMl)
+-   [8-Bit Fantasy & Adventure](https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack)
 -   [Shuffle cards](https://freesound.org/people/VKProduktion/sounds/217502/)
 -   [Flip card](https://freesound.org/people/Splashdust/sounds/84322/)
 
