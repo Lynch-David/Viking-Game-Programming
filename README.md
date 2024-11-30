@@ -200,6 +200,7 @@ Sounds are taken from multiple sources, like [freesound.org](https://freesound.o
 -   [Jumping sound](https://freesound.org/people/D-Ryro/sounds/674341/)
 -   [Landing Sound](https://freesound.org/people/egomassive/sounds/536766/)
 -   [Menu Blip](https://sfxr.me/#11111DUVhUuSiDfjSq2sQyjxdzgkUwr9cfuGLPmXWMu6xNjoALBJCYwFQEGu66mtro7Y7jhdsWR6fiAJ61nieRAVuJR88zVfCDUCsNveeaxBW2gcYuQTEfKD)
+-   [Slime Bounce](https://sfxr.me/#34T6PkkEwDrZjLx4omzJbBXPJCUPDJejd3qCyDTVkSQFk4T8yWWcbQe9Jpb3jYpisrSpPXpEBvaBpuuR5eB6j5CUPcMsWHyXDKwLy8JZmstSWnedbYWtqEab1)
 -   [Crow](https://www.youtube.com/watch?v=kA8mEHxkUsw)
 
 ### 📚 References
