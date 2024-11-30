@@ -86,18 +86,21 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 > [!note]
 > Your wireframes don't have to be super polished. They can even be black/white and hand drawn. I'm just looking for a rough idea about what you're visualizing.
 
-![Main Menu](./assets/images/Main-Menu.png)
+![Main Menu](./assets/images/Wireframe_StartMenu.png)
 
-![image](https://github.com/user-attachments/assets/804ebcfb-fa0c-4b04-8828-76d2579cd13b)
+-   _Continue_ will load the game starting from the persisted data (player's last position).
+-   _New Game_ will start the player in the first level/layer and ovewrite the persisted player position.
+-   _Quit_ Will shut down the game.
+
+![Pause Menu](./assets/images/Wireframe_pause.png)
+
+-   _Resume_ will close the pause menu.
+-   _Save & Exit_ will return to the Main menu screen.
 
 
--   _Let's Play_ will navigate to the main game.
--   _Upload Cards_ will navigation to the forms for uploading and parsing the data files for the game.
--   _Change Log_ will navigate the user to a page with a list of features/changes that have been implemented throughout the development of the game.
+![Game Board](./assets/images/Wireframe_obstacles.png)
 
-![Game Board](./assets/images/Game-Board.png)
-
-We want to keep the GUI as simple and clear as possible by having cards with relevant images to act as a way for the user to intuitively navigate the game. We want to implement a layout that would look like as if one were playing a match of the Pokémon Trading Card Game with physical cards in real life. Clicking on any of the cards will reveal that card's details to the player.
+This game is fairly straight forward, making it easy for the player to navigate the game. 
 
 ### 🎨 Assets
 
@@ -114,10 +117,10 @@ The GUI will be kept simple and playful, as to make sure the game is easy to und
 
 #### ✏️ Fonts
 
-For fonts, a simple sans-serif like Roboto will look quite nice. It's a font that is legible, light on storage size, and fun to keep with the theme we're going for. We also used a more cartoonish Pokemon font for the title screen.
+For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fantasy-esque. For other things, we'll use Dogica, used to display general info/settings and will still keep the retro look.
 
 -   [Alagard](https://www.dafont.com/alagard.font)
--   [Roboto](https://fonts.google.com/specimen/Roboto)
+-   [Dogica](https://www.dafont.com/dogica.font)
 
 #### 🔊 Sounds
 
