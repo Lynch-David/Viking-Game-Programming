@@ -19,7 +19,7 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 2. The user shall hold the SPACE key to charge the jump for greater distance.
 3. The user shall press A/LEFT ARROW to make the Viking face left.
 4. The user shall press D/RIGHT ARROW to make the Viking face right.
-5. The system shall calculate the vertical and horizontal distance based on the duration the SPACE key is held.
+5. The system shall calculate the vertical and horizontal distance based on the direction arrows and duration that the SPACE key is held.
 
 ### Navigation and Progression
 6. The system shall load the next stage when the Viking reaches a specific height.
@@ -28,11 +28,11 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 9. The system shall display a victory screen when the user reaches the top of the structure.
 
 ### Obstacles
-10. The system shall introduce icy platforms that reduce the Viking's friction and make stopping difficult.
-11. The system shall introduce sticky platforms that slow down the Viking's movement.
-12. The system shall introduce slime platforms that make the Viking bounce upon landing.
-13. The system shall introduce sloped platforms that cause the Viking to slide.
-14. The system shall introduce birds that the Viking can collide with.
+10. The user can encounter icy platforms that reduce the Viking's friction and make stopping difficult.
+11. The user can encounter sticky platforms that slow down the Viking's movement.
+12. The user can encounter slime platforms that make the Viking bounce upon landing.
+13. The user can encounter sloped platforms that cause the Viking to slide.
+14. The user can encounter birds that the Viking can collide with.
 15. The system shall introduce wind mechanics that push the Viking horizontally mid-jump.
 
 ### Environmental Interactions
