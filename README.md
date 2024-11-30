@@ -50,6 +50,7 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 23. The system shall track the highest point reached by the Viking as a user record.
 24. The system shall track the players last idle state position values to save.
 25. The system shall load the players previous idle state and highscore upon opening the game.
+26. The system shall remove the players save once they complete the game.
 
 
 ## 🤖 State Diagram
@@ -152,7 +153,7 @@ classDiagram
 
 ## 🧵 Wireframes
 
-
+Keep in mind, the color theme WILL be different.
 ![Main Menu](./assets/images/Wireframe_StartMenu.png)
 
 -   _Continue_ will load the game starting from the persisted data (player's last position).
@@ -166,6 +167,9 @@ classDiagram
 
 
 ![Game Board](./assets/images/Wireframe_obstacles.png)
+
+![Victory Menu](./assets/images/Wireframe_Viktory.png)
+-   _Press ENTER..._ will return to the Main menu screen.
 
 
 ## 🎨 Assets
