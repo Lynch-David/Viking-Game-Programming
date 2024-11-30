@@ -1,19 +1,4 @@
-# Final Project
-
--   [ ] Read the [project requirements](https://vikramsinghmtl.github.io/420-5P6-Game-Programming/project/requirements).
--   [ ] Replace the sample proposal below with the one for your game idea.
--   [ ] Get the proposal greenlit by Vik.
--   [ ] Place any assets in `assets/` and remember to update `src/config.json`.
--   [ ] Decide on a height and width inside `src/globals.js`. The height and width will most likely be determined based on the size of the assets you find.
--   [ ] Start building the individual components of your game, constantly referring to the proposal you wrote to keep yourself on track.
--   [ ] Good luck, you got this!
-
----
-
-# Sample Proposal - Pokémon the Trading Card Game
-
-> [!note]
-> This was taken from a project I did in university so the scope is **much** larger than what I'm expecting from you in terms of number of features!
+![Banner](./assets/images/Banner/ViKingBanner.png)
 
 ## ✒️ Description
 
@@ -27,10 +12,7 @@ The Viking will only land on flat platforms, if hit a slanted structure prepare 
 
 This is a recreation of the game *Jump King*, it is a single player game that is played with direction keys and SPACE for jumping.
 
-## 📃 Requirements
-
-> [!note]
-> This was a web project so that's why you'll see requirements about logging in and uploading data which for you is irrelevant. Focus more on the requirements describing actions taken for gameplay.
+## 📃 User Stories
 
 ### Core Gameplay
 1. The user shall press the SPACE key to make the Viking jump.
@@ -170,8 +152,6 @@ classDiagram
 
 ### 🧵 Wireframes
 
-> [!note]
-> Your wireframes don't have to be super polished. They can even be black/white and hand drawn. I'm just looking for a rough idea about what you're visualizing.
 
 ![Main Menu](./assets/images/Wireframe_StartMenu.png)
 
@@ -187,7 +167,6 @@ classDiagram
 
 ![Game Board](./assets/images/Wireframe_obstacles.png)
 
-This game is fairly straight forward, making it easy for the player to navigate the game. 
 
 ## 🎨 Assets
 
