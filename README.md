@@ -186,18 +186,18 @@ classDiagram
 
 We want to keep the GUI as simple and clear as possible by having cards with relevant images to act as a way for the user to intuitively navigate the game. We want to implement a layout that would look like as if one were playing a match of the Pokémon Trading Card Game with physical cards in real life. Clicking on any of the cards will reveal that card's details to the player.
 
-### 🎨 Assets
-
-We used [app.diagrams.net](https://app.diagrams.net/) to create the wireframes. Wireframes are the equivalent to the skeleton of a web app since they are used to describe the functionality of the product and the users experience.
-
-We plan on following trends already found in other trading card video games, such as Pokémon Trading Card Game Online, Hearthstone, Magic the Gathering Arena, and Gwent.
-
-The GUI will be kept simple and playful, as to make sure the game is easy to understand what each component does and is, as well as light hearted to keep to the Pokémon theme.
+## 🎨 Assets
 
 #### 🖼️ Images
 
--   Most images will be used from the well known community driven wikipedia site, [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Main_Page).
--   Especially their [Trading Card Game section](<https://bulbapedia.bulbagarden.net/wiki/Full_Art_card_(TCG)>).
+All images were taken from [itch.io](https://itch.io/).
+-   [Viking Character](https://chierit.itch.io/elementals-crystal-mauler)
+-   [Bird Sprites](https://smithygames.itch.io/crow-sprite)
+-   [Background1](https://edermunizz.itch.io/free-pixel-art-forest)
+-   [Block Sprites and Background2](https://szadiart.itch.io/pixel-fantasy-caves)
+-   [Background3](https://vnitti.itch.io/glacial-mountains-parallax-background)
+-   [BlockTextures](https://piiixl.itch.io/textures)
+
 
 #### ✏️ Fonts
 
@@ -216,4 +216,4 @@ All sounds were taken from [freesound.org](https://freesound.org) for the action
 
 ### 📚 References
 
--   [Pokemon Rulebook](http://assets.pokemon.com/assets/cms2/pdf/trading-card-game/rulebook/xy8-rulebook-en.pdf)
+-   [Jump King Game](https://www.jump-king.com/)
