@@ -52,7 +52,7 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 25. The system shall load the players previous idle state and highscore upon opening the game.
 
 
-### 🤖 State Diagram
+## 🤖 State Diagram
 Player States:
 ```mermaid 
 stateDiagram-v2
@@ -75,7 +75,7 @@ stateDiagram-v2
     GamePausedState --> TitleScreenState : ExitD
     VictoryState --> TitleScreenState
 ```
-### 🗺️ Class Diagram
+## 🗺️ Class Diagram
 
 ```mermaid 
 classDiagram
@@ -150,7 +150,7 @@ classDiagram
     Map -- Block
 ```
 
-### 🧵 Wireframes
+## 🧵 Wireframes
 
 
 ![Main Menu](./assets/images/Wireframe_StartMenu.png)
