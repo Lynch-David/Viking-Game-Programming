@@ -197,8 +197,8 @@ For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fan
 All sounds were taken from [freesound.org](https://freesound.org) for the actions pertaining to cards.
 
 -   [8-Bit Fantasy & Adventure](https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack)
--   [Shuffle cards](https://freesound.org/people/VKProduktion/sounds/217502/)
--   [Flip card](https://freesound.org/people/Splashdust/sounds/84322/)
+-   [Jumping sound](https://freesound.org/people/D-Ryro/sounds/674341/)
+-   [Landing Sound](https://freesound.org/people/egomassive/sounds/536766/)
 
 ### 📚 References
 
