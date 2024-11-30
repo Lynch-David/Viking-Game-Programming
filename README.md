@@ -60,15 +60,102 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 26. The user shall pick a Victory Card when the opposing Active Pokémon dies.
 
 ### 🤖 State Diagram
-
-> [!note]
-> Remember that you'll need diagrams for not only game states but entity states as well.
-
-![State Diagram](./assets/images/StateDiagram.png)
-
+Player States:
+```mermaid 
+stateDiagram-v2
+    [*] --> PlayerIdlingState
+    PlayerIdlingState --> PlayerWalkingState : Move Input
+    PlayerWalkingState --> PlayerIdlingState : Stop Moving
+    PlayerWalkingState --> PlayerCrouchingState : Jump Hold
+    PlayerIdlingState --> PlayerCrouchingState : Jump Hold
+    PlayerCrouchingState --> PlayerJumpingState : Jump Release
+    PlayerJumpingState --> PlayerIdlingState : Land
+```
+Game States:
+```mermaid 
+stateDiagram-v2
+    [*] --> TitleScreenState
+    TitleScreenState --> PlayState : Play
+    PlayState --> VictoryState
+    PlayState --> GamePausedState : Pause
+    GamePausedState --> PlayState : Unpause
+    GamePausedState --> TitleScreenState : ExitD
+    VictoryState --> TitleScreenState
+```
 ### 🗺️ Class Diagram
 
-![Class Diagram](./assets/images/ClassDiagram.png)
+```mermaid 
+classDiagram
+    class PlayState {
+        Player player
+        Enemy[] enemies
+        Map map
+        ...()
+    }
+    class Player {
+        super
+        int maxJumpTime
+        int maxJumpHeight
+        int jumpPower
+        int speed
+        bool isSticky
+        bool isSlipping
+        bool isBouncy
+        object stats
+        -jump()
+        -moveLeft()
+        -moveRight()
+        -applyGravity()
+        +update()
+        +render()
+    }
+    class Enemy {
+        super
+        +update()
+        +render()
+    }
+    class Map{
+        int width
+        int height
+        Layer layers
+        Block[] blocks
+        ...()
+    }
+    class SlantedBlock {
+        enum slantDirection
+    }
+    Block <-- SlantedBlock
+    class IceBlock {
+        decimal slipperiness
+    }
+    Block <-- IceBlock
+    class StickyBlock {
+        int stickiness
+    }
+    Block <-- StickyBlock
+    class SlimeBlock {
+        int bounciness
+    }
+        
+    class Block {
+        super
+        +onCollideWithPlayer()
+        +update()
+        +render()
+    }
+    class Bird {
+        enum direction
+        +onCollideWithPlayer()
+        +onCollideWithWall()
+        -changeDirection()
+    }
+    Enemy <-- Bird
+    Block <-- SlimeBlock
+    PlayState -- Player
+    PlayState -- Enemy
+    PlayState -- Map
+    Map -- Block
+```
 
 ### 🧵 Wireframes
 
