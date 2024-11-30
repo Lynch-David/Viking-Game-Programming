@@ -1,4 +1,4 @@
-![Banner](./assets/images/Banner/ViKingBanner.png)
+![Banner](./assets/images/Banner/ViKing_banner.png)
 
 ## ✒️ Description
 
