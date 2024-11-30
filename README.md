@@ -194,11 +194,13 @@ For the Nordic aesthetic, we're using the Alagard font, a nice pixelated and fan
 
 #### 🔊 Sounds
 
-All sounds were taken from [freesound.org](https://freesound.org) for the actions pertaining to cards.
+Sounds are taken from multiple sources, like [freesound.org](https://freesound.org) and [itch.io](https://itch.io/game-assets), and [sfxr](https://sfxr.me/) for the music and sound effects.
 
 -   [8-Bit Fantasy & Adventure](https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack)
 -   [Jumping sound](https://freesound.org/people/D-Ryro/sounds/674341/)
 -   [Landing Sound](https://freesound.org/people/egomassive/sounds/536766/)
+-   [Menu Blip](https://sfxr.me/#11111DUVhUuSiDfjSq2sQyjxdzgkUwr9cfuGLPmXWMu6xNjoALBJCYwFQEGu66mtro7Y7jhdsWR6fiAJ61nieRAVuJR88zVfCDUCsNveeaxBW2gcYuQTEfKD)
+-   [Crow](https://www.youtube.com/watch?v=kA8mEHxkUsw)
 
 ### 📚 References
 
