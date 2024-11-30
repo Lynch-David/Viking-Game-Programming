@@ -32,32 +32,43 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 > [!note]
 > This was a web project so that's why you'll see requirements about logging in and uploading data which for you is irrelevant. Focus more on the requirements describing actions taken for gameplay.
 
-1. The user shall register to be able to login.
-2. The user shall login to be able to play a game.
-3. The user shall upload a valid deck file.
-4. The user shall upload a valid cards file.
-5. The user shall upload a valid abilities file.
-6. The user shall select which deck they will use in the game.
-7. The user shall select which deck the AI will use in the game.
-8. The system shall "flip a coin" to decide which player goes first.
-9. The system shall shuffle the user's deck.
-10. The system shall draw the top 7 cards from the user's deck.
-11. If the user does not have a Basic Pokémon in their hand the system shall "mulligan" until they do.
-12. Upon each mulligan, the AI shall draw a card.
-13. The user shall put one of their Basic Pokémon face down as their Active Pokémon.
-14. The user shall put up to 5 more Basic Pokémon face down on their Bench.
-15. Upon a new turn, the system shall draw a card from the deck of the current player.
-16. Upon a new turn, the system shall place the drawn card in the hand of the current player.
-17. The user shall put (up to 5 total) Basic Pokémon cards from their hand onto their Bench.
-18. The user shall Evolve their Pokémon as many times as they choose.
-19. The user shall attach an Energy card from their hand to one of their Pokémon once per turn.
-20. The user shall play Trainer cards (as many as they want, but only one Supporter card and one Stadium card per turn).
-21. The user shall Retreat their Active Pokémon once per turn.
-22. The user shall use as many Abilities as they choose.
-23. The user shall attack the opponent's Active Pokémon.
-24. After a player attacks, the system shall end their turn and start their opponent's turn.
-25. The system shall execute any "special conditions" after a turn is over.
-26. The user shall pick a Victory Card when the opposing Active Pokémon dies.
+### Core Gameplay
+1. The user shall press the SPACE key to make the Viking jump.
+2. The user shall hold the SPACE key to charge the jump for greater distance.
+3. The user shall press A/LEFT ARROW to make the Viking face left.
+4. The user shall press D/RIGHT ARROW to make the Viking face right.
+5. The system shall calculate the vertical and horizontal distance based on the duration the SPACE key is held.
+
+### Navigation and Progression
+6. The system shall load the next stage when the Viking reaches a specific height.
+7. The system shall allow the Viking to fall to previous stages when they miss a platform.
+8. The system shall display a starting screen for the user to begin the game.
+9. The system shall display a victory screen when the user reaches the top of the structure.
+
+### Obstacles
+10. The system shall introduce icy platforms that reduce the Viking's friction and make stopping difficult.
+11. The system shall introduce sticky platforms that slow down the Viking's movement.
+12. The system shall introduce slime platforms that make the Viking bounce upon landing.
+13. The system shall introduce sloped platforms that cause the Viking to slide.
+14. The system shall introduce birds that the Viking can collide with.
+15. The system shall introduce wind mechanics that push the Viking horizontally mid-jump.
+
+### Environmental Interactions
+16. The system shall render walls on both sides of the screen to trap the Viking within the game area.
+17. The user should collide with tiles/platform from the side.
+18. The user should stop falling when landing on a tile/platform (except slope and slime)
+
+### UI/UX
+19. The system shall include a pause screen that the user can access during gameplay.
+20. The system shall display the Viking's height as a progress indicator on the side of the screen.
+21. The system shall include a button to return to the main menu from the pause screen.
+22. The system shall play a celebratory sound effect upon reaching the victory screen.
+
+### Persistance
+23. The system shall track the highest point reached by the Viking as a user record.
+24. The system shall track the players last idle state position values to save.
+25. The system shall load the players previous idle state and highscore upon opening the game.
+
 
 ### 🤖 State Diagram
 Player States:
@@ -164,6 +175,9 @@ classDiagram
 
 ![Main Menu](./assets/images/Main-Menu.png)
 
+![image](https://github.com/user-attachments/assets/804ebcfb-fa0c-4b04-8828-76d2579cd13b)
+
+
 -   _Let's Play_ will navigate to the main game.
 -   _Upload Cards_ will navigation to the forms for uploading and parsing the data files for the game.
 -   _Change Log_ will navigate the user to a page with a list of features/changes that have been implemented throughout the development of the game.
@@ -189,13 +203,14 @@ The GUI will be kept simple and playful, as to make sure the game is easy to und
 
 For fonts, a simple sans-serif like Roboto will look quite nice. It's a font that is legible, light on storage size, and fun to keep with the theme we're going for. We also used a more cartoonish Pokemon font for the title screen.
 
--   [Pokemon](https://www.dafont.com/pokemon.font)
+-   [Alagard](https://www.dafont.com/alagard.font)
 -   [Roboto](https://fonts.google.com/specimen/Roboto)
 
 #### 🔊 Sounds
 
 All sounds were taken from [freesound.org](https://freesound.org) for the actions pertaining to cards.
 
+-   [Jump King Soundtrack](https://www.youtube.com/playlist?list=PLutiWwcCdAw0AJd5osbs6L4y0TOontBMl)
 -   [Shuffle cards](https://freesound.org/people/VKProduktion/sounds/217502/)
 -   [Flip card](https://freesound.org/people/Splashdust/sounds/84322/)
 
