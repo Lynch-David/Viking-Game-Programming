@@ -115,6 +115,9 @@ classDiagram
         Block[] blocks
         ...()
     }
+    class BlockFactory{
+        +createInstance(type, sprites)
+    }
     class SlantedBlock {
         enum slantDirection
     }
@@ -148,7 +151,8 @@ classDiagram
     PlayState -- Player
     PlayState -- Enemy
     PlayState -- Map
-    Map -- Block
+    Map -- BlockFactory
+    BlockFactory -- Block
 ```
 
 ## 🧵 Wireframes
