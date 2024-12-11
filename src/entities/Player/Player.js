@@ -52,7 +52,7 @@ export default class Player extends Entity {
 		this.didFall = false;
 
 		this.sprites = loadPlayerSprites(
-			images.get(ImageName.Mario),
+			images.get(ImageName.Player),
 			smallSpriteConfig
 		);
 

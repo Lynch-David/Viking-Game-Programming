@@ -1,6 +1,23 @@
 {
 	"images": [
-
+		{
+			"name": "tiles",
+			"path": "./assets/images/Textures-16.png",
+			"width": 512,
+			"height": 512
+		},
+		{
+			"name": "player",
+			"path": "./assets/images/Viking.png",
+			"width": 6048,
+			"height": 1792
+		},
+		{
+			"name": "background",
+			"path": "./assets/images/Background.png",
+			"width": 928,
+			"height": 793
+		}
 	],
 	"fonts": [
 
