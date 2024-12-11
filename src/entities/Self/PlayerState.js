@@ -60,11 +60,21 @@ export default class PlayerState extends State {
 			);
 		}
 
-		// Render the current frame of the player's animation
-		this.player.currentAnimation.getCurrentFrame().render(0, 0);
 
-		// Restore the canvas state to what it was before our changes
-		context.restore();
+		    // Draw a red dot at the player's position
+			context.fillStyle = 'red';
+			context.beginPath();
+			context.arc(0, 0, 5, 0, Math.PI * 2);
+			context.fill();
+			// Restore the canvas state to what it was before our changes
+			context.restore();
+
+
+		// Render the current frame of the player's animation
+		// this.player.currentAnimation.getCurrentFrame().render(0, 0);
+
+		// // Restore the canvas state to what it was before our changes
+		// context.restore();
 
 		// If debug mode is enabled, render additional debug information
 		// if (debugOptions.playerCollision) {
