@@ -46,11 +46,15 @@ images.load(imageDefinitions);
 fonts.load(fontDefinitions);
 sounds.load(soundDefinitions);
 
+const mapDefinition = await fetch('./config/tilemap.json').then((response) =>
+	response.json()
+);
+
 // Add all the states to the state machine.
 stateMachine.add(GameStateName.TitleScreen, new TitleScreenState());
 stateMachine.add(GameStateName.GameOver, new GameOverState());
 stateMachine.add(GameStateName.Victory, new VictoryState());
-stateMachine.add(GameStateName.Play, new PlayState());
+stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
 
 stateMachine.change(GameStateName.Play);
 
