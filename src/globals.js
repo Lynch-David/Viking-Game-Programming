@@ -10,8 +10,9 @@ export const context =
 	canvas.getContext('2d') || new CanvasRenderingContext2D();
 
 // Replace these values according to how big you want your canvas.
-export const CANVAS_WIDTH = 0;
-export const CANVAS_HEIGHT = 0;
+export const TILE_SIZE = 16;
+export const CANVAS_WIDTH = 256;
+export const CANVAS_HEIGHT = 1920;
 
 const resizeCanvas = () => {
 	const scaleX = window.innerWidth / CANVAS_WIDTH;

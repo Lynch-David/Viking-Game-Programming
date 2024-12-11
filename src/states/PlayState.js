@@ -24,7 +24,7 @@ export default class PlayState extends State {
 		this.camera = new Camera(
 			this.player,
 			canvas.width,
-			canvas.height,
+			320,
 			this.map.width * Tile.SIZE,
 			this.map.height * Tile.SIZE
 		);
