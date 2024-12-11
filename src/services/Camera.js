@@ -64,6 +64,8 @@ export default class Camera {
 			this.player.position.x + this.player.dimensions.x / 2,
 			this.player.position.y + this.player.dimensions.y / 2
 		);
+		console.log(playerCenter)
+
 
 		let currentDirectionX = 0;
 		let isMoving = false;
@@ -139,6 +141,7 @@ export default class Camera {
 		// Round camera position to prevent sub-pixel rendering
 		this.position.x = Math.round(this.position.x);
 		this.position.y = Math.round(this.position.y);
+
 	}
 
 	/**
