@@ -2,7 +2,7 @@ import State from '../../lib/State.js';
 import Map from '../services/Map.js';
 import Camera from '../services/Camera.js';
 import { canvas, images, sounds, timer } from '../globals.js';
-import Player from '../entities/player/Player.js';
+import Player from '../entities/Self/Player.js';
 import Tile from '../services/Tile.js';
 import ImageName from '../enums/ImageName.js';
 // import MusicName from '../enums/MusicName.js';
