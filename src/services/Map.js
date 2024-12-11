@@ -120,6 +120,7 @@ export default class Map {
 	 * @param {CanvasRenderingContext2D} context - The rendering context.
 	 */
 	render(context) {
+		
 		this.foregroundLayer.render();
 		// this.mushrooms.forEach((mushroom) => mushroom.render(context))
 		// this.blocks.forEach((block) => block.render(context));

@@ -1,4 +1,4 @@
-// import PlayState from "../states/PlayState.js";
+import PlayState from "../states/PlayState.js";
 
 const ImageName = {
 	Tiles: 'tiles',

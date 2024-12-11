@@ -79,53 +79,53 @@ export default class PlayerState extends State {
 	 *
 	 * @param {CanvasRenderingContext2D} context - The rendering context.
 	 */
-	renderDebug(context) {
-		// Calculate the tile coordinates of the area around the player
-		const left = Math.floor(this.player.position.x / Tile.SIZE) - 1;
-		const top = Math.floor(this.player.position.y / Tile.SIZE) - 1;
-		const right =
-			Math.floor(
-				(this.player.position.x + this.player.dimensions.x) / Tile.SIZE
-			) + 1;
-		const bottom =
-			Math.floor(
-				(this.player.position.y + this.player.dimensions.y - 1) /
-					Tile.SIZE
-			) + 1;
+	// renderDebug(context) {
+	// 	// Calculate the tile coordinates of the area around the player
+	// 	const left = Math.floor(this.player.position.x / Tile.SIZE) - 1;
+	// 	const top = Math.floor(this.player.position.y / Tile.SIZE) - 1;
+	// 	const right =
+	// 		Math.floor(
+	// 			(this.player.position.x + this.player.dimensions.x) / Tile.SIZE
+	// 		) + 1;
+	// 	const bottom =
+	// 		Math.floor(
+	// 			(this.player.position.y + this.player.dimensions.y - 1) /
+	// 				Tile.SIZE
+	// 		) + 1;
 
-		// Render a semi-transparent yellow rectangle for each tile in the calculated area
-		context.fillStyle = 'rgba(255, 255, 0, 0.3)';
-		for (let y = top; y <= bottom; y++) {
-			for (let x = left; x <= right; x++) {
-				context.fillRect(
-					x * Tile.SIZE,
-					y * Tile.SIZE,
-					Tile.SIZE,
-					Tile.SIZE
-				);
-			}
-		}
+	// 	// Render a semi-transparent yellow rectangle for each tile in the calculated area
+	// 	context.fillStyle = 'rgba(255, 255, 0, 0.3)';
+	// 	for (let y = top; y <= bottom; y++) {
+	// 		for (let x = left; x <= right; x++) {
+	// 			context.fillRect(
+	// 				x * Tile.SIZE,
+	// 				y * Tile.SIZE,
+	// 				Tile.SIZE,
+	// 				Tile.SIZE
+	// 			);
+	// 		}
+	// 	}
 
-		// Render semi-transparent red rectangles for tiles that the player is colliding with
-		context.fillStyle = 'rgba(255, 0, 0, 0.5)';
-		this.getCollidingTiles(left, top, right, bottom).forEach((tile) => {
-			context.fillRect(
-				tile.x * Tile.SIZE,
-				tile.y * Tile.SIZE,
-				Tile.SIZE,
-				Tile.SIZE
-			);
-		});
+	// 	// Render semi-transparent red rectangles for tiles that the player is colliding with
+	// 	context.fillStyle = 'rgba(255, 0, 0, 0.5)';
+	// 	this.getCollidingTiles(left, top, right, bottom).forEach((tile) => {
+	// 		context.fillRect(
+	// 			tile.x * Tile.SIZE,
+	// 			tile.y * Tile.SIZE,
+	// 			Tile.SIZE,
+	// 			Tile.SIZE
+	// 		);
+	// 	});
 
-		// Render a blue outline around the player's bounding box
-		context.strokeStyle = 'blue';
-		context.strokeRect(
-			this.player.position.x,
-			this.player.position.y,
-			this.player.dimensions.x,
-			this.player.dimensions.y
-		);
-	}
+	// 	// Render a blue outline around the player's bounding box
+	// 	context.strokeStyle = 'blue';
+	// 	context.strokeRect(
+	// 		this.player.position.x,
+	// 		this.player.position.y,
+	// 		this.player.dimensions.x,
+	// 		this.player.dimensions.y
+	// 	);
+	// }
 
 	/**
 	 * Gets the tiles that the player is colliding with.
