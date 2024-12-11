@@ -24,7 +24,7 @@ export default class PlayState extends State {
 		this.camera = new Camera(
 			this.player,
 			canvas.width,
-			320,
+			canvas.height,
 			this.map.width * Tile.SIZE,
 			this.map.height * Tile.SIZE
 		);
@@ -64,6 +64,8 @@ export default class PlayState extends State {
 		this.player.render(context);
 
 		this.camera.resetTransform(context);
+		this.renderCameraGuidelines(context);
+		
 	}
 
 	/**
@@ -91,6 +93,28 @@ export default class PlayState extends State {
 				}
 			}
 		});
+	}
+	renderCameraGuidelines(context) {
+		const centerX = canvas.width / 2;
+		const centerY = canvas.height / 2;
+
+		context.setLineDash([5, 5]);
+		context.lineWidth = 1;
+		context.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+
+		// Draw vertical line
+		context.beginPath();
+		context.moveTo(centerX, 0);
+		context.lineTo(centerX, canvas.height);
+		context.stroke();
+
+		// Draw horizontal line
+		context.beginPath();
+		context.moveTo(0, centerY);
+		context.lineTo(canvas.width, centerY);
+		context.stroke();
+
+		context.setLineDash([]);
 	}
 
 }

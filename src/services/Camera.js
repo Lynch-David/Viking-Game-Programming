@@ -23,6 +23,10 @@ export default class Camera {
 		worldWidth,
 		worldHeight
 	) {
+		console.log(viewportWidth,
+			viewportHeight,
+			worldWidth,
+			worldHeight)
 		this.player = player;
 		this.viewportWidth = viewportWidth;
 		this.viewportHeight = viewportHeight;
@@ -46,7 +50,7 @@ export default class Camera {
 
 		// Define a vertical deadzone (half the viewport height)
 		// The camera won't move vertically within this zone
-		this.verticalDeadzone = 320 / 2;
+		this.verticalDeadzone = 5;
 	}
 
 	/**

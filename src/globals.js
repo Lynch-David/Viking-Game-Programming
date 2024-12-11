@@ -12,7 +12,7 @@ export const context =
 // Replace these values according to how big you want your canvas.
 export const TILE_SIZE = 16;
 export const CANVAS_WIDTH = 256;
-export const CANVAS_HEIGHT = 1920;
+export const CANVAS_HEIGHT = 320;
 
 const resizeCanvas = () => {
 	const scaleX = window.innerWidth / CANVAS_WIDTH;
