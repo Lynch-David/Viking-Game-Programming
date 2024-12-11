@@ -2,7 +2,7 @@ import PlayState from "../states/PlayState.js";
 
 const ImageName = {
 	Tiles: 'tiles',
-	Player: 'Viking',
+	Player: 'player',
 	Background: 'background',
 };
 
