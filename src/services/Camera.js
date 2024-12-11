@@ -1,5 +1,5 @@
-import { CameraSettings } from '../../config/CameraConfig.js';
-import { PlayerConfig } from '../../config/PlayerConfig.js';
+import { CameraSettings } from '../CameraConfig.js';
+import { PlayerConfig } from '../PlayerConfig.js';
 import Vector from '../../lib/Vector.js';
 
 /**

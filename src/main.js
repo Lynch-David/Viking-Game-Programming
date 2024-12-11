@@ -46,7 +46,7 @@ images.load(imageDefinitions);
 fonts.load(fontDefinitions);
 sounds.load(soundDefinitions);
 
-const mapDefinition = await fetch('./tilemap.json').then((response) =>
+const mapDefinition = await fetch('./src/tilemap.json').then((response) =>
 	response.json()
 );
 

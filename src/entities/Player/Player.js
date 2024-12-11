@@ -10,6 +10,7 @@ import PlayerWalkingState from './PlayerWalkingState.js';
 import PlayerJumpingState from './PlayerJumpingState.js';
 import PlayerFallingState from './PlayerFallingState.js';
 import PlayerIdlingState from './PlayerIdlingState.js';
+import { loadPlayerSprites, spriteConfig } from '../../SpriteConfig.js';
 import { timer } from '../../globals.js';
 import { sounds } from '../../globals.js';
 
@@ -41,7 +42,7 @@ export default class Player extends GameEntity {
 
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
-			smallSpriteConfig
+			spriteConfig
 		);
 
 
@@ -86,10 +87,6 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		this.stateMachine.update(dt);
-		if (!this.dies) {
-			this.checkGoombaCollision();
-			this.checkMushroomCollision();
-		}
 	}
 
 	/**
@@ -99,23 +96,4 @@ export default class Player extends GameEntity {
 	render(context) {
 		this.stateMachine.render(context);
 	}
-
-	/**
-	 * Checks for collisions with Goombas.
-	 */
-	checkGoombaCollision = () => {
-		this.map.goombas.forEach((goomba) => {
-			if (this.collidesWith(goomba) && !goomba.isDead) {
-				goomba.onCollideWithPlayer(this);
-			}
-		});
-	};
-
-	checkMushroomCollision = () => {
-		this.map.mushrooms.forEach((mushroom) => {
-			if (this.collidesWith(mushroom)) {
-				mushroom.onCollideWithPlayer(this);
-			}
-		});
-	};
 }
