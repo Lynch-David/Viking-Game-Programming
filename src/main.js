@@ -58,7 +58,7 @@ stateMachine.add(GameStateName.Victory, new VictoryState());
 stateMachine.add(GameStateName.Transition, new TransitionState());
 stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
 
-stateMachine.change(GameStateName.Play);
+stateMachine.change(GameStateName.TitleScreen);
 
 const game = new Game(
 	stateMachine,

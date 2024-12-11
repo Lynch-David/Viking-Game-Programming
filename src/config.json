@@ -20,7 +20,10 @@
 		}
 	],
 	"fonts": [
-		
+		{
+			"name": "Alagard",
+			"path": "../assets/fonts/alagard.otf"
+		}
 	],
 	"sounds": [
 		{

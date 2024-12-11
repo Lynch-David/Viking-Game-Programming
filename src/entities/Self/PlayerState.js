@@ -63,9 +63,7 @@ export default class PlayerState extends State {
 
 		    // Draw a red dot at the player's position
 			context.fillStyle = 'red';
-			context.beginPath();
-			context.arc(0, 0, 5, 0, Math.PI * 2);
-			context.fill();
+			context.fillRect(0, 0, 10, 10); 
 			// Restore the canvas state to what it was before our changes
 			context.restore();
 
