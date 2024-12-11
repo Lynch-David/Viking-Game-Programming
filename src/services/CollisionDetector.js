@@ -73,14 +73,14 @@ export default class CollisionDetector {
 		} else if (entity.velocity.y < 0) {
 			// Jumping or moving upwards
 			if (
-				this.checkBlockCollisionFromBelow(
-					entity,
-					tileTop,
-					tileLeft,
-					tileRight
-				) 
-				||
-				this.isSolidExcludingPlatformTileInRow(tileTop, tileLeft, tileRight)
+				// this.checkBlockCollisionFromBelow(
+				// 	entity,
+				// 	tileTop,
+				// 	tileLeft,
+				// 	tileRight
+				// ) 
+				// ||
+				this.isSolidTileInColumn(tileTop, tileLeft, tileRight)
 			) {
 				// Collision above
 				entity.position.y = (tileTop + 1) * tileSize;

@@ -48,11 +48,15 @@ export default class Player extends GameEntity {
 
 		// Create animations for different player states
 		this.animations = {
-			idle: new Animation(this.sprites.idle),
-			walk: new Animation(this.sprites.walk, 0.07),
-			jump: new Animation(this.sprites.jump),
-			fall: new Animation(this.sprites.fall),
-		};
+			idle: new Animation(spriteConfig.idle),
+			walk: new Animation(spriteConfig.walk, 0.07),
+			jump: new Animation(spriteConfig.jump, 0.2),
+			fall: new Animation(spriteConfig.fall),
+			land: new Animation(spriteConfig.land),
+			crouch: new Animation(spriteConfig.crouch),
+			run: new Animation(spriteConfig.run, 0.05),
+		  };
+		  
 
 
 		this.sizeAnimations = this.animations;
