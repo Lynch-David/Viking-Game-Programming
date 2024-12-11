@@ -2,10 +2,7 @@ import Sprite from '../../lib/Sprite.js';
 import ImageName from '../enums/ImageName.js';
 import Tile from './Tile.js';
 import Layer from './Layer.js';
-import { debugOptions, images } from '../globals.js';
-import Block from '../entities/Block.js';
-import Goomba from '../entities/Goomba.js';
-import Mushroom from '../entities/Mushroom.js';
+import { images } from '../globals.js';
 
 /**
  * Represents the game map, including layers, blocks, and entities.
@@ -128,9 +125,9 @@ export default class Map {
 		// this.blocks.forEach((block) => block.render(context));
 		// this.goombas.forEach((goomba) => goomba.render(context));
 
-		if (debugOptions.mapGrid) {
-			this.renderGrid(context);
-		}
+		// if (debugOptions.mapGrid) {
+		// 	this.renderGrid(context);
+		// }
 	}
 
 	/**

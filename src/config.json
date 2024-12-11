@@ -20,9 +20,44 @@
 		}
 	],
 	"fonts": [
-
+		
 	],
 	"sounds": [
-		
+		{
+			"name": "jump",
+			"path": "./assets/sounds/jump.wav",
+			"size": 2,
+			"volume": 1
+		},
+		{
+			"name": "land",
+			"path": "./assets/sounds/landing.ogg",
+			"size": 2,
+			"volume": 1
+		},
+		{
+			"name": "crow",
+			"path": "./assets/sounds/crow.wav",
+			"size": 2,
+			"volume": 1
+		},
+		{
+			"name": "menublip",
+			"path": "./assets/sounds/menublip.wav",
+			"size": 1,
+			"volume": 1
+		},
+		{
+			"name": "slimebounce",
+			"path": "./assets/sounds/slimebounce.wav",
+			"size": 10,
+			"volume": 1
+		},
+		{
+			"name": "backgroundSound",
+			"path": "./assets/sounds/Background Music/xDeviruchi - And The Journey Begins .wav",
+			"size": 1,
+			"volume": 1
+		}
 	]
 }

@@ -1,35 +1,23 @@
 import { images } from '../../globals.js';
-import {
-	bigSpriteConfig,
-	loadPlayerSprites,
-	smallSpriteConfig,
-} from '../../../config/SpriteConfig.js';
 import Vector from '../../../lib/Vector.js';
 import ImageName from '../../enums/ImageName.js';
 import Animation from '../../../lib/Animation.js';
 import Map from '../../services/Map.js';
-import Entity from '../Entity.js';
+import GameEntity from '../GameEntity.js';
 import StateMachine from '../../../lib/StateMachine.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import PlayerWalkingState from './PlayerWalkingState.js';
 import PlayerJumpingState from './PlayerJumpingState.js';
-import PlayerSkiddingState from './PlayerSkiddingState.js';
 import PlayerFallingState from './PlayerFallingState.js';
 import PlayerIdlingState from './PlayerIdlingState.js';
-import PlayerGrowingState from './PlayerGrowingState.js';
-import PlayerShrinkingState from './PlayerShrinkingState.js';
 import { timer } from '../../globals.js';
-import Easing from '../../../lib/Easing.js';
-import PlayerDyingState from './PlayerDyingState.js';
 import { sounds } from '../../globals.js';
-import SoundName from '../../enums/SoundName.js';
-import MusicName from '../../enums/MusicName.js';
 
 /**
  * Represents the player character in the game.
  * @extends Entity
  */
-export default class Player extends Entity {
+export default class Player extends GameEntity {
 	/**
 	 * Creates a new Player instance.
 	 * @param {number} x - The initial x-coordinate.
@@ -83,10 +71,6 @@ export default class Player extends Entity {
 			new PlayerJumpingState(this)
 		);
 		this.stateMachine.add(
-			PlayerStateName.Shrinking,
-			new PlayerShrinkingState(this)
-		);
-		this.stateMachine.add(
 			PlayerStateName.Falling,
 			new PlayerFallingState(this)
 		);
@@ -134,31 +118,4 @@ export default class Player extends Entity {
 			}
 		});
 	};
-
-	/**
-	 * Handles player death by resetting position.
-	 */
-	async die(didFall) {
-		if (this.isBig) {
-			this.isBig = false;
-			sounds.play(SoundName.Powerup)
-			this.stateMachine.change(PlayerStateName.Shrinking);
-			this.sizeAnimations = this.animations;
-		}
-		else if(this.isSmall){
-			this.didFall = didFall
-			this.dies = true;
-			sounds.play(MusicName.PlayerDown)
-			this.stateMachine.change(PlayerStateName.Dying);
-		}
-	}
-
-	grow() {
-		if(this.isSmall){
-			this.isBig = true;
-			this.isSmall = false;
-			this.stateMachine.change(PlayerStateName.Growing);
-			this.sizeAnimations = this.growAnimations;
-		}
-	}
 }

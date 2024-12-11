@@ -1,10 +1,10 @@
 import PlayerState from './PlayerState.js';
 import { input, sounds } from '../../globals.js';
-import { PlayerConfig } from '../../../config/PlayerConfig.js';
+import { PlayerConfig } from '../../PlayerConfig.js';
 import Input from '../../../lib/Input.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
-import SoundName from '../../enums/SoundName.js';
+// import SoundName from '../../enums/SoundName.js';
 
 /**
  * Represents the jumping state of the player.

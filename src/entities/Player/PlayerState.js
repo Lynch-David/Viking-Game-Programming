@@ -1,7 +1,7 @@
 import Input from '../../../lib/Input.js';
 import State from '../../../lib/State.js';
-import { PlayerConfig } from '../../../config/PlayerConfig.js';
-import { CANVAS_HEIGHT, debugOptions, input } from '../../globals.js';
+import { PlayerConfig } from '../../PlayerConfig.js';
+import { CANVAS_HEIGHT, input } from '../../globals.js';
 import Tile from '../../services/Tile.js';
 import CollisionDetector from '../../services/CollisionDetector.js';
 import Player from './Player.js';
@@ -67,9 +67,9 @@ export default class PlayerState extends State {
 		context.restore();
 
 		// If debug mode is enabled, render additional debug information
-		if (debugOptions.playerCollision) {
-			this.renderDebug(context);
-		}
+		// if (debugOptions.playerCollision) {
+		// 	this.renderDebug(context);
+		// }
 	}
 
 	/**
