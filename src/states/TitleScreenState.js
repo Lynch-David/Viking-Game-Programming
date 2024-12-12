@@ -23,10 +23,10 @@ export default class TitleScreenState extends State {
         this.targetColor = { r: 0, g: 0, b: 255 }; // Target color (blue)
         this.colorTransitionSpeed = 0.01; // Speed of color transition
 
-        // Set up a timer to toggle the target color
-        setInterval(() => {
-            this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
-        }, 3500); // Change target color every 3 seconds
+        // // Set up a timer to toggle the target color
+        // setInterval(() => {
+        //     this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
+        // }, 3500); // Change target color every 3 seconds
     }
 
     enter() {
@@ -63,15 +63,22 @@ export default class TitleScreenState extends State {
     startBlinking() {
         this.blinking = true;
         this.blinkState = true;
-
+    
         timer.addTask(() => {
             this.blinkState = !this.blinkState;
         }, 0.2, 20); // Blink every 0.1 seconds for 1 second (10 times)
-
+    
         timer.addTask(() => {
             this.blinking = false;
             this.proceed();
+
+            console.log('Clearing tasks');
+            timer.clear();
         }, 3); // Proceed after 1 second
+    }
+
+    enter() {
+        sounds.play(SoundName.TitleMusic);
     }
 
     proceed() {
@@ -80,14 +87,12 @@ export default class TitleScreenState extends State {
                 const savedState = localStorage.getItem('playerState');
                 if (savedState) {
                     stateMachine.change(GameStateName.Play, { loadState: true });
-                } else {
-                    stateMachine.change(GameStateName.Play);
                 }
                 break;
             case 'New Game':
-                localStorage.removeItem('playerState'); // Clear saved state
-
-                stateMachine.change(GameStateName.Play);
+                this.resetPlayerState
+                console.log(localStorage.getItem('playerState'));                
+                stateMachine.change(GameStateName.Play, { loadState: false });
                 break;
             case 'Quit':
                 window.close();
@@ -95,11 +100,12 @@ export default class TitleScreenState extends State {
         }
     }
 
-    savePlayerState(player) {
+
+    resetPlayerState() {
         const playerState = {
-            x: player.position.x,
-            y: player.position.y,
-            state: player.stateMachine.currentState.name,
+            x: 0,
+            y: 0,
+            state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));
     }

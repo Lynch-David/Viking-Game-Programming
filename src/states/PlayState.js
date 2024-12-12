@@ -11,22 +11,14 @@ import SoundName from '../enums/SoundName.js';
 import SoundPool from '../../lib/SoundPool.js';
 
 export default class PlayState extends State {
-    constructor(mapDefinition, loadState = true) {
+    constructor(mapDefinition) {
         super();
 
         this.map = new Map(mapDefinition);
         this.player = new Player(106, 1800, 42, 40, this.map);
 
-        console.log(loadState);
-        if (loadState) {
-            const savedState = JSON.parse(localStorage.getItem('playerState'));
-            console.log(savedState);
-            if (savedState) {
-                this.player.position.x = savedState.x;
-                this.player.position.y = savedState.y;
-                this.player.stateMachine.change(savedState.state);
-            }
-        }
+        var state = localStorage.getItem('playerState');
+        console.log(state);
 
         this.camera = new Camera(
             this.player,
@@ -44,6 +36,32 @@ export default class PlayState extends State {
         ];
     }
 
+    enter(parameters) {
+        var loadState = parameters?.loadState || false;
+
+        if (loadState) {
+            this.loadPlayerState();
+        }
+        // this.loadPlayerState();
+    }
+
+    exit() {
+
+    }
+
+
+    loadPlayerState()
+    {
+        const savedState = JSON.parse(localStorage.getItem('playerState'));
+        if (savedState) {
+            this.player.position.x = savedState.x;
+            this.player.position.y = savedState.y;
+            this.player.stateMachine.change(savedState.state);
+        }
+    }
+
+
+
     update(dt) {
         if (input.isKeyPressed(Input.KEYS.P)) {
             sounds.play(SoundName.MenuBlip);
@@ -54,6 +72,7 @@ export default class PlayState extends State {
         this.map.update(dt);
         this.camera.update(dt);
         this.player.update(dt);
+
     }
 
     render(context) {
