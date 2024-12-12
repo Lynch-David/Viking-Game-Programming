@@ -85,19 +85,34 @@ export default class TitleScreenState extends State {
         context.fillStyle = 'black';
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
+        context.strokeStyle = '#47474f';
+        context.lineWidth = 5;
+        context.strokeRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 12, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 4);
+
+        context.fillStyle = '#121212';
+        // context.lineWidth = 5;
+        context.fillRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2.5);
+
+        context.strokeStyle = '#47474f';
+        // context.lineWidth = 5;
+        context.strokeRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2.5);
+        
+    
         context.font = '50px Alagard';
         context.fillStyle = 'Red';
         context.textAlign = 'center';
         context.fillText('ViKing', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 4);
 
-        context.font = '30px Alagard';
+        context.textAlign = 'left';
+
+        context.font = '25px Alagard';
         this.menuOptions.forEach((option, index) => {
             if (this.blinking && this.currentSelection === index) {
                 context.fillStyle = this.blinkState ? 'yellow' : 'black';
             } else {
                 context.fillStyle = this.currentSelection === index ? 'yellow' : 'white';
             }
-            context.fillText(option, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + index * 40);
+            context.fillText(option, CANVAS_WIDTH / 5, CANVAS_HEIGHT / 2 + index * 40);
         });
     }
 }
