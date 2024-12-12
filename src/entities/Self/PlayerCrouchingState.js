@@ -23,8 +23,8 @@ export default class PlayerIdlingState extends PlayerState {
 	enter() {
 		this.player.dimensions.y = 40
 		this.player.velocity.x = 0;
-		this.player.velocity.y = 100;
-		this.player.currentAnimation = this.player.animations.idle;
+		this.player.velocity.y = 0;
+		this.player.currentAnimation = this.player.animations.crouch;
 
 	}
 
@@ -34,20 +34,14 @@ export default class PlayerIdlingState extends PlayerState {
 	 */
 	update(dt) {
 		super.update(dt);
-		this.handleInput();
 	}
 
 	/**
 	 * Handles player input.
 	 */
 	handleInput() {
-		if (input.isKeyPressed(Input.KEYS.SPACE)) {
+		if (input.isKeyHeld(Input.KEYS.SPACE)) {
 			this.player.stateMachine.change(PlayerStateName.Jumping);
-		}
-
-		// If the player is pressing A or D, not both, change to the walking state.
-		if (input.isKeyHeld(Input.KEYS.A) !== input.isKeyHeld(Input.KEYS.D)) {
-			this.player.stateMachine.change(PlayerStateName.Walking);
 		}
 	}
 }
