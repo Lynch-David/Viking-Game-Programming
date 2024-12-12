@@ -27,6 +27,7 @@ import VictoryState from './states/VictoryState.js';
 import TitleScreenState from './states/TitleScreenState.js';
 import TransitionState from './states/TransitionState.js';
 import PauseState from './states/PauseState.js';
+import SoundName from './enums/SoundName.js';
 
 // Set the dimensions of the play area.
 canvas.width = CANVAS_WIDTH;
@@ -74,3 +75,6 @@ game.start();
 
 // Focus the canvas so that the player doesn't have to click on it.
 canvas.focus();
+
+sounds.play(SoundName.TitleMusic);
+

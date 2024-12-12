@@ -37,12 +37,13 @@ export default class PlayState extends State {
     }
 
     enter(parameters) {
-        var loadState = parameters?.loadState || false;
+        // var loadState = parameters?.loadState || false;
 
-        if (loadState) {
-            this.loadPlayerState();
-        }
-        // this.loadPlayerState();
+        // if (loadState) {
+        //     this.loadPlayerState();
+        // }
+        this.loadPlayerState();
+        // sounds.sounds.pause;
     }
 
     exit() {

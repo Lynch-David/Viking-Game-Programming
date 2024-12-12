@@ -5,7 +5,7 @@ export const PlayerConfig = {
     acceleration: 20,
     deceleration: 20, // Updated to stop immediately
 	jumpPower: -500,
-	gravity: 2000,
+	gravity: 3000,
 	maxFallSpeed: 550,
 	maxJumpTime: 0.4,
 	maxCoyoteTime: 0.1,

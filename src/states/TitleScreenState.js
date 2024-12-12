@@ -78,22 +78,25 @@ export default class TitleScreenState extends State {
     }
 
     enter() {
-        sounds.play(SoundName.TitleMusic);
+        // sounds.play(SoundName.TitleMusic);
     }
 
     proceed() {
         switch (this.menuOptions[this.currentSelection]) {
             case 'Continue':
                 const savedState = localStorage.getItem('playerState');
-                if (savedState) {
-                    stateMachine.change(GameStateName.Play, { loadState: true });
+                if (savedState) 
+                {
+                    stateMachine.change(GameStateName.Play);
                 }
                 break;
+
             case 'New Game':
-                this.resetPlayerState
+                this.resetPlayerState()
                 console.log(localStorage.getItem('playerState'));                
-                stateMachine.change(GameStateName.Play, { loadState: false });
+                stateMachine.change(GameStateName.Play);
                 break;
+
             case 'Quit':
                 window.close();
                 break;
@@ -103,8 +106,8 @@ export default class TitleScreenState extends State {
 
     resetPlayerState() {
         const playerState = {
-            x: 0,
-            y: 0,
+            x: 106,
+            y: 1800,
             state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));

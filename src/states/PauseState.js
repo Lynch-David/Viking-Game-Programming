@@ -7,7 +7,7 @@ import Input from '../../../lib/Input.js';
 export default class PauseState extends State {
     constructor() {
         super();
-        this.menuOptions = ['Resume', 'Exit'];
+        this.menuOptions = ['Resume', 'Save & Exit'];
         this.currentSelection = 0;
     }
 
@@ -40,8 +40,8 @@ export default class PauseState extends State {
                 case 'Resume':
                     stateMachine.change(GameStateName.Play);
                     break;
-                case 'Exit':
-                    sounds.play(SoundName.Jump);
+                case 'Save & Exit':
+                    // sounds.play(SoundName.Jump);
                     stateMachine.change(GameStateName.TitleScreen);
                     break;
             }
