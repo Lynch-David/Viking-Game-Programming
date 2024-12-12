@@ -22,7 +22,7 @@
 	"fonts": [
 		{
 			"name": "Alagard",
-			"path": "../assets/fonts/alagard.otf"
+			"path": "../assets/fonts/alagard.ttf"
 		}
 	],
 	"sounds": [
