@@ -26,7 +26,7 @@ export default class TitleScreenState extends State {
         // Set up a timer to toggle the target color
         setInterval(() => {
             this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
-        }, 3000); // Change target color every 3 seconds
+        }, 3500); // Change target color every 3 seconds
     }
 
     enter() {
