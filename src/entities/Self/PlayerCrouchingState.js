@@ -44,6 +44,8 @@ export default class PlayerCrouchingState extends PlayerState {
             this.lastDirection = -1;
         } else if (input.isKeyHeld(Input.KEYS.D)) {
             this.lastDirection = 1;
+        } else {
+            this.lastDirection = 0; // No direction held
         }
 
         if (input.isKeyHeld(Input.KEYS.SPACE)) {

@@ -35,7 +35,7 @@ export default class PlayerJumpingState extends PlayerState {
         } else if (params.direction === 1) {
             this.player.velocity.x = PlayerConfig.maxSpeed;
         } else {
-            this.player.velocity.x = 0;
+            this.player.velocity.x = 0; // No direction held
         }
 
         this.player.velocity.y = 0;
