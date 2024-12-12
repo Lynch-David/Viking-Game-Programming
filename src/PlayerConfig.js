@@ -14,7 +14,7 @@ export const PlayerConfig = {
 	skidThreshold: 100,
 	slideFriction: 0.95,
 	bounceVelocity: -200, // Upward velocity when bouncing off an enemy
-	maxChargeJumpHeight: 30, 
+	maxChargeJumpHeight: -600, 
     chargeTime: 1.0, 
 };
 

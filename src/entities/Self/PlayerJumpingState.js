@@ -18,7 +18,7 @@ export default class PlayerJumpingState extends PlayerState {
 	constructor(player) {
 		super(player);
 		this.chargedHeight = PlayerConfig.jumpPower;
-
+		this.finalVelocity = 0
 	}
 
 	/**
@@ -27,10 +27,10 @@ export default class PlayerJumpingState extends PlayerState {
 	enter(params = {}) {
 		this.player.jumpTime = 0;
 
-		this.chargedHeight = params.chargedHeight || PlayerConfig.jumpPower;
+		this.chargedHeight = params.chargedHeight;
 
 
-		this.player.velocity.y = this.chargedHeight * PlayerConfig.jumpPower - 1000;
+		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.jump;
 		sounds.play(SoundName.Jump);
 	}
@@ -47,31 +47,21 @@ export default class PlayerJumpingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 
-		this.handleInput();
+		this.handleInput(dt);
 		this.handleHorizontalMovement();
 		this.checkTransitions();
-		this.handleJumping(dt);
 	}
 
 	/**
 	 * Handles player input.
 	 */
-	handleInput() {
-		if (!input.isKeyHeld(Input.KEYS.SPACE) && this.player.velocity.y < 0) {
-			this.player.velocity.y *= 0.5;
-		}
-	}
-
-	/**
-	 * Handles the jumping mechanics.
-	 * @param {number} dt - The time passed since the last update.
-	 */
-	handleJumping(dt) {
-		if (
-			input.isKeyHeld(Input.KEYS.SPACE) &&
-			this.player.jumpTime <= PlayerConfig.maxJumpTime
+	handleInput(dt) {
+		// if (!input.isKeyHeld(Input.KEYS.SPACE) && this.player.velocity.y < 0) {
+		// 	this.player.velocity.y *= 0.5;
+		// }
+		if (this.player.jumpTime <= PlayerConfig.maxJumpTime
 		) {
-			this.player.velocity.y = PlayerConfig.jumpPower * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
+			this.player.velocity.y = this.chargedHeight * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);		
 			this.player.jumpTime += dt;
 		} else {
 			this.player.jumpTime = 1;

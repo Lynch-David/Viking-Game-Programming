@@ -48,7 +48,7 @@ export default class PlayerCrouchingState extends PlayerState {
             this.chargeTime = Math.min(this.chargeTime, PlayerConfig.chargeTime);
         } else if (input.isKeyReleased(Input.KEYS.SPACE)) {
             const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
-			this.player.position.y = this.originalPosition + 5
+			this.player.position.y = this.originalPosition - 5
             this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight });
         }
 
