@@ -25,6 +25,7 @@ export default class TitleScreenState extends State {
 
     enter() {
         // Any setup code for the title screen can go here
+        sounds.play(SoundName.TitleMusic);
     }
 
     exit() {

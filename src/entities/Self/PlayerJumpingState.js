@@ -26,7 +26,7 @@ export default class PlayerJumpingState extends PlayerState {
 		this.player.jumpTime = 0;
 		this.player.velocity.y = PlayerConfig.jumpPower - 1000;
 		this.player.currentAnimation = this.player.animations.jump;
-		// sounds.play(SoundName.Jump);
+		sounds.play(SoundName.Jump);
 	}
 
 	/**
