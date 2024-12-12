@@ -27,7 +27,6 @@ export const spriteConfig = {
 	  { x: 420, y: 863, width: 49, height: 31 },
 	]
   };
-  
 
 export function loadPlayerSprites(spriteSheet, spriteConfig) {
 	const sprites = {};
