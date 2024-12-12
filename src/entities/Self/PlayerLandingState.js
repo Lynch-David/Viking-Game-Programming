@@ -21,7 +21,7 @@ export default class PlayerLandingState extends PlayerState {
 	 * Called when entering the idling state.
 	 */
 	enter() {
-		this.player.dimensions.y = 40
+		this.player.dimensions.y = 43
 		this.player.velocity.x = 0;
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
