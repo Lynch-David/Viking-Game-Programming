@@ -24,7 +24,7 @@ export const spriteConfig = {
 
 	],
 	crouch: [
-	  { x: 288, y: 640, width: 288, height: 128 },
+	  { x: 420, y: 863, width: 49, height: 31 },
 	]
   };
   
