@@ -135,7 +135,7 @@ export default class TitleScreenState extends State {
             } else {
                 context.fillStyle = 'black';
             }
-            context.fillText(option, x - 2, y + 0);
+            context.fillText(option, x - 0, y + 0);
 
             // Render actual text
             if (this.blinking && this.currentSelection === index) {
