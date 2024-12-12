@@ -71,7 +71,7 @@ export default class TitleScreenState extends State {
         timer.addTask(() => {
             this.blinking = false;
             this.proceed();
-        }, 2); // Proceed after 1 second
+        }, 3); // Proceed after 1 second
     }
 
     proceed() {
