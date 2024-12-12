@@ -23,17 +23,18 @@ export default class TitleScreenState extends State {
         this.targetColor = { r: 0, g: 0, b: 255 }; // Target color (blue)
         this.colorTransitionSpeed = 0.01; // Speed of color transition
 
-        // // Set up a timer to toggle the target color
-        // setInterval(() => {
-        //     this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
-        // }, 3500); // Change target color every 3 seconds
+        // Set up a timer to toggle the target color
+        setInterval(() => {
+            this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
+        }, 3500); // Change target color every 3.5 seconds
     }
 
     enter() {
-        sounds.play(SoundName.TitleMusic);
+        // sounds.play(SoundName.TitleMusic);
     }
 
     exit() {
+        timer.clear();
         sounds.stop(SoundName.TitleMusic);
     }
 
@@ -63,46 +64,38 @@ export default class TitleScreenState extends State {
     startBlinking() {
         this.blinking = true;
         this.blinkState = true;
-    
+
         timer.addTask(() => {
             this.blinkState = !this.blinkState;
-        }, 0.2, 20); // Blink every 0.1 seconds for 1 second (10 times)
-    
+        }, 0.2, 20); // Blink every 0.2 seconds for 4 seconds (20 times)
+
         timer.addTask(() => {
             this.blinking = false;
             this.proceed();
-
             console.log('Clearing tasks');
-            timer.clear();
-        }, 3); // Proceed after 1 second
-    }
-
-    enter() {
-        // sounds.play(SoundName.TitleMusic);
+        }, 3); // Proceed after 3 seconds
     }
 
     proceed() {
         switch (this.menuOptions[this.currentSelection]) {
             case 'Continue':
                 const savedState = localStorage.getItem('playerState');
-                if (savedState) 
-                {
+                if (savedState) {
+                    stateMachine.change(GameStateName.Play, { loadState: true });
+                } else {
                     stateMachine.change(GameStateName.Play);
                 }
                 break;
-
             case 'New Game':
-                this.resetPlayerState()
-                console.log(localStorage.getItem('playerState'));                
+                this.resetPlayerState();
+                console.log(localStorage.getItem('playerState'));
                 stateMachine.change(GameStateName.Play);
                 break;
-
             case 'Quit':
                 window.close();
                 break;
         }
     }
-
 
     resetPlayerState() {
         const playerState = {

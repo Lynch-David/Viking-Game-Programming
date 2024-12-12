@@ -11,7 +11,7 @@ import SoundName from '../enums/SoundName.js';
 import SoundPool from '../../lib/SoundPool.js';
 
 export default class PlayState extends State {
-    constructor(mapDefinition) {
+    constructor(mapDefinition, loadState = false) {
         super();
 
         this.map = new Map(mapDefinition);
@@ -37,31 +37,22 @@ export default class PlayState extends State {
     }
 
     enter(parameters) {
-        // var loadState = parameters?.loadState || false;
-
-        // if (loadState) {
-        //     this.loadPlayerState();
-        // }
         this.loadPlayerState();
-        // sounds.sounds.pause;
+        sounds.stop(SoundName.TitleMusic); // Ensure the music is stopped
     }
 
     exit() {
 
     }
 
-
-    loadPlayerState()
-    {
+    loadPlayerState() {
         const savedState = JSON.parse(localStorage.getItem('playerState'));
         if (savedState) {
             this.player.position.x = savedState.x;
             this.player.position.y = savedState.y;
-            this.player.stateMachine.change(savedState.state);
+            this.player.stateMachine.change('idling'); // Reset to idling state
         }
     }
-
-
 
     update(dt) {
         if (input.isKeyPressed(Input.KEYS.P)) {
@@ -73,7 +64,6 @@ export default class PlayState extends State {
         this.map.update(dt);
         this.camera.update(dt);
         this.player.update(dt);
-
     }
 
     render(context) {
