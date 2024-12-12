@@ -40,7 +40,7 @@ export default class TitleScreenState extends State {
         context.fillStyle = 'black';
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-        context.font = '30px Arial';
+        context.font = '30px Alagard';
         context.fillStyle = 'white';
         context.textAlign = 'center';
         context.fillText('Press Enter to Play', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
