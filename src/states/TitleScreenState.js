@@ -9,7 +9,7 @@ import {
     input,
     stateMachine,
     timer,
-    sounds, // Add this line to import sounds
+    sounds,
 } from '../globals.js';
 
 export default class TitleScreenState extends State {
@@ -19,6 +19,8 @@ export default class TitleScreenState extends State {
      */
     constructor() {
         super();
+        this.menuOptions = ['Continue', 'New Game', 'Quit'];
+        this.currentSelection = 0;
     }
 
     enter() {
@@ -36,6 +38,26 @@ export default class TitleScreenState extends State {
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             stateMachine.change(GameStateName.Play);
         }
+
+        if (input.isKeyPressed(Input.KEYS.ARROW_UP)) {
+            this.currentSelection = (this.currentSelection - 1 + this.menuOptions.length) % this.menuOptions.length;
+            sounds.play(SoundName.MenuBlip);
+        }
+
+        if (input.isKeyPressed(Input.KEYS.ARROW_DOWN)) {
+            this.currentSelection = (this.currentSelection + 1) % this.menuOptions.length;
+            sounds.play(SoundName.MenuBlip);
+        }
+
+        if (input.isKeyPressed(Input.KEYS.ENTER)) {
+            switch (this.menuOptions[this.currentSelection]) {
+                case 'Continue':
+                case 'New Game':
+                case 'Quit':
+                    stateMachine.change(GameStateName.Play);
+                    break;
+            }
+        }
     }
 
     render() {
@@ -43,9 +65,15 @@ export default class TitleScreenState extends State {
         context.fillStyle = 'black';
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-        context.font = '30px Alagard';
-        context.fillStyle = 'white';
+        context.font = '50px Alagard';
+        context.fillStyle = 'Red';
         context.textAlign = 'center';
-        context.fillText('Press Enter to Play', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+        context.fillText('ViKing', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 4);
+
+        context.font = '30px Alagard';
+        this.menuOptions.forEach((option, index) => {
+            context.fillStyle = this.currentSelection === index ? 'yellow' : 'white';
+            context.fillText(option, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + index * 40);
+        });
     }
 }
