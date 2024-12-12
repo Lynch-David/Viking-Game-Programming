@@ -2,7 +2,7 @@ import Sprite from '../lib/Sprite.js';
 
 export const spriteConfig = {
 	idle: [
-	  { x: 0, y: 0, width: 288, height: 128 }
+	  { x: 127, y: 87, width: 44, height: 40 }
 	],
 	walk: [
 	  { x: 0, y: 128, width: 288, height: 128 },
@@ -26,14 +26,7 @@ export const spriteConfig = {
 	],
 	crouch: [
 	  { x: 288, y: 640, width: 288, height: 128 },
-	],
-	run: [
-	  { x: 0, y: 768, width: 288, height: 128 },
-	  { x: 288, y: 768, width: 288, height: 128 },
-	  { x: 576, y: 768, width: 288, height: 128 },
-	  { x: 864, y: 768, width: 288, height: 128 },
-	  { x: 1152, y: 768, width: 288, height: 128 },
-	],
+	]
   };
   
 

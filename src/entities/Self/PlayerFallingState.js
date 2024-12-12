@@ -19,7 +19,7 @@ export default class PlayerFallingState extends PlayerState {
 	 * Called when entering the falling state.
 	 */
 	enter() {
-		this.player.currentAnimation = this.player.sizeAnimations.fall;
+		this.player.currentAnimation = this.player.animations.fall;
 	}
 
 	/**

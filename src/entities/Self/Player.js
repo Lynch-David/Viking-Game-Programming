@@ -1,7 +1,6 @@
 import { images } from '../../globals.js';
 import Vector from '../../../lib/Vector.js';
 import ImageName from '../../enums/ImageName.js';
-import Animation from '../../../lib/Animation.js';
 import Map from '../../services/Map.js';
 import GameEntity from '../GameEntity.js';
 import StateMachine from '../../../lib/StateMachine.js';
@@ -13,6 +12,7 @@ import PlayerIdlingState from './PlayerIdlingState.js';
 import { loadPlayerSprites, spriteConfig } from '../../SpriteConfig.js';
 import { timer } from '../../globals.js';
 import { sounds } from '../../globals.js';
+import Animation from "../../../lib/Animation.js";
 
 /**
  * Represents the player character in the game.
@@ -36,7 +36,7 @@ export default class Player extends GameEntity {
 		this.velocity = new Vector(0, 0);
 		this.map = map;
 		this.jumpTime = 0;
-		this.facingRight = true;
+		this.facingRight = false;
 
 		this.didFall = false;
 
@@ -48,20 +48,18 @@ export default class Player extends GameEntity {
 
 		// Create animations for different player states
 		this.animations = {
-			idle: new Animation(spriteConfig.idle),
-			walk: new Animation(spriteConfig.walk, 0.07),
-			jump: new Animation(spriteConfig.jump, 0.2),
-			fall: new Animation(spriteConfig.fall),
-			land: new Animation(spriteConfig.land),
-			crouch: new Animation(spriteConfig.crouch),
-			run: new Animation(spriteConfig.run, 0.05),
-		  };
+			idle: new Animation(this.sprites.idle),
+			walk: new Animation(this.sprites.walk, 0.07),
+			jump: new Animation(this.sprites.jump, 0.12),
+			fall: new Animation(this.sprites.fall),
+			land: new Animation(this.sprites.land, 0.1),
+			crouch: new Animation(this.sprites.crouch),
+		};
 		  
 
 
-		this.sizeAnimations = this.animations;
 
-		this.currentAnimation = this.sizeAnimations.idle;
+		this.currentAnimation = this.animations.idle;
 
 		// Initialize state machine for player behavior
 		this.stateMachine = new StateMachine();
@@ -83,6 +81,7 @@ export default class Player extends GameEntity {
 			PlayerStateName.Idling,
 			new PlayerIdlingState(this)
 		);
+
 	}
 
 	/**

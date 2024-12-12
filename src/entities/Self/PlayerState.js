@@ -64,12 +64,13 @@ export default class PlayerState extends State {
 		this.player.currentAnimation.getCurrentFrame().render(0, 0);
 
 		// Restore the canvas state to what it was before our changes
-		context.restore();
-
+		
 		// If debug mode is enabled, render additional debug information
 		// if (debugOptions.playerCollision) {
-		// 	this.renderDebug(context);
-		// }
+			// 	this.renderDebug(context);
+			// }
+		
+			context.restore();
 	}
 
 	/**
