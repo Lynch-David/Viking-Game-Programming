@@ -62,20 +62,20 @@ export default class PlayerState extends State {
 
 
 
-		    // Draw a red dot at the player's position
+		    // // Draw a red dot at the player's position
 			context.fillStyle = 'red';
-			context.fillRect(0, 0, 10, 10); 
-			// Restore the canvas state to what it was before our changes
-			context.restore();
+			context.fillRect(0, 0, 44, 40); 
+			// // Restore the canvas state to what it was before our changes
+			// context.restore();
 
 
 
 // >>>>>>> main
 // 		// Render the current frame of the player's animation
-// 		this.player.currentAnimation.getCurrentFrame().render(0, 0);
+		this.player.currentAnimation.getCurrentFrame().render(0, 0);
 
 // 		// Restore the canvas state to what it was before our changes
-// 		context.restore();
+		context.restore();
 
 // 		// If debug mode is enabled, render additional debug information
 // 		// if (debugOptions.playerCollision) {
