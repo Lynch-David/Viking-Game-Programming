@@ -61,11 +61,7 @@ export default class PlayerJumpingState extends PlayerState {
 		// }
 		if (this.player.jumpTime <= PlayerConfig.maxJumpTime
 		) {
-			console.log(PlayerConfig)
-			console.log(1 - this.player.jumpTime / PlayerConfig.maxJumpTime)
-			this.player.velocity.y = this.chargedHeight * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
-			console.log("2 + " + this.player.velocity.y)
-		
+			this.player.velocity.y = this.chargedHeight * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);		
 			this.player.jumpTime += dt;
 		} else {
 			this.player.jumpTime = 1;
