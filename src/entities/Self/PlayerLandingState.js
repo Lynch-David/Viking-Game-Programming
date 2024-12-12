@@ -25,7 +25,7 @@ export default class PlayerLandingState extends PlayerState {
 		this.player.velocity.x = 0;
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
-
+		this.player.currentAnimation.timesPlayed = 0
 	}
 
 	/**
@@ -34,13 +34,9 @@ export default class PlayerLandingState extends PlayerState {
 	 */
 	update(dt) {
 		super.update(dt);
-		this.handleInput();
+		if(this.player.currentAnimation.isDone()){
+			this.player.stateMachine.change(PlayerStateName.Idling);
+		}
 	}
 
-	/**
-	 * Handles player input.
-	 */
-	handleInput() {
-		
-	}
 }
