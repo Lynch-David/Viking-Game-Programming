@@ -12,6 +12,7 @@ export default class PlayState extends State {
     constructor(mapDefinition) {
         super();
 
+		sounds.pause(SoundName.TitleMusic);
         this.map = new Map(mapDefinition);
         this.player = new Player(106, 1800, 42, 40, this.map);
         this.camera = new Camera(
@@ -52,6 +53,9 @@ export default class PlayState extends State {
 
         this.camera.resetTransform(context);
         this.renderCameraGuidelines(context);
+
+		this.renderHeightScore(context);
+
     }
 
 	renderParallaxBackground() {
@@ -94,4 +98,21 @@ export default class PlayState extends State {
 
         context.setLineDash([]);
     }
+
+	renderHeightScore(context) {
+		context.save();
+		context.font = '15px Alagard';
+
+		context.fillStyle = 'white';
+		context.textAlign = 'right';
+	
+		// Calculate the player's height relative to the bottom of the map
+		var playerFeetY = this.map.height * Tile.SIZE - (this.player.position.y + this.player.dimensions.y) - 16;
+		if (playerFeetY < 0) {
+			playerFeetY = 0;
+		}
+		context.fillText(`Height: ${Math.floor(playerFeetY)}`, canvas.width - 10, 20);
+	
+		context.restore();
+	}
 }

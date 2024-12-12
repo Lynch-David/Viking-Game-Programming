@@ -60,7 +60,8 @@
 			"name": "backgroundSound",
 			"path": "./assets/sounds/Background Music/JourneyBegins.wav",
 			"size": 1,
-			"volume": 1
+			"volume": 1,
+			"loop": true
 		},
 		{
 			"name": "titlemusic",
