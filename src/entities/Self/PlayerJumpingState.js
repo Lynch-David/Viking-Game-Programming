@@ -17,14 +17,20 @@ export default class PlayerJumpingState extends PlayerState {
 	 */
 	constructor(player) {
 		super(player);
+		this.chargedHeight = PlayerConfig.jumpPower;
+
 	}
 
 	/**
 	 * Called when entering the jumping state.
 	 */
-	enter() {
+	enter(params = {}) {
 		this.player.jumpTime = 0;
-		this.player.velocity.y = PlayerConfig.jumpPower - 1000;
+
+		this.chargedHeight = params.chargedHeight || PlayerConfig.jumpPower;
+
+
+		this.player.velocity.y = this.chargedHeight;
 		this.player.currentAnimation = this.player.animations.jump;
 		sounds.play(SoundName.Jump);
 	}

@@ -14,6 +14,7 @@ import { timer } from '../../globals.js';
 import { sounds } from '../../globals.js';
 import Animation from "../../../lib/Animation.js";
 import PlayerLandingState from './PlayerLandingState.js';
+import PlayerCrouchingState from './PlayerCrouchingState.js';
 
 /**
  * Represents the player character in the game.
@@ -82,10 +83,10 @@ export default class Player extends GameEntity {
 			PlayerStateName.Landing,
 			new PlayerLandingState(this)
 		);
-		// this.stateMachine.add(
-		// 	PlayerStateName.Crouching,
-		// 	new PlayerFallingState(this)
-		// );
+		this.stateMachine.add(
+			PlayerStateName.Crouching,
+			new PlayerCrouchingState(this)
+		);
 		this.stateMachine.add(
 			PlayerStateName.Idling,
 			new PlayerIdlingState(this)

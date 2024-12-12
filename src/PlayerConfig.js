@@ -1,4 +1,3 @@
-import { TILE_SIZE } from "./globals";
 
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
@@ -16,7 +15,7 @@ export const PlayerConfig = {
 	skidThreshold: 100,
 	slideFriction: 0.95,
 	bounceVelocity: -200, // Upward velocity when bouncing off an enemy
-	maxChargeJumpHeight: 5 * TILE_SIZE, 
+	maxChargeJumpHeight: 5 * 16, 
     chargeTime: 1.0, 
 };
 
