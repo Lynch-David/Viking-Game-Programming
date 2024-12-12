@@ -7,6 +7,8 @@ const SoundName = {
 	Stomp: 'stomp',
 	Pipe: 'pipe',
 	StarLow: 'star-low',
+	MenuBlip: 'menublip',
+	TitleMusic: 'titlemusic',
 };
 
 export default SoundName;

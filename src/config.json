@@ -20,7 +20,10 @@
 		}
 	],
 	"fonts": [
-		
+		{
+			"name": "Alagard",
+			"path": "../assets/fonts/alagard.ttf"
+		}
 	],
 	"sounds": [
 		{
@@ -55,9 +58,17 @@
 		},
 		{
 			"name": "backgroundSound",
-			"path": "./assets/sounds/Background Music/xDeviruchi - And The Journey Begins .wav",
+			"path": "./assets/sounds/Background Music/JourneyBegins.wav",
 			"size": 1,
-			"volume": 1
+			"volume": 1,
+			"loop": true
+		},
+		{
+			"name": "titlemusic",
+			"path": "./assets/sounds/Background Music/TitleTheme.wav",
+			"size": 10,
+			"volume": 1,
+			"loop": true
 		}
 	]
 }

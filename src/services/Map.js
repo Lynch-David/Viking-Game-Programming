@@ -137,15 +137,15 @@ export default class Map {
 	 * @param {number} y - The y-coordinate.
 	 * @returns {Block|undefined} The block at the specified position, if any.
 	 */
-	getBlockAt(x, y) {
-		return this.blocks.find(
-			(block) =>
-				x >= block.position.x &&
-				x < block.position.x + block.dimensions.x &&
-				y >= block.position.y &&
-				y < block.position.y + block.dimensions.y
-		);
-	}
+	// getBlockAt(x, y) {
+	// 	return this.blocks.find(
+	// 		(block) =>
+	// 			x >= block.position.x &&
+	// 			x < block.position.x + block.dimensions.x &&
+	// 			y >= block.position.y &&
+	// 			y < block.position.y + block.dimensions.y
+	// 	);
+	// }
 
 	/**
 	 * Gets a tile from a specific layer at the given column and row.
