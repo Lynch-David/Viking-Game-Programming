@@ -71,9 +71,7 @@ export default class PlayerJumpingState extends PlayerState {
 			input.isKeyHeld(Input.KEYS.SPACE) &&
 			this.player.jumpTime <= PlayerConfig.maxJumpTime
 		) {
-			this.player.velocity.y =
-				PlayerConfig.jumpPower *
-				(1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
+			this.player.velocity.y = PlayerConfig.jumpPower * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
 			this.player.jumpTime += dt;
 		} else {
 			this.player.jumpTime = 1;
