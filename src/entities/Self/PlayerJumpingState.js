@@ -30,7 +30,7 @@ export default class PlayerJumpingState extends PlayerState {
 		this.chargedHeight = params.chargedHeight || PlayerConfig.jumpPower;
 
 
-		this.player.velocity.y = this.chargedHeight;
+		this.player.velocity.y = this.chargedHeight * PlayerConfig.jumpPower - 1000;
 		this.player.currentAnimation = this.player.animations.jump;
 		sounds.play(SoundName.Jump);
 	}

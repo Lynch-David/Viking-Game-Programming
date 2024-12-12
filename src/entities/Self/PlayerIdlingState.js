@@ -42,7 +42,6 @@ export default class PlayerIdlingState extends PlayerState {
 	 */
 	handleInput() {
 		if (input.isKeyPressed(Input.KEYS.SPACE)) {
-			console.log(this.stateMachine)
 			this.player.stateMachine.change(PlayerStateName.Crouching);
 		}
 
