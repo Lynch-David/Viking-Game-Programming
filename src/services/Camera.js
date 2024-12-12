@@ -21,16 +21,22 @@ export default class Camera {
 		viewportWidth,
 		viewportHeight,
 		worldWidth,
-		worldHeight
+		worldHeight,
+		initialX, 
+		initialY
 	) {
 		this.player = player;
 		this.viewportWidth = viewportWidth;
 		this.viewportHeight = viewportHeight;
 		this.worldWidth = worldWidth;
 		this.worldHeight = worldHeight;
+		this.position = {
+            x: initialX,
+            y: initialY
+        };
 
-		// Initialize camera position at the bottom-left corner of the viewport
-		this.position = new Vector(0, viewportHeight);
+		// // Initialize camera position at the bottom-left corner of the viewport
+		// this.position = new Vector(0, 0);
 
 		// Calculate the center of the viewport
 		this.center = new Vector(viewportWidth / 2, viewportHeight / 2);

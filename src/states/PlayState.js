@@ -19,7 +19,9 @@ export default class PlayState extends State {
             canvas.width,
             canvas.height,
             this.map.width * Tile.SIZE,
-            this.map.height * Tile.SIZE
+            this.map.height * Tile.SIZE,
+			0, // initialCameraX
+            this.map.height * Tile.SIZE - canvas.height // initialCameraY
         );
 
         this.backgroundImage = images.get(ImageName.Background);
