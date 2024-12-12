@@ -1,12 +1,12 @@
 
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
-	maxSpeed: 300,
+	maxSpeed: 200,
 
-	acceleration: 5,
+	acceleration: 0.9,
 	deceleration: 0.9,
-	jumpPower: -1,
-	gravity: 1000,
+	jumpPower: -500,
+	gravity: 0,
 	maxFallSpeed: 2000,
 	maxJumpTime: 1,
 	maxCoyoteTime: 0.1,
@@ -15,7 +15,7 @@ export const PlayerConfig = {
 	skidThreshold: 100,
 	slideFriction: 0.95,
 	bounceVelocity: -200, // Upward velocity when bouncing off an enemy
-	maxChargeJumpHeight: 30, 
+	maxChargeJumpHeight: -600, 
     chargeTime: 1.0, 
 };
 

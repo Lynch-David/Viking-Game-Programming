@@ -21,7 +21,9 @@ export default class PlayerLandingState extends PlayerState {
 	/**
 	 * Called when entering the landing state.
 	 */
+	
 	enter() {
+		this.player.isOnGround = true;
 		this.player.dimensions.y = 43
 		this.originalPosition = this.player.position.x
 		if(this.player.facingRight)
