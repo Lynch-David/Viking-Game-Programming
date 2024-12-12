@@ -32,16 +32,17 @@ export default class PlayState extends State {
         this.parallaxLayers = [
             { image: this.backgroundImage, speedX: 0.04, speedY: 0.1 },
         ];
+
+
     }
 
     update(dt) {
 
-
         if (input.isKeyPressed(Input.KEYS.P)) {
-            sounds.play(SoundName.MenuBlip)
-            stateMachine.change(GameStateName.Pause);
-		}
-
+            sounds.play(SoundName.MenuBlip);
+            stateMachine.change(GameStateName.Pause, { playState: this });
+        }
+    
         timer.update(dt);
         this.map.update(dt);
         this.camera.update(dt);
@@ -50,17 +51,16 @@ export default class PlayState extends State {
 
     render(context) {
         this.camera.applyTransform(context);
-
+    
         this.renderParallaxBackground();
-
+    
         this.map.render(context);
         this.player.render(context);
-
+    
         this.camera.resetTransform(context);
         // this.renderCameraGuidelines(context);
-
-		this.renderHeightScore(context);
-
+    
+        this.renderHeightScore(context);
     }
 
 	renderParallaxBackground() {

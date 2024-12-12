@@ -1,8 +1,8 @@
 import State from '../../../lib/State.js';
 import { CANVAS_HEIGHT, CANVAS_WIDTH, context, input, stateMachine, sounds, timer } from '../globals.js';
 import GameStateName from '../enums/GameStateName.js';
-import Input from '../../../lib/Input.js';
 import SoundName from '../enums/SoundName.js';
+import Input from '../../../lib/Input.js';
 
 export default class PauseState extends State {
     constructor() {
@@ -11,7 +11,8 @@ export default class PauseState extends State {
         this.currentSelection = 0;
     }
 
-    enter() {
+    enter(parameters) {
+        this.playState = parameters.playState; // Assign the playState from parameters
         timer.pause(); // Pause the timer when entering the pause state
     }
 
@@ -26,6 +27,7 @@ export default class PauseState extends State {
                     stateMachine.change(GameStateName.Play);
                     break;
                 case 'Exit':
+                    sounds.play(SoundName.Jump);
                     stateMachine.change(GameStateName.TitleScreen);
                     break;
             }
@@ -43,6 +45,10 @@ export default class PauseState extends State {
     }
 
     render() {
+        // Render the PlayState in the background
+        this.playState.render(context);
+
+        // Render the pause overlay
         context.fillStyle = 'rgba(0, 0, 0, 0.5)';
         context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
