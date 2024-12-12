@@ -6,12 +6,12 @@ import Player from './Player.js';
 import { PlayerConfig } from '../../PlayerConfig.js';
 
 /**
- * Represents the idling state of the player.
+ * Represents the crouching state of the player.
  * @extends PlayerState
  */
 export default class PlayerCrouchingState extends PlayerState {
 	/**
-	 * Creates a new PlayerIdlingState instance.
+	 * Creates a new PlayerCrouchingState instance.
 	 * @param {Player} player - The player object.
 	 */
 	constructor(player) {
@@ -20,7 +20,7 @@ export default class PlayerCrouchingState extends PlayerState {
 	}
 
 	/**
-	 * Called when entering the idling state.
+	 * Called when entering the crouching state.
 	 */
 	enter() {
 		// this.player.dimensions.y = 40

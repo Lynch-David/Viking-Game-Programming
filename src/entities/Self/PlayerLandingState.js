@@ -5,12 +5,12 @@ import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
 
 /**
- * Represents the idling state of the player.
+ * Represents the landing state of the player.
  * @extends PlayerState
  */
 export default class PlayerLandingState extends PlayerState {
 	/**
-	 * Creates a new PlayerIdlingState instance.
+	 * Creates a new PlayerLandingState instance.
 	 * @param {Player} player - The player object.
 	 */
 	constructor(player) {
@@ -19,7 +19,7 @@ export default class PlayerLandingState extends PlayerState {
 	}
 
 	/**
-	 * Called when entering the idling state.
+	 * Called when entering the landing state.
 	 */
 	enter() {
 		this.player.dimensions.y = 43
