@@ -20,8 +20,7 @@ export const spriteConfig = {
 	land: [
 	  { x: 4724, y: 599, width: 53, height: 39 },
 	  { x: 5012, y: 596, width: 54, height: 42 },
-	  { x: 5472, y: 512, width: 288, height: 128 },
-	  { x: 5760, y: 512, width: 288, height: 128 },
+	  { x: 5298, y: 596, width: 60, height: 42 },
 
 	],
 	crouch: [
