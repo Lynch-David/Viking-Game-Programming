@@ -54,23 +54,25 @@ export default class PlayState extends State {
         this.renderCameraGuidelines(context);
     }
 
-    renderParallaxBackground() {
-        this.parallaxLayers.forEach((layer) => {
-            const parallaxX = -this.camera.position.x * layer.speedX;
-            const parallaxY = -this.camera.position.y * layer.speedY;
-
-            const repetitionsX = Math.ceil(canvas.width / layer.image.width) + 1;
-            const repetitionsY = Math.ceil(canvas.height / layer.image.height) + 1;
-
-            for (let y = 0; y < repetitionsY; y++) {
-                for (let x = 0; x < repetitionsX; x++) {
-                    const drawX = (parallaxX % layer.image.width) + x * layer.image.width;
-                    const drawY = (parallaxY % layer.image.height) + y * layer.image.height;
-                    layer.image.render(drawX, drawY);
-                }
-            }
-        });
-    }
+	renderParallaxBackground() {
+		const offsetY = 300; // Adjust this value to set how much higher the background should be
+	
+		this.parallaxLayers.forEach((layer) => {
+			const parallaxX = -this.camera.position.x * layer.speedX;
+			const parallaxY = -this.camera.position.y * layer.speedY;
+	
+			const repetitionsX = Math.ceil(canvas.width / layer.image.width) + 1;
+			const repetitionsY = Math.ceil(canvas.height / layer.image.height) + 1;
+	
+			for (let y = 0; y < repetitionsY; y++) {
+				for (let x = 0; x < repetitionsX; x++) {
+					const drawX = (parallaxX % layer.image.width) + x * layer.image.width;
+					const drawY = (parallaxY % layer.image.height) + y * layer.image.height + (this.map.height * Tile.SIZE - canvas.height) - offsetY;
+					layer.image.render(drawX, drawY);
+				}
+			}
+		});
+	}
 
     renderCameraGuidelines(context) {
         const centerX = canvas.width / 2;
