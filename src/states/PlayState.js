@@ -11,20 +11,30 @@ import SoundName from '../enums/SoundName.js';
 import SoundPool from '../../lib/SoundPool.js';
 
 export default class PlayState extends State {
-    constructor(mapDefinition) {
+    constructor(mapDefinition, loadState = true) {
         super();
 
-		// sounds.pause(SoundName.TitleMusic);
-        
         this.map = new Map(mapDefinition);
         this.player = new Player(106, 1800, 42, 40, this.map);
+
+        console.log(loadState);
+        if (loadState) {
+            const savedState = JSON.parse(localStorage.getItem('playerState'));
+            console.log(savedState);
+            if (savedState) {
+                this.player.position.x = savedState.x;
+                this.player.position.y = savedState.y;
+                this.player.stateMachine.change(savedState.state);
+            }
+        }
+
         this.camera = new Camera(
             this.player,
             canvas.width,
             canvas.height,
             this.map.width * Tile.SIZE,
             this.map.height * Tile.SIZE,
-			0, // initialCameraX
+            0, // initialCameraX
             this.map.height * Tile.SIZE - canvas.height // initialCameraY
         );
 
@@ -32,17 +42,14 @@ export default class PlayState extends State {
         this.parallaxLayers = [
             { image: this.backgroundImage, speedX: 0.04, speedY: 0.1 },
         ];
-
-
     }
 
     update(dt) {
-
         if (input.isKeyPressed(Input.KEYS.P)) {
             sounds.play(SoundName.MenuBlip);
-            stateMachine.change(GameStateName.Pause, { playState: this });
+            stateMachine.change(GameStateName.Pause, { playState: this, player: this.player });
         }
-    
+
         timer.update(dt);
         this.map.update(dt);
         this.camera.update(dt);

@@ -13,11 +13,25 @@ export default class PauseState extends State {
 
     enter(parameters) {
         this.playState = parameters.playState; // Assign the playState from parameters
+        this.player = parameters.player; // Assign the player from parameters
         timer.pause(); // Pause the timer when entering the pause state
     }
 
     exit() {
+        if (this.player) {
+            console.log('Saving player state');
+            this.savePlayerState(this.player);
+        }
         timer.resume(); // Resume the timer when exiting the pause state
+    }
+
+    savePlayerState(player) {
+        const playerState = {
+            x: player.position.x,
+            y: player.position.y,
+            state: player.stateMachine.currentState.name,
+        };
+        localStorage.setItem('playerState', JSON.stringify(playerState));
     }
 
     update(dt) {

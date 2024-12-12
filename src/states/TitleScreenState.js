@@ -30,7 +30,6 @@ export default class TitleScreenState extends State {
     }
 
     enter() {
-        
         sounds.play(SoundName.TitleMusic);
     }
 
@@ -78,15 +77,31 @@ export default class TitleScreenState extends State {
     proceed() {
         switch (this.menuOptions[this.currentSelection]) {
             case 'Continue':
-                stateMachine.change(GameStateName.Play);
+                const savedState = localStorage.getItem('playerState');
+                if (savedState) {
+                    stateMachine.change(GameStateName.Play, { loadState: true });
+                } else {
+                    stateMachine.change(GameStateName.Play);
+                }
                 break;
             case 'New Game':
+                localStorage.removeItem('playerState'); // Clear saved state
+
                 stateMachine.change(GameStateName.Play);
                 break;
             case 'Quit':
                 window.close();
                 break;
         }
+    }
+
+    savePlayerState(player) {
+        const playerState = {
+            x: player.position.x,
+            y: player.position.y,
+            state: player.stateMachine.currentState.name,
+        };
+        localStorage.setItem('playerState', JSON.stringify(playerState));
     }
 
     lerpColor(start, end, t) {
@@ -96,7 +111,6 @@ export default class TitleScreenState extends State {
             b: start.b + (end.b - start.b) * t,
         };
     }
-
 
     render() {
         context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
