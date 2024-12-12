@@ -25,6 +25,7 @@ export default class PlayerState extends State {
 	 * @param {number} dt - Delta time.
 	 */
 	update(dt) {
+		console.log(dt)
 		this.applyGravity(dt);
 		this.updatePosition(dt);
 		this.player.currentAnimation.update(dt);

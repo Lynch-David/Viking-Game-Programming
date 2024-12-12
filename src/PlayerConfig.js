@@ -5,7 +5,7 @@ export const PlayerConfig = {
 
 	acceleration: 5,
 	deceleration: 0.9,
-	jumpPower: -100,
+	jumpPower: -1,
 	gravity: 1000,
 	maxFallSpeed: 2000,
 	maxJumpTime: 0.5,
@@ -15,7 +15,7 @@ export const PlayerConfig = {
 	skidThreshold: 100,
 	slideFriction: 0.95,
 	bounceVelocity: -200, // Upward velocity when bouncing off an enemy
-	maxChargeJumpHeight: 5 * 16, 
+	maxChargeJumpHeight: 30, 
     chargeTime: 1.0, 
 };
 
