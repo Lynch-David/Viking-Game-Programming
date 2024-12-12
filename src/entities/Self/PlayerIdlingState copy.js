@@ -8,31 +8,24 @@ import Player from './Player.js';
  * Represents the idling state of the player.
  * @extends PlayerState
  */
-export default class PlayerLandingState extends PlayerState {
+export default class PlayerIdlingState extends PlayerState {
 	/**
 	 * Creates a new PlayerIdlingState instance.
 	 * @param {Player} player - The player object.
 	 */
 	constructor(player) {
 		super(player);
-		this.originalPosition = 0
 	}
 
 	/**
 	 * Called when entering the idling state.
 	 */
 	enter() {
-		this.player.dimensions.y = 43
-		this.originalPosition = this.player.position.x
-		if(this.player.facingRight)
-			this.player.position.x = this.originalPosition - 10
-		else
-			this.player.position.x = this.originalPosition + 10
-
+		this.player.dimensions.y = 40
 		this.player.velocity.x = 0;
-		this.player.velocity.y = 0;
-		this.player.currentAnimation = this.player.animations.land;
-		this.player.currentAnimation.timesPlayed = 0
+		this.player.velocity.y = 100;
+		this.player.currentAnimation = this.player.animations.idle;
+
 	}
 
 	/**
@@ -41,10 +34,20 @@ export default class PlayerLandingState extends PlayerState {
 	 */
 	update(dt) {
 		super.update(dt);
-		if(this.player.currentAnimation.isDone()){
-			this.player.position.x = this.originalPosition
-			this.player.stateMachine.change(PlayerStateName.Idling);
-		}
+		this.handleInput();
 	}
 
+	/**
+	 * Handles player input.
+	 */
+	handleInput() {
+		if (input.isKeyPressed(Input.KEYS.SPACE)) {
+			this.player.stateMachine.change(PlayerStateName.Jumping);
+		}
+
+		// If the player is pressing A or D, not both, change to the walking state.
+		if (input.isKeyHeld(Input.KEYS.A) !== input.isKeyHeld(Input.KEYS.D)) {
+			this.player.stateMachine.change(PlayerStateName.Walking);
+		}
+	}
 }

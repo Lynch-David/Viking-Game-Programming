@@ -53,7 +53,7 @@ export default class Player extends GameEntity {
 			walk: new Animation(this.sprites.walk, 0.2),
 			jump: new Animation(this.sprites.jump),
 			fall: new Animation(this.sprites.fall),
-			land: new Animation(this.sprites.land, 0.2, 1),
+			land: new Animation(this.sprites.land, 0.1, 1),
 			crouch: new Animation(this.sprites.crouch),
 		};
 		  
