@@ -1,18 +1,21 @@
+
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
     maxSpeed: 50,
     acceleration: 20,
     deceleration: 20, // Updated to stop immediately
-    jumpPower: -400,
-    gravity: 1000,
-    maxFallSpeed: 2000,
-    maxJumpTime: 0.5,
-    maxCoyoteTime: 0.1,
-    maxJumpBuffer: 0.1,
-    doubleJumpEnabled: false,
-    skidThreshold: 0,
-    slideFriction: 0,
-    bounceVelocity: -200, // Upward velocity when bouncing off an enemy
+	jumpPower: -1,
+	gravity: 1000,
+	maxFallSpeed: 2000,
+	maxJumpTime: 1,
+	maxCoyoteTime: 0.1,
+	maxJumpBuffer: 0.1,
+	doubleJumpEnabled: false,
+	skidThreshold: 100,
+	slideFriction: 0.95,
+	bounceVelocity: -200, // Upward velocity when bouncing off an enemy
+	maxChargeJumpHeight: 30, 
+    chargeTime: 1.0, 
 };
 
 // Function to update PlayerConfig based on slider values

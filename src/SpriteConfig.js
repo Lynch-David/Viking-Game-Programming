@@ -18,16 +18,15 @@ export const spriteConfig = {
 	  { x: 2721, y: 597, width: 37, height: 38 },
 	],
 	land: [
-	  { x: 4724, y: 599, width: 53, height: 39 },
-	  { x: 5012, y: 596, width: 54, height: 42 },
-	  { x: 5298, y: 596, width: 60, height: 42 },
+		{ x: 5012, y: 596, width: 54, height: 43 },
+		{ x: 5298, y: 596, width: 60, height: 43 },
+	  { x: 4724, y: 595, width: 53, height: 44 },
 
 	],
 	crouch: [
 	  { x: 420, y: 863, width: 49, height: 31 },
 	]
   };
-  
 
 export function loadPlayerSprites(spriteSheet, spriteConfig) {
 	const sprites = {};

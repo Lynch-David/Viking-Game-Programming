@@ -42,7 +42,7 @@ export default class PlayerIdlingState extends PlayerState {
 	 */
 	handleInput() {
 		if (input.isKeyPressed(Input.KEYS.SPACE)) {
-			this.player.stateMachine.change(PlayerStateName.Jumping);
+			this.player.stateMachine.change(PlayerStateName.Crouching);
 		}
 
 		// If the player is pressing A or D, not both, change to the walking state.

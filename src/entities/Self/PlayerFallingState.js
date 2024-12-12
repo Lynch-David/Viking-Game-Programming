@@ -41,11 +41,13 @@ export default class PlayerFallingState extends PlayerState {
 	checkTransitions() {
 		if (this.player.isOnGround) {
 			sounds.play(SoundName.Landing);
-			if (Math.abs(this.player.velocity.x) < 0.1) {
-				this.player.stateMachine.change(PlayerStateName.Idling);
-			} else {
-				this.player.stateMachine.change(PlayerStateName.Walking);
-			}
+			this.player.stateMachine.change(PlayerStateName.Landing);
+
+			// if (Math.abs(this.player.velocity.x) < 0.1) {
+			// 	this.player.stateMachine.change(PlayerStateName.Idling);
+			// } else {
+			// 	this.player.stateMachine.change(PlayerStateName.Walking);
+			// }
 		}
 	}
 }

@@ -32,14 +32,14 @@ export default class CollisionDetector {
 
 		if (entity.velocity.x > 0) {
 			// Moving right
-			if (this.isSolidExcludingPlatformTileInColumn(tileRight, tileTop, tileBottom)) {
+			if (this.isSolidTileInColumn(tileRight, tileTop, tileBottom)) {
 				// Collision on the right side
 				entity.position.x = tileRight * tileSize - entity.dimensions.x;
 				entity.velocity.x = 0;
 			}
 		} else if (entity.velocity.x < 0) {
 			// Moving left
-			if (this.isSolidExcludingPlatformTileInColumn(tileLeft, tileTop, tileBottom)) {
+			if (this.isSolidTileInColumn(tileLeft, tileTop, tileBottom)) {
 				// Collision on the left side
 				entity.position.x = (tileLeft + 1) * tileSize;
 				entity.velocity.x = 0;
@@ -76,16 +76,7 @@ export default class CollisionDetector {
 			}
 		} else if (entity.velocity.y < 0) {
 			// Jumping or moving upwards
-			if (
-				// this.checkBlockCollisionFromBelow(
-				// 	entity,
-				// 	tileTop,
-				// 	tileLeft,
-				// 	tileRight
-				// ) 
-				// ||
-				this.isSolidTileInColumn(tileTop, tileLeft, tileRight)
-			) {
+			if (this.isSolidTileInRow(tileTop, tileLeft, tileRight)) {
 				// Collision above
 				entity.position.y = (tileTop + 1) * tileSize;
 				entity.velocity.y = 0;
@@ -143,31 +134,4 @@ export default class CollisionDetector {
 		return false;
 	}
 
-	/**
-	 * Checks for collision with a block from below.
-	 * @param {GameEntity} entity - The entity to check collisions for.
-	 * @param {number} tileY - The y-coordinate of the tile row to check.
-	 * @param {number} xStart - The starting x-coordinate of the row.
-	 * @param {number} xEnd - The ending x-coordinate of the row.
-	 * @returns {boolean} True if a collision with a block occurred, false otherwise.
-	 */
-	checkBlockCollisionFromBelow(entity, tileY, xStart, xEnd) {
-		for (let x = xStart; x <= xEnd; x++) {
-			const block = this.map.getBlockAt(
-				x * this.map.tileSize,
-				tileY * this.map.tileSize
-			);
-			if (block && !block.isHit) {
-				// Check if the entity's top is close to the block's bottom
-				const entityTop = entity.position.y;
-				const blockBottom = (tileY + 1) * this.map.tileSize;
-				if (Math.abs(entityTop - blockBottom) < 5) {
-					// 5 pixels threshold
-					block.hit();
-					return true;
-				}
-			}
-		}
-		return false;
-	}
 }
