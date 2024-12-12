@@ -1,6 +1,7 @@
 import Input from '../../../lib/Input.js';
 import State from '../../../lib/State.js';
 import GameStateName from '../enums/GameStateName.js';
+import SoundName from '../enums/SoundName.js';
 import {
     CANVAS_HEIGHT,
     CANVAS_WIDTH,
@@ -8,6 +9,7 @@ import {
     input,
     stateMachine,
     timer,
+    sounds, // Add this line to import sounds
 } from '../globals.js';
 
 export default class TitleScreenState extends State {
@@ -25,6 +27,7 @@ export default class TitleScreenState extends State {
 
     exit() {
         // Any cleanup code for the title screen can go here
+        sounds.play(SoundName.MenuBlip);
     }
 
     update(dt) {
