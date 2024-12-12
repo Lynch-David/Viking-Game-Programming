@@ -2,6 +2,7 @@ import State from '../../lib/State.js';
 import Map from '../services/Map.js';
 import Camera from '../services/Camera.js';
 import { canvas, images, sounds, timer, input, stateMachine } from '../globals.js';
+import Input from '../../../lib/Input.js';
 import Player from '../entities/Self/Player.js';
 import Tile from '../services/Tile.js';
 import ImageName from '../enums/ImageName.js';
@@ -34,10 +35,12 @@ export default class PlayState extends State {
     }
 
     update(dt) {
-        if (input.isKeyPressed(input.keys.P)) {
-			sounds.play(SoundName.MenuBlip)
+
+
+        if (input.isKeyPressed(Input.KEYS.P)) {
+            sounds.play(SoundName.MenuBlip)
             stateMachine.change(GameStateName.Pause);
-        }
+		}
 
         timer.update(dt);
         this.map.update(dt);

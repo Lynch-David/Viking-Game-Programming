@@ -1,6 +1,7 @@
 import State from '../../../lib/State.js';
-import { CANVAS_HEIGHT, CANVAS_WIDTH, context, input, stateMachine, sounds } from '../globals.js';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, context, input, stateMachine, sounds, timer } from '../globals.js';
 import GameStateName from '../enums/GameStateName.js';
+import Input from '../../../lib/Input.js';
 import SoundName from '../enums/SoundName.js';
 
 export default class PauseState extends State {
@@ -11,11 +12,11 @@ export default class PauseState extends State {
     }
 
     enter() {
-        // Any setup code for the pause menu can go here
+        timer.pause(); // Pause the timer when entering the pause state
     }
 
     exit() {
-        // Any cleanup code for the pause menu can go here
+        timer.resume(); // Resume the timer when exiting the pause state
     }
 
     update(dt) {
