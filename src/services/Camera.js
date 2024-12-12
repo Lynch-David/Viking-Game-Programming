@@ -23,10 +23,6 @@ export default class Camera {
 		worldWidth,
 		worldHeight
 	) {
-		console.log(viewportWidth,
-			viewportHeight,
-			worldWidth,
-			worldHeight)
 		this.player = player;
 		this.viewportWidth = viewportWidth;
 		this.viewportHeight = viewportHeight;
@@ -64,7 +60,6 @@ export default class Camera {
 			this.player.position.x + this.player.dimensions.x / 2,
 			this.player.position.y + this.player.dimensions.y / 2
 		);
-		console.log(playerCenter)
 
 
 		let currentDirectionX = 0;

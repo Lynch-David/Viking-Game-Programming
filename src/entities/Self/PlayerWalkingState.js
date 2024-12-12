@@ -24,7 +24,7 @@ export default class PlayerWalkingState extends PlayerState {
 	 */
 	enter() {
 		this.player.isOnGround = true;
-		this.player.currentAnimation = this.player.sizeAnimations.walk;
+		this.player.currentAnimation = this.player.animations.walk;
 	}
 
 	/**

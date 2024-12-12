@@ -7,8 +7,8 @@
 			"height": 512
 		},
 		{
-			"name": "player",
-			"path": "./assets/images/Viking.png",
+			"name": "viking",
+			"path": "./assets/images/viking.png",
 			"width": 6048,
 			"height": 1792
 		},

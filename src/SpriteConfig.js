@@ -1,22 +1,34 @@
 import Sprite from '../lib/Sprite.js';
 
 export const spriteConfig = {
-	idle: [{ x: 24, y: 584, width: 288, height: 128 }],
-	duck: [{ x: 128, y: 600, width: 16, height: 16 }],
+	idle: [
+	  { x: 127, y: 87, width: 44, height: 40 }
+	],
 	walk: [
-		{ x: 180, y: 584, width: 16, height: 32 },
-		{ x: 232, y: 584, width: 16, height: 32 },
-		{ x: 284, y: 584, width: 16, height: 32 },
+	  { x: 0, y: 128, width: 288, height: 128 },
+	  { x: 288, y: 128, width: 288, height: 128 },
+	  { x: 576, y: 128, width: 288, height: 128 },
+	  { x: 864, y: 128, width: 288, height: 128 },
 	],
-	run: [
-		{ x: 336, y: 584, width: 18, height: 32 },
-		{ x: 388, y: 584, width: 18, height: 32 },
-		{ x: 440, y: 584, width: 18, height: 32 },
+	jump: [
+	  { x: 0, y: 256, width: 288, height: 128 },
+	  { x: 288, y: 256, width: 288, height: 128 },
 	],
-	jump: [{ x: 76, y: 655, width: 16, height: 32 }],
-	fall: [{ x: 128, y: 655, width: 16, height: 32 }],
-	runJump: [{ x: 180, y: 655, width: 19, height: 32 }],
-};
+	fall: [
+	  { x: 0, y: 384, width: 288, height: 128 },
+	],
+	land: [
+	  { x: 4896, y: 512, width: 288, height: 128 },
+	  { x: 5184, y: 512, width: 288, height: 128 },
+	  { x: 5472, y: 512, width: 288, height: 128 },
+	  { x: 5760, y: 512, width: 288, height: 128 },
+
+	],
+	crouch: [
+	  { x: 288, y: 640, width: 288, height: 128 },
+	]
+  };
+  
 
 export function loadPlayerSprites(spriteSheet, spriteConfig) {
 	const sprites = {};

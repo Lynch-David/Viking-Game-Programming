@@ -23,7 +23,7 @@ export default class PlayerIdlingState extends PlayerState {
 	enter() {
 		this.player.velocity.x = 0;
 		this.player.velocity.y = 0;
-		this.player.currentAnimation = this.player.sizeAnimations.idle;
+		this.player.currentAnimation = this.player.animations.idle;
 
 		this.player.dies = false;
 	}

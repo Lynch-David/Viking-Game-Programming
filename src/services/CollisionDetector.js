@@ -80,7 +80,7 @@ export default class CollisionDetector {
 				// 	tileRight
 				// ) 
 				// ||
-				this.isSolidExcludingPlatformTileInRow(tileTop, tileLeft, tileRight)
+				this.isSolidTileInColumn(tileTop, tileLeft, tileRight)
 			) {
 				// Collision above
 				entity.position.y = (tileTop + 1) * tileSize;
@@ -123,7 +123,7 @@ export default class CollisionDetector {
 
 	isSolidExcludingPlatformTileInColumn(x, yStart, yEnd) {
 		for (let y = yStart; y <= yEnd; y++) {
-			if (this.map.isSolidTileExcludingPlatformAt(x, y)) {
+			if (this.map.isSolidTileAt(x, y)) {
 				return true;
 			}
 		}
