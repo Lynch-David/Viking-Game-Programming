@@ -30,6 +30,7 @@ export default class TitleScreenState extends State {
     }
 
     enter() {
+        
         sounds.play(SoundName.TitleMusic);
     }
 
@@ -83,7 +84,7 @@ export default class TitleScreenState extends State {
                 stateMachine.change(GameStateName.Play);
                 break;
             case 'Quit':
-                stateMachine.change(GameStateName.TitleScreen);
+                window.close();
                 break;
         }
     }
