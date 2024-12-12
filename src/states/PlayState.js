@@ -20,7 +20,7 @@ export default class PlayState extends State {
 		super();
 
 		this.map = new Map(mapDefinition);
-		this.player = new Player(106, 1800, 44, 40, this.map);
+		this.player = new Player(106, 1800, 42, 40, this.map);
 		this.camera = new Camera(
 			this.player,
 			canvas.width,

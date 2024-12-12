@@ -5,10 +5,10 @@ export const spriteConfig = {
 	  { x: 127, y: 87, width: 44, height: 40 }
 	],
 	walk: [
-	  { x: 0, y: 128, width: 288, height: 128 },
-	  { x: 288, y: 128, width: 288, height: 128 },
-	  { x: 576, y: 128, width: 288, height: 128 },
-	  { x: 864, y: 128, width: 288, height: 128 },
+	  { x: 131, y: 208, width: 40, height: 44 },
+	  { x: 416, y: 207, width: 40, height: 44 },
+	  { x: 708, y: 208, width: 40, height: 44 },
+	  { x: 997, y: 211, width: 40, height: 43 },
 	],
 	jump: [
 	  { x: 0, y: 256, width: 288, height: 128 },

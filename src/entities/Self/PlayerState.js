@@ -45,17 +45,17 @@ export default class PlayerState extends State {
 
 		// Handle player orientation (facing right or left)
 		if (this.player.facingRight) {
+			// If facing left, just translate to the player's position
+			context.translate(
+				Math.floor(this.player.position.x),
+				Math.floor(this.player.position.y)
+			);
+		} else {
 			// If facing right, flip the sprite horizontally
 			context.scale(-1, 1);
 			// Adjust position to account for the flip
 			context.translate(
 				Math.floor(-this.player.position.x - this.player.dimensions.x),
-				Math.floor(this.player.position.y)
-			);
-		} else {
-			// If facing left, just translate to the player's position
-			context.translate(
-				Math.floor(this.player.position.x),
 				Math.floor(this.player.position.y)
 			);
 		}
@@ -82,7 +82,6 @@ export default class PlayerState extends State {
 // 			// 	this.renderDebug(context);
 // 			// }
 		
-// 			context.restore();
 	}
 
 	/**
@@ -254,10 +253,6 @@ export default class PlayerState extends State {
 				this.player.map.width * Tile.SIZE - this.player.dimensions.x
 			)
 		);
-
-		if(this.player.currentAnimation !== this.player.animations.dying && this.player.currentAnimation !== this.player.animations.idle && this.player.position.y > this.player.map.height * Tile.SIZE){
-			await this.player.die(true)
-		}
 
 		// Round vertical position to avoid sub-pixel rendering
 		this.player.position.y = Math.round(this.player.position.y);
