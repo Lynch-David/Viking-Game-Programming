@@ -33,8 +33,8 @@
 			"volume": 1
 		},
 		{
-			"name": "land",
-			"path": "./assets/sounds/landing.ogg",
+			"name": "landing",
+			"path": "./assets/sounds/Landing.mp3",
 			"size": 2,
 			"volume": 1
 		},
@@ -67,7 +67,7 @@
 			"name": "titlemusic",
 			"path": "./assets/sounds/Background Music/TitleTheme.wav",
 			"size": 10,
-			"volume": 1,
+			"volume": 0.3,
 			"loop": true
 		}
 	]

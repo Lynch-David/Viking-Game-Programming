@@ -1,4 +1,6 @@
 import GameEntity from '../entities/GameEntity.js';
+import SoundName from '../enums/SoundName.js';
+import { sounds } from '../globals.js';
 import Map from './Map.js';
 
 /**
@@ -68,7 +70,9 @@ export default class CollisionDetector {
 				// Collision below
 				entity.position.y = tileBottom * tileSize - entity.dimensions.y;
 				entity.velocity.y = 0;
+				
 				entity.isOnGround = true;
+
 			}
 		} else if (entity.velocity.y < 0) {
 			// Jumping or moving upwards

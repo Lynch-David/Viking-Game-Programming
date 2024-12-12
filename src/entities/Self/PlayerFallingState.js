@@ -1,6 +1,8 @@
 import PlayerState from './PlayerState.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
+import { sounds } from '../../globals.js';
+import SoundName from '../../enums/SoundName.js';
 
 /**
  * Represents the falling state of the player.
@@ -38,6 +40,7 @@ export default class PlayerFallingState extends PlayerState {
 	 */
 	checkTransitions() {
 		if (this.player.isOnGround) {
+			sounds.play(SoundName.Landing);
 			if (Math.abs(this.player.velocity.x) < 0.1) {
 				this.player.stateMachine.change(PlayerStateName.Idling);
 			} else {
