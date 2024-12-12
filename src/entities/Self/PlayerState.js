@@ -45,17 +45,17 @@ export default class PlayerState extends State {
 
 		// Handle player orientation (facing right or left)
 		if (this.player.facingRight) {
+			// If facing left, just translate to the player's position
+			context.translate(
+				Math.floor(this.player.position.x),
+				Math.floor(this.player.position.y)
+			);
+		} else {
 			// If facing right, flip the sprite horizontally
 			context.scale(-1, 1);
 			// Adjust position to account for the flip
 			context.translate(
 				Math.floor(-this.player.position.x - this.player.dimensions.x),
-				Math.floor(this.player.position.y)
-			);
-		} else {
-			// If facing left, just translate to the player's position
-			context.translate(
-				Math.floor(this.player.position.x),
 				Math.floor(this.player.position.y)
 			);
 		}
@@ -71,7 +71,6 @@ export default class PlayerState extends State {
 			// 	this.renderDebug(context);
 			// }
 		
-			context.restore();
 	}
 
 	/**
