@@ -7,12 +7,14 @@ import Tile from '../services/Tile.js';
 import ImageName from '../enums/ImageName.js';
 import GameStateName from '../enums/GameStateName.js';
 import SoundName from '../enums/SoundName.js';
+import SoundPool from '../../lib/SoundPool.js';
 
 export default class PlayState extends State {
     constructor(mapDefinition) {
         super();
 
-		sounds.pause(SoundName.TitleMusic);
+		// sounds.pause(SoundName.TitleMusic);
+        
         this.map = new Map(mapDefinition);
         this.player = new Player(106, 1800, 42, 40, this.map);
         this.camera = new Camera(
@@ -52,7 +54,7 @@ export default class PlayState extends State {
         this.player.render(context);
 
         this.camera.resetTransform(context);
-        this.renderCameraGuidelines(context);
+        // this.renderCameraGuidelines(context);
 
 		this.renderHeightScore(context);
 
