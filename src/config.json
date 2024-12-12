@@ -51,6 +51,12 @@
 			"volume": 0.5
 		},
 		{
+			"name": "select",
+			"path": "./assets/sounds/select.wav",
+			"size": 1,
+			"volume": 0.5
+		},
+		{
 			"name": "slimebounce",
 			"path": "./assets/sounds/slimebounce.wav",
 			"size": 10,

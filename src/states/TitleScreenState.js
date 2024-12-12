@@ -46,7 +46,7 @@ export default class TitleScreenState extends State {
         }
 
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
-            sounds.play(SoundName.MenuBlip);
+            sounds.play(SoundName.Select);
             this.startBlinking();
         }
 
