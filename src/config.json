@@ -48,7 +48,7 @@
 			"name": "menublip",
 			"path": "./assets/sounds/menublip.wav",
 			"size": 1,
-			"volume": 1
+			"volume": 0.5
 		},
 		{
 			"name": "slimebounce",
@@ -67,7 +67,7 @@
 			"name": "titlemusic",
 			"path": "./assets/sounds/Background Music/TitleTheme.wav",
 			"size": 10,
-			"volume": 0.3,
+			"volume": 0.1,
 			"loop": true
 		}
 	]
