@@ -36,7 +36,7 @@ export default class Player extends GameEntity {
 		this.velocity = new Vector(0, 0);
 		this.map = map;
 		this.jumpTime = 0;
-		this.facingRight = false;
+		this.facingRight = true;
 
 		this.didFall = false;
 
@@ -49,7 +49,7 @@ export default class Player extends GameEntity {
 		// Create animations for different player states
 		this.animations = {
 			idle: new Animation(this.sprites.idle),
-			walk: new Animation(this.sprites.walk, 0.07),
+			walk: new Animation(this.sprites.walk, 0.2),
 			jump: new Animation(this.sprites.jump, 0.12),
 			fall: new Animation(this.sprites.fall),
 			land: new Animation(this.sprites.land, 0.1),
