@@ -11,15 +11,15 @@ export const spriteConfig = {
 	  { x: 997, y: 211, width: 40, height: 43 },
 	],
 	jump: [
-	  { x: 0, y: 256, width: 288, height: 128 },
-	  { x: 288, y: 256, width: 288, height: 128 },
+	//   { x: 126, y: 600, width: 37, height: 38 },
+	  { x: 416, y: 595, width: 38, height: 43 },
 	],
 	fall: [
-	  { x: 0, y: 384, width: 288, height: 128 },
+	  { x: 2721, y: 597, width: 37, height: 38 },
 	],
 	land: [
-	  { x: 4896, y: 512, width: 288, height: 128 },
-	  { x: 5184, y: 512, width: 288, height: 128 },
+	  { x: 4724, y: 599, width: 53, height: 39 },
+	  { x: 5012, y: 596, width: 54, height: 42 },
 	  { x: 5472, y: 512, width: 288, height: 128 },
 	  { x: 5760, y: 512, width: 288, height: 128 },
 
