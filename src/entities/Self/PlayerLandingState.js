@@ -15,6 +15,7 @@ export default class PlayerLandingState extends PlayerState {
 	 */
 	constructor(player) {
 		super(player);
+		this.originalPosition = 0
 	}
 
 	/**
@@ -22,6 +23,8 @@ export default class PlayerLandingState extends PlayerState {
 	 */
 	enter() {
 		this.player.dimensions.y = 43
+		this.originalPosition = this.player.position.x
+		this.player.position.x = this.originalPosition - 10
 		this.player.velocity.x = 0;
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
@@ -35,6 +38,7 @@ export default class PlayerLandingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		if(this.player.currentAnimation.isDone()){
+			this.player.position.x = this.originalPosition
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}
 	}
