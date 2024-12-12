@@ -96,6 +96,7 @@ export default class TitleScreenState extends State {
         };
     }
 
+
     render() {
         context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         context.fillStyle = 'black';
@@ -125,13 +126,16 @@ export default class TitleScreenState extends State {
 
         // Render shadow effect by duplicating the text
         this.menuOptions.forEach((option, index) => {
+            const x = CANVAS_WIDTH / 5;
+            const y = CANVAS_HEIGHT / 2 + index * 40;
+
             // Render shadow
             if (this.blinking && this.currentSelection === index) {
                 context.fillStyle = this.blinkState ? 'black' : 'transparent';
             } else {
                 context.fillStyle = 'black';
             }
-            context.fillText(option, CANVAS_WIDTH / 5 + 5, CANVAS_HEIGHT / 2 + index * 40 + 5);
+            context.fillText(option, x - 2, y + 0);
 
             // Render actual text
             if (this.blinking && this.currentSelection === index) {
@@ -139,7 +143,13 @@ export default class TitleScreenState extends State {
             } else {
                 context.fillStyle = this.currentSelection === index ? 'yellow' : 'white';
             }
-            context.fillText(option, CANVAS_WIDTH / 5, CANVAS_HEIGHT / 2 + index * 40);
+
+            // Shift the selected option right and up slightly
+            if (this.currentSelection === index) {
+                context.fillText(option, x + 4, y - 4);
+            } else {
+                context.fillText(option, x, y);
+            }
         });
     }
 }
