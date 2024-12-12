@@ -17,6 +17,7 @@ export default class PlayerCrouchingState extends PlayerState {
     constructor(player) {
         super(player);
         this.chargeTime = 0;
+        this.lastDirection = 0; // 0: no direction, -1: left, 1: right
     }
 
     /**
@@ -39,6 +40,12 @@ export default class PlayerCrouchingState extends PlayerState {
     update(dt) {
         super.update(dt);
 
+        if (input.isKeyHeld(Input.KEYS.A)) {
+            this.lastDirection = -1;
+        } else if (input.isKeyHeld(Input.KEYS.D)) {
+            this.lastDirection = 1;
+        }
+
         if (input.isKeyHeld(Input.KEYS.SPACE)) {
             this.chargeTime += dt;
 
@@ -49,12 +56,12 @@ export default class PlayerCrouchingState extends PlayerState {
             if (this.chargeTime >= PlayerConfig.chargeTime) {
                 const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
                 this.player.position.y = this.originalPosition - 5;
-                this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight });
+                this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
             }
         } else if (input.isKeyReleased(Input.KEYS.SPACE)) {
             const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
             this.player.position.y = this.originalPosition - 5;
-            this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight });
+            this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
         }
     }
 

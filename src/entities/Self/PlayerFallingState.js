@@ -9,45 +9,41 @@ import SoundName from '../../enums/SoundName.js';
  * @extends PlayerState
  */
 export default class PlayerFallingState extends PlayerState {
-	/**
-	 * Creates a new PlayerFallingState instance.
-	 * @param {Player} player - The player object.
-	 */
-	constructor(player) {
-		super(player);
-	}
+    /**
+     * Creates a new PlayerFallingState instance.
+     * @param {Player} player - The player object.
+     */
+    constructor(player) {
+        super(player);
+    }
 
-	/**
-	 * Called when entering the falling state.
-	 */
-	enter() {
-		this.player.currentAnimation = this.player.animations.fall;
-	}
+    /**
+     * Called when entering the falling state.
+     */
+    enter() {
+        this.player.currentAnimation = this.player.animations.fall;
+    }
 
-	/**
-	 * Updates the falling state.
-	 * @param {number} dt - The time passed since the last update.
-	 */
-	update(dt) {
-		super.update(dt);
+    /**
+     * Updates the falling state.
+     * @param {number} dt - The time passed since the last update.
+     */
+    update(dt) {
+        super.update(dt);
 
-		this.handleHorizontalMovement();
-		this.checkTransitions();
-	}
+        // Prevent horizontal movement during falling
+        this.player.velocity.x = 0;
 
-	/**
-	 * Checks for state transitions.
-	 */
-	checkTransitions() {
-		if (this.player.isOnGround) {
-			sounds.play(SoundName.Landing);
-			this.player.stateMachine.change(PlayerStateName.Landing);
+        this.checkTransitions();
+    }
 
-			// if (Math.abs(this.player.velocity.x) < 0.1) {
-			// 	this.player.stateMachine.change(PlayerStateName.Idling);
-			// } else {
-			// 	this.player.stateMachine.change(PlayerStateName.Walking);
-			// }
-		}
-	}
+    /**
+     * Checks for state transitions.
+     */
+    checkTransitions() {
+        if (this.player.isOnGround) {
+            sounds.play(SoundName.Landing);
+            this.player.stateMachine.change(PlayerStateName.Landing);
+        }
+    }
 }
