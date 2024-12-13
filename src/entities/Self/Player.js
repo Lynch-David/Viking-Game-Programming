@@ -99,6 +99,7 @@ export default class Player extends GameEntity {
 	 * @param {number} dt - The time passed since the last update.
 	 */
 	update(dt) {
+		super.update()
 		this.stateMachine.update(dt);
 	}
 
@@ -108,5 +109,7 @@ export default class Player extends GameEntity {
 	 */
 	render(context) {
 		this.stateMachine.render(context);
+
+		this.hitbox.render(context)
 	}
 }

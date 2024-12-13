@@ -3,6 +3,7 @@ import Input from '../../../lib/Input.js';
 import { input } from '../../globals.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
+import Hitbox from '../../../lib/Hitbox.js';
 
 /**
  * Represents the landing state of the player.
@@ -24,6 +25,26 @@ export default class PlayerLandingState extends PlayerState {
 	
 	enter() {
 		this.player.isOnGround = true;
+		this.originalHitbox = this.player.hitboxOffsets
+
+		if(this.player.facingRight){
+			this.player.hitboxOffsets = new Hitbox(
+				20,
+				this.player.dimensions.y,
+				-15,
+				-this.player.dimensions.y
+			);			
+		}
+		else{
+			this.player.hitboxOffsets = new Hitbox(
+				-3,
+				this.player.dimensions.y,
+				-17,
+				-this.player.dimensions.y
+			);	
+		}
+
+
 		this.player.dimensions.y = 43
 		this.originalPosition = this.player.position.x
 		if(this.player.facingRight)
@@ -45,6 +66,7 @@ export default class PlayerLandingState extends PlayerState {
 		super.update(dt);
 		if(this.player.currentAnimation.isDone()){
 			this.player.position.x = this.originalPosition
+			this.player.hitboxOffsets = this.originalHitbox
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}
 	}
