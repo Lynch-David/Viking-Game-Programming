@@ -1,7 +1,4 @@
-import EnemyType from "../enums/EnemyType.js";
-import Skeleton from "../entities/enemies/Skeleton.js";
-import Slime from "../entities/enemies/Slime.js";
-
+import TileType from "../enums/TileType.js";
 /**
  * Encapsulates all definitions for instantiating new enemies.
  */
@@ -13,10 +10,12 @@ export default class EnemyFactory {
 	 */
 	static createInstance(type, sprites) {
 		switch (type) {
-			case TileType.Skeleton:
-				return new Skeleton(sprites);
-			case EnemyType.Slime:
-				return new Slime(sprites);
+			case TileType.Sticky:
+				// return new Sticky(sprites);
+			case TileType.Slime:
+				// return new Slime(sprites);
+			case TileType.Ice:
+				// return new Ice(sprites);
 		}
 	}
 }
