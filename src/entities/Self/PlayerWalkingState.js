@@ -69,7 +69,7 @@ export default class PlayerWalkingState extends PlayerState {
 		}
 
 		if (!this.player.isOnGround) {
-			if (this.player.velocity.y <= 0) {
+			if (this.player.velocity.y < 0) {
 				this.player.stateMachine.change(PlayerStateName.Crouching);
 			} else {
 				this.player.stateMachine.change(PlayerStateName.Falling);
