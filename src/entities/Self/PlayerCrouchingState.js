@@ -27,7 +27,7 @@ export default class PlayerCrouchingState extends PlayerState {
         this.chargeTime = 0;
         this.originalPosition = this.player.position.y;
         this.player.dimensions.y = 31;
-        this.player.position.y = this.originalPosition + 10;
+        // this.player.position.y = this.originalPosition + 10;
         this.player.velocity.x = 0;
         this.player.velocity.y = -1;
         this.player.currentAnimation = this.player.animations.crouch;
@@ -55,15 +55,11 @@ export default class PlayerCrouchingState extends PlayerState {
             this.chargeTime = Math.min(this.chargeTime, PlayerConfig.chargeTime);
 
             // Automatically jump if max charge time is reached
-            if (this.chargeTime >= PlayerConfig.chargeTime) {
+            if (this.chargeTime >= PlayerConfig.chargeTime || input.isKeyReleased(Input.KEYS.SPACE)) {
                 const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
                 this.player.position.y = this.originalPosition - 5;
                 this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
             }
-        } else if (input.isKeyReleased(Input.KEYS.SPACE)) {
-            const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
-            this.player.position.y = this.originalPosition - 5;
-            this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
         }
     }
 
