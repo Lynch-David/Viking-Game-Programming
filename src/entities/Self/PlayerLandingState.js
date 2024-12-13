@@ -17,6 +17,7 @@ export default class PlayerLandingState extends PlayerState {
 	constructor(player) {
 		super(player);
 		this.originalPosition = 0
+		this.originalHitbox = this.player.hitboxOffsets
 	}
 
 	/**
@@ -25,7 +26,6 @@ export default class PlayerLandingState extends PlayerState {
 	
 	enter() {
 		this.player.isOnGround = true;
-		this.originalHitbox = this.player.hitboxOffsets
 
 		if(this.player.facingRight){
 			this.player.hitboxOffsets = new Hitbox(

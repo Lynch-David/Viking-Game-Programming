@@ -39,7 +39,6 @@ export default class Player extends GameEntity {
 		this.map = map;
 		this.jumpTime = 0;
 		this.facingRight = true;
-
 		this.didFall = false;
 
 		this.sprites = loadPlayerSprites(
@@ -99,6 +98,7 @@ export default class Player extends GameEntity {
 	 * @param {number} dt - The time passed since the last update.
 	 */
 	update(dt) {
+		console.log(this.isOnGround)
 		super.update()
 		this.stateMachine.update(dt);
 	}

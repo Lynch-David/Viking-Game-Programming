@@ -5,6 +5,7 @@ import Input from '../../../lib/Input.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
 import SoundName from '../../enums/SoundName.js';
+import Hitbox from '../../../lib/Hitbox.js';
 
 /**
  * Represents the jumping state of the player.
@@ -19,6 +20,8 @@ export default class PlayerJumpingState extends PlayerState {
         super(player);
         this.chargedHeight = PlayerConfig.jumpPower;
         this.finalVelocity = 0;
+
+        this.originalHitbox = this.player.hitboxOffsets
     }
 
     /**
@@ -26,6 +29,23 @@ export default class PlayerJumpingState extends PlayerState {
      */
     enter(params = {}) {
         this.player.jumpTime = 0;
+
+        if (this.player.facingRight) {
+            this.player.hitboxOffsets = new Hitbox(
+                0,
+                2,
+                -15,
+                11
+            );
+        }
+        else {
+            this.player.hitboxOffsets = new Hitbox(
+                12,
+                2,
+                -15,
+                11
+            );
+        }
 
         this.chargedHeight = params.chargedHeight;
 
@@ -46,7 +66,7 @@ export default class PlayerJumpingState extends PlayerState {
     /**
      * Called when exiting the jumping state.
      */
-    exit() {}
+    exit() { }
 
     /**
      * Updates the jumping state.
@@ -67,7 +87,7 @@ export default class PlayerJumpingState extends PlayerState {
             this.player.velocity.y = this.chargedHeight * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
             this.player.jumpTime += dt;
         } else {
-            this.player.jumpTime = 1;
+            this.player.jumpTime = PlayerConfig.maxJumpTime;
         }
     }
 
