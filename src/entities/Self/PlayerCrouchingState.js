@@ -27,7 +27,7 @@ export default class PlayerCrouchingState extends PlayerState {
         this.chargeTime = 0;
         this.originalPosition = this.player.position.y;
         this.player.dimensions.y = 31;
-        this.player.position.y = this.originalPosition + 10;
+        // this.player.position.y = this.originalPosition + 10;
         this.player.velocity.x = 0;
         this.player.velocity.y = -1;
         this.player.currentAnimation = this.player.animations.crouch;

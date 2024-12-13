@@ -32,7 +32,7 @@ export default class PlayerFallingState extends PlayerState {
         super.update(dt);
 
         // Prevent horizontal movement during falling
-        this.player.velocity.x = 0;
+        // this.player.velocity.x = 0;
 
         this.checkTransitions();
     }
