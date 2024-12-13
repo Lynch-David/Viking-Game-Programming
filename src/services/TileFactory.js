@@ -1,12 +1,12 @@
 import TileType from "../enums/TileType.js";
 /**
- * Encapsulates all definitions for instantiating new enemies.
+ * Encapsulates all definitions for instantiating new tiels.
  */
-export default class EnemyFactory {
+export default class TileFactory {
 	/**
-	 * @param {string} type A string using the EnemyType enum.
+	 * @param {string} type A string using the TileType enum.
 	 * @param {array} sprites The sprites to be used for the enemy.
-	 * @returns An instance of an enemy specified by EnemyType.
+	 * @returns An instance of an tile specified by TileType.
 	 */
 	static createInstance(type, sprites) {
 		switch (type) {
