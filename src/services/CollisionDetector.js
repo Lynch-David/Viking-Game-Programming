@@ -148,5 +148,4 @@ export default class CollisionDetector {
 		}
 		return false;
 	}
-
 }
