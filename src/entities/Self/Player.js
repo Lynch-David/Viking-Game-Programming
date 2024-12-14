@@ -41,6 +41,10 @@ export default class Player extends GameEntity {
 		this.facingRight = true;
 		this.didFall = false;
 
+		this.isSticky = false;
+		this.isSliding = false;
+		this.isBouncing = false;
+
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
 			spriteConfig
