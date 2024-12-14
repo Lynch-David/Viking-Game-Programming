@@ -2,7 +2,7 @@ import Input from '../../../lib/Input.js';
 import State from '../../../lib/State.js';
 import { PlayerConfig } from '../../PlayerConfig.js';
 import { CANVAS_HEIGHT, input } from '../../globals.js';
-import Tile from '../../services/Tile.js';
+import Tile from '../../objects/Tile.js';
 import CollisionDetector from '../../services/CollisionDetector.js';
 import Player from './Player.js';
 

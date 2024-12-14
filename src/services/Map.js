@@ -1,6 +1,6 @@
 import Sprite from '../../lib/Sprite.js';
 import ImageName from '../enums/ImageName.js';
-import Tile from './Tile.js';
+import Tile from '../objects/Tile.js';
 import Layer from './Layer.js';
 import { images } from '../globals.js';
 

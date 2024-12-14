@@ -4,7 +4,7 @@ import Camera from '../services/Camera.js';
 import { canvas, images, sounds, timer, input, stateMachine } from '../globals.js';
 import Input from '../../../lib/Input.js';
 import Player from '../entities/Self/Player.js';
-import Tile from '../services/Tile.js';
+import Tile from '../objects/Tile.js';
 import ImageName from '../enums/ImageName.js';
 import GameStateName from '../enums/GameStateName.js';
 import SoundName from '../enums/SoundName.js';

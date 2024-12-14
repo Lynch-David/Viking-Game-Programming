@@ -1,4 +1,4 @@
-import Tile from './Tile.js';
+import Tile from '../objects/Tile.js';
 
 /**
  * Represents a layer in a tile-based game map.
