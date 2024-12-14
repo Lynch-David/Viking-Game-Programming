@@ -19,7 +19,6 @@ export default class PauseState extends State {
 
     exit() {
         if (this.player) {
-            console.log('Saving player state');
             this.savePlayerState(this.player);
         }
         timer.resume(); // Resume the timer when exiting the pause state
