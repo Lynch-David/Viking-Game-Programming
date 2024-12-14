@@ -1,4 +1,6 @@
+import TileType from '../enums/TileType.js';
 import Tile from '../objects/Tile.js';
+import TileFactory from './TileFactory.js';
 
 /**
  * Represents a layer in a tile-based game map.
@@ -93,12 +95,31 @@ export default class Layer {
 		const tiles = [];
 
 		layerData.forEach((tileId) => {
-			// Create a new Tile object if tileId is not 0, otherwise push null
-			// Note: We subtract 1 from tileId to convert from 1-based to 0-based indexing
-			const tile = tileId === 0 ? null : new Tile(tileId - 1, sprites);
-			tiles.push(tile);
+			if (tileId === 0) {
+				tiles.push(null);
+			} else {
+				let tile;
+	
+				switch (tileId) {
+					// case 1:
+					// 	tile = TileFactory.createInstance(TileType.Sticky, sprites);
+					// 	break;
+					// case 2:
+					// 	tile = TileFactory.createInstance(TileType.Slime, sprites);
+					// 	break;
+					// case 3:
+					// 	tile = TileFactory.createInstance(TileType.Ice, sprites);
+					// 	break;
+					default:
+						tile = new Tile(tileId - 1, sprites);
+						break;
+				}
+	
+				tiles.push(tile);
+			}
 		});
-
+	
 		return tiles;
+	
 	}
 }
