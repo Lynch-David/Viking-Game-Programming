@@ -102,7 +102,6 @@ export default class Player extends GameEntity {
 	 * @param {number} dt - The time passed since the last update.
 	 */
 	update(dt) {
-		console.log(this.isOnGround)
 		super.update()
 		this.stateMachine.update(dt);
 	}

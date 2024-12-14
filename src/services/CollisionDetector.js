@@ -73,12 +73,15 @@ export default class CollisionDetector {
 				switch (this.isSpecialTileInRow(tileBottom, tileLeft, tileRight)) {
 					case TileType.Sticky:
 						entity.isSticky = true;
+						console.log("sticky")
 						break;
 					case TileType.Ice:
 						entity.isSliding = true;
+						console.log("ice")
 						break;
 					case TileType.Slime:
 						entity.isBouncing = true;
+						console.log("slime")
 						break;
 					default:
 						break;

@@ -18,7 +18,6 @@ export default class PlayState extends State {
         this.player = new Player(106, 1800, 42, 40, this.map);
 
         var state = localStorage.getItem('playerState');
-        console.log(state);
 
         this.camera = new Camera(
             this.player,

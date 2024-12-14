@@ -72,7 +72,6 @@ export default class TitleScreenState extends State {
         timer.addTask(() => {
             this.blinking = false;
             this.proceed();
-            console.log('Clearing tasks');
         }, 3); // Proceed after 3 seconds
     }
 
@@ -88,7 +87,6 @@ export default class TitleScreenState extends State {
                 break;
             case 'New Game':
                 this.resetPlayerState();
-                console.log(localStorage.getItem('playerState'));
                 stateMachine.change(GameStateName.Play);
                 break;
             case 'Quit':
