@@ -78,6 +78,21 @@ export default class Map {
 		return tile !== null && tile.id !== -1;
 	}
 
+	isStickyTileAt(col, row) {
+		const tile = this.foregroundLayer.getTile(col, row);
+		return tile !== null && tile.id === 935 || tile.id === 936;
+	}
+
+	isIceTileAt(col, row) {
+		const tile = this.foregroundLayer.getTile(col, row);
+		return tile !== null && tile.id === 939 || tile.id === 940 || tile.id === 941 || tile.id === 942;
+	}
+
+	isSlimeTileAt(col, row) {
+		const tile = this.foregroundLayer.getTile(col, row);
+		return tile !== null && tile.id === 518 || tile.id === 519;
+	}
+
 	isSolidTileExcludingPlatformAt(col, row) {
 		const tile = this.foregroundLayer.getTile(col, row);
 		return tile !== null && tile.id !== -1 && tile.id !== 3 && tile.id !== 4 && tile.id !== 1;

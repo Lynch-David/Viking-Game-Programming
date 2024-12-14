@@ -68,6 +68,7 @@ export default class CollisionDetector {
 			// Falling or on ground
 			if (this.isSolidTileInRow(tileBottom, tileLeft, tileRight)) {
 				// Collision below
+				// if(this.(tileBottom, tileLeft, tileRight))
 				entity.position.y = tileBottom * tileSize - entity.dimensions.y;
 				entity.velocity.y = 0;
 				
@@ -110,24 +111,6 @@ export default class CollisionDetector {
 	isSolidTileInRow(y, xStart, xEnd) {
 		for (let x = xStart; x <= xEnd; x++) {
 			if (this.map.isSolidTileAt(x, y)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	isSolidExcludingPlatformTileInColumn(x, yStart, yEnd) {
-		for (let y = yStart; y <= yEnd; y++) {
-			if (this.map.isSolidTileAt(x, y)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	isSolidExcludingPlatformTileInRow(y, xStart, xEnd) {
-		for (let x = xStart; x <= xEnd; x++) {
-			if (this.map.isSolidTileExcludingPlatformAt(x, y)) {
 				return true;
 			}
 		}
