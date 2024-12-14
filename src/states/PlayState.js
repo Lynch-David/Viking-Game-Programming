@@ -80,7 +80,7 @@ export default class PlayState extends State {
     }
 
 	renderParallaxBackground() {
-		const offsetY = 300; // Adjust this value to set how much higher the background should be
+		const offsetY = 1850; // Adjust this value to set how much higher the background should be
 	
 		this.parallaxLayers.forEach((layer) => {
 			const parallaxX = -this.camera.position.x * layer.speedX;
