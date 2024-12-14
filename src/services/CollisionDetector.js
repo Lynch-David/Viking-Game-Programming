@@ -1,5 +1,6 @@
 import GameEntity from '../entities/GameEntity.js';
 import SoundName from '../enums/SoundName.js';
+import TileType from '../enums/TileType.js';
 import { sounds } from '../globals.js';
 import Map from './Map.js';
 
@@ -112,6 +113,21 @@ export default class CollisionDetector {
 		for (let x = xStart; x <= xEnd; x++) {
 			if (this.map.isSolidTileAt(x, y)) {
 				return true;
+			}
+		}
+		return false;
+	}
+
+	isSpecialTileInRow(y, xStart, xEnd) {
+		for (let x = xStart; x <= xEnd; x++) {
+			if (this.map.isStickyTileAt(x, y)) {
+				return TileType.Sticky;
+			}
+			else if (this.map.isIceTileAt(x, y)) {
+				return TileType.Ice;
+			}
+			else if (this.map.isSlimeTileAt(x, y)) {
+				return TileType.Slime;
 			}
 		}
 		return false;
