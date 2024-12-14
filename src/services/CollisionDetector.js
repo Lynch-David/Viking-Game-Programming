@@ -2,6 +2,7 @@ import GameEntity from '../entities/GameEntity.js';
 import SoundName from '../enums/SoundName.js';
 import TileType from '../enums/TileType.js';
 import { sounds } from '../globals.js';
+import Tile from '../objects/Tile.js';
 import Map from './Map.js';
 
 /**
@@ -69,10 +70,22 @@ export default class CollisionDetector {
 			// Falling or on ground
 			if (this.isSolidTileInRow(tileBottom, tileLeft, tileRight)) {
 				// Collision below
-				// if(this.(tileBottom, tileLeft, tileRight))
+				switch (this.isSpecialTileInRow(tileBottom, tileLeft, tileRight)) {
+					case TileType.Sticky:
+						entity.isSticky = true;
+						break;
+					case TileType.Ice:
+						entity.isSliding = true;
+						break;
+					case TileType.Slime:
+						entity.isBouncing = true;
+						break;
+					default:
+						break;
+				}
 				entity.position.y = tileBottom * tileSize - entity.dimensions.y;
 				entity.velocity.y = 0;
-				
+
 				entity.isOnGround = true;
 
 			}
