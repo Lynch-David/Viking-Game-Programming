@@ -36,83 +36,15 @@ export default class Map {
 			(layerData) => new Layer(layerData, sprites)
 		);
 		this.foregroundLayer = this.layers[Map.FOREGROUND_LAYER];
-
-		// Initialize arrays to store special entities
-		// this.blocks = [];
-		// this.goombas = [];
-		// this.mushrooms = [];
-
-		// Process the map to create special entities
-		// this.initializeSpecialTiles();
 	}
 
-	/**
-	 * Initializes special tiles (blocks, goombas) from the foreground layer.
-	 */
-	initializeSpecialTiles() {
-		for (let y = 0; y < this.height; y++) {
-			for (let x = 0; x < this.width; x++) {
-				const tileId = this.foregroundLayer.getTile(x, y)?.id;
-
-				switch (tileId) {
-					case Tile.BLOCK:
-						this.blocks.push(
-							new Block(
-								x * this.tileSize,
-								y * this.tileSize,
-								images.get(ImageName.Tiles)
-							)
-						);
-						this.foregroundLayer.setTileId(x, y, Tile.BLANK); // Replace the block tile with a blank tile
-						continue;
-					case Tile.GOOMBA:
-						this.goombas.push(
-							new Goomba(
-								x * this.tileSize,
-								y * this.tileSize,
-								this.tileSize,
-								this.tileSize,
-								images.get(ImageName.Tiles),
-								this
-							)
-						);
-						this.foregroundLayer.setTile(x, y, null); // Remove the goomba tile
-						continue;
-					case Tile.MUSHROOM:
-						let mushroom = new Mushroom(
-							x * this.tileSize,
-							y * this.tileSize,
-							this.tileSize,
-							this.tileSize,
-							images.get(ImageName.Tiles),
-							this
-						)
-						this.mushrooms.push(mushroom)
-						this.blocks.push(
-							new Block(
-								x * this.tileSize,
-								y * this.tileSize,
-								images.get(ImageName.Tiles),
-								mushroom
-							)
-						);
-						this.foregroundLayer.setTileId(x, y, Tile.BLANK); // Replace the block tile with a blank tile
-						continue;
-				}
-			}
-		}
-	}
 
 	/**
 	 * Updates all entities in the map.
 	 * @param {number} dt - The time passed since the last update.
 	 */
 	update(dt) {
-		// this.blocks.forEach((block) => block.update(dt));
-		// this.goombas.forEach((goomba) => goomba.update(dt));
-		// this.goombas = this.goombas.filter((goomba) => !goomba.isDead);
-		// this.mushrooms.forEach((mushroom) => mushroom.update(dt))
-		// this.mushrooms = this.mushrooms.filter((mushroom) => !mushroom.isDead);
+
 	}
 
 	/**
@@ -122,30 +54,7 @@ export default class Map {
 	render(context) {
 		
 		this.foregroundLayer.render();
-		// this.mushrooms.forEach((mushroom) => mushroom.render(context))
-		// this.blocks.forEach((block) => block.render(context));
-		// this.goombas.forEach((goomba) => goomba.render(context));
-
-		// if (debugOptions.mapGrid) {
-		// 	this.renderGrid(context);
-		// }
 	}
-
-	/**
-	 * Retrieves a block at the specified coordinates.
-	 * @param {number} x - The x-coordinate.
-	 * @param {number} y - The y-coordinate.
-	 * @returns {Block|undefined} The block at the specified position, if any.
-	 */
-	// getBlockAt(x, y) {
-	// 	return this.blocks.find(
-	// 		(block) =>
-	// 			x >= block.position.x &&
-	// 			x < block.position.x + block.dimensions.x &&
-	// 			y >= block.position.y &&
-	// 			y < block.position.y + block.dimensions.y
-	// 	);
-	// }
 
 	/**
 	 * Gets a tile from a specific layer at the given column and row.
