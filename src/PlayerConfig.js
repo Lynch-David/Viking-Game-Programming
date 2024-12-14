@@ -1,12 +1,12 @@
 
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
-    maxSpeed: 50,
+    maxSpeed: 150,
     acceleration: 20,
     deceleration: 20, // Updated to stop immediately
 	jumpPower: -500,
 	gravity: 3000,
-	maxFallSpeed: 550,
+	maxFallSpeed: 400,
 	maxJumpTime: 0.4,
 	maxCoyoteTime: 0.1,
 	maxJumpBuffer: 0.1,
@@ -18,66 +18,66 @@ export const PlayerConfig = {
     chargeTime: 1.0, 
 };
 
-// Function to update PlayerConfig based on slider values
-export function updatePlayerConfig() {
-	Object.keys(PlayerConfig).forEach((key) => {
-		const element = document.getElementById(key);
-		if (element) {
-			if (element.type === 'checkbox') {
-				PlayerConfig[key] = element.checked;
-			} else {
-				PlayerConfig[key] = parseFloat(element.value);
-			}
-			// Save to localStorage
-			localStorage.setItem(`playerSetting_${key}`, PlayerConfig[key]);
-		}
-	});
+// // Function to update PlayerConfig based on slider values
+// export function updatePlayerConfig() {
+// 	Object.keys(PlayerConfig).forEach((key) => {
+// 		const element = document.getElementById(key);
+// 		if (element) {
+// 			if (element.type === 'checkbox') {
+// 				PlayerConfig[key] = element.checked;
+// 			} else {
+// 				PlayerConfig[key] = parseFloat(element.value);
+// 			}
+// 			// Save to localStorage
+// 			localStorage.setItem(`playerSetting_${key}`, PlayerConfig[key]);
+// 		}
+// 	});
 
-	// Update displayed values
-	Object.keys(PlayerConfig).forEach((key) => {
-		const valueElement = document.getElementById(`${key}Value`);
-		if (valueElement) {
-			if (typeof PlayerConfig[key] === 'boolean') {
-				valueElement.textContent = PlayerConfig[key];
-			} else {
-				valueElement.textContent = PlayerConfig[key].toFixed(3);
-			}
-		}
-	});
-}
+// 	// Update displayed values
+// 	Object.keys(PlayerConfig).forEach((key) => {
+// 		const valueElement = document.getElementById(`${key}Value`);
+// 		if (valueElement) {
+// 			if (typeof PlayerConfig[key] === 'boolean') {
+// 				valueElement.textContent = PlayerConfig[key];
+// 			} else {
+// 				valueElement.textContent = PlayerConfig[key].toFixed(3);
+// 			}
+// 		}
+// 	});
+// }
 
-// Function to load PlayerConfig from localStorage
-export function loadPlayerConfig() {
-	Object.keys(PlayerConfig).forEach((key) => {
-		const storedValue = localStorage.getItem(`playerSetting_${key}`);
-		if (storedValue !== null) {
-			if (typeof PlayerConfig[key] === 'boolean') {
-				PlayerConfig[key] = storedValue === 'true';
-			} else {
-				PlayerConfig[key] = parseFloat(storedValue);
-			}
-			// Update slider/checkbox
-			const element = document.getElementById(key);
-			if (element) {
-				if (element.type === 'checkbox') {
-					element.checked = PlayerConfig[key];
-				} else {
-					element.value = PlayerConfig[key];
-				}
-			}
-		}
-	});
-	updatePlayerConfig(); // Update displayed values
-}
+// // Function to load PlayerConfig from localStorage
+// export function loadPlayerConfig() {
+// 	Object.keys(PlayerConfig).forEach((key) => {
+// 		const storedValue = localStorage.getItem(`playerSetting_${key}`);
+// 		if (storedValue !== null) {
+// 			if (typeof PlayerConfig[key] === 'boolean') {
+// 				PlayerConfig[key] = storedValue === 'true';
+// 			} else {
+// 				PlayerConfig[key] = parseFloat(storedValue);
+// 			}
+// 			// Update slider/checkbox
+// 			const element = document.getElementById(key);
+// 			if (element) {
+// 				if (element.type === 'checkbox') {
+// 					element.checked = PlayerConfig[key];
+// 				} else {
+// 					element.value = PlayerConfig[key];
+// 				}
+// 			}
+// 		}
+// 	});
+// 	updatePlayerConfig(); // Update displayed values
+// }
 
-// Add event listeners to sliders
-document.addEventListener('DOMContentLoaded', () => {
-	document
-		.querySelectorAll('.movement input, .jump input')
-		.forEach((input) => {
-			input.addEventListener('input', updatePlayerConfig);
-		});
+// // Add event listeners to sliders
+// document.addEventListener('DOMContentLoaded', () => {
+// 	document
+// 		.querySelectorAll('.movement input, .jump input')
+// 		.forEach((input) => {
+// 			input.addEventListener('input', updatePlayerConfig);
+// 		});
 
-	// Load settings from localStorage
-	loadPlayerConfig();
-});
+// 	// Load settings from localStorage
+// 	loadPlayerConfig();
+// });
