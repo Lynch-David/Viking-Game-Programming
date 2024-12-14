@@ -1,7 +1,7 @@
 
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
-    maxSpeed: 50,
+    maxSpeed: 100,
     acceleration: 20,
     deceleration: 20, // Updated to stop immediately
 	jumpPower: -500,
@@ -46,38 +46,39 @@ export function updatePlayerConfig() {
 	});
 }
 
-// Function to load PlayerConfig from localStorage
-export function loadPlayerConfig() {
-	Object.keys(PlayerConfig).forEach((key) => {
-		const storedValue = localStorage.getItem(`playerSetting_${key}`);
-		if (storedValue !== null) {
-			if (typeof PlayerConfig[key] === 'boolean') {
-				PlayerConfig[key] = storedValue === 'true';
-			} else {
-				PlayerConfig[key] = parseFloat(storedValue);
-			}
-			// Update slider/checkbox
-			const element = document.getElementById(key);
-			if (element) {
-				if (element.type === 'checkbox') {
-					element.checked = PlayerConfig[key];
-				} else {
-					element.value = PlayerConfig[key];
-				}
-			}
-		}
-	});
-	updatePlayerConfig(); // Update displayed values
-}
+// // Function to load PlayerConfig from localStorage
+// export function loadPlayerConfig() {
+// 	Object.keys(PlayerConfig).forEach((key) => {
+// 		const storedValue = localStorage.getItem(`playerSetting_${key}`);
+// 		console.log(storedValue);
+// 		if (storedValue !== null) {
+// 			if (typeof PlayerConfig[key] === 'boolean') {
+// 				PlayerConfig[key] = storedValue === 'true';
+// 			} else {
+// 				PlayerConfig[key] = parseFloat(storedValue);
+// 			}
+// 			// Update slider/checkbox
+// 			const element = document.getElementById(key);
+// 			if (element) {
+// 				if (element.type === 'checkbox') {
+// 					element.checked = PlayerConfig[key];
+// 				} else {
+// 					element.value = PlayerConfig[key];
+// 				}
+// 			}
+// 		}
+// 	});
+// 	updatePlayerConfig(); // Update displayed values
+// }
 
-// Add event listeners to sliders
-document.addEventListener('DOMContentLoaded', () => {
-	document
-		.querySelectorAll('.movement input, .jump input')
-		.forEach((input) => {
-			input.addEventListener('input', updatePlayerConfig);
-		});
+// // Add event listeners to sliders
+// document.addEventListener('DOMContentLoaded', () => {
+// 	document
+// 		.querySelectorAll('.movement input, .jump input')
+// 		.forEach((input) => {
+// 			input.addEventListener('input', updatePlayerConfig);
+// 		});
 
-	// Load settings from localStorage
-	loadPlayerConfig();
-});
+// 	// Load settings from localStorage
+// 	loadPlayerConfig();
+// });
