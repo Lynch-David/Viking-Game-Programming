@@ -101,15 +101,15 @@ export default class Layer {
 				let tile;
 	
 				switch (tileId) {
-					// case 1:
-					// 	tile = TileFactory.createInstance(TileType.Sticky, sprites);
-					// 	break;
-					// case 2:
-					// 	tile = TileFactory.createInstance(TileType.Slime, sprites);
-					// 	break;
-					// case 3:
-					// 	tile = TileFactory.createInstance(TileType.Ice, sprites);
-					// 	break;
+					case 935, 936:
+						tile = TileFactory.createInstance(TileType.Sticky, sprites);
+						break;
+					case 518, 519:
+						tile = TileFactory.createInstance(TileType.Slime, sprites);
+						break;
+					case 939, 940, 941, 942:
+						tile = TileFactory.createInstance(TileType.Ice, sprites);
+						break;
 					default:
 						tile = new Tile(tileId - 1, sprites);
 						break;
