@@ -56,12 +56,24 @@ export default class PlayerCrouchingState extends PlayerState {
 
             // Automatically jump if max charge time is reached
             if (this.chargeTime >= PlayerConfig.chargeTime) {
-                const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
+                let chargedHeight = 0
+                if(this.player.isSticky){
+                    chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * (PlayerConfig.maxChargeJumpHeight/2); // Half the max jump height if sticky
+                }
+                else{
+                    chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
+                }
                 this.player.position.y = this.originalPosition - 5;
                 this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
             }
         } else if (input.isKeyReleased(Input.KEYS.SPACE)) {
-            const chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
+            let chargedHeight = 0
+                if(this.player.isSticky){
+                    chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * (PlayerConfig.maxChargeJumpHeight/2); // Half the max jump height if sticky
+                }
+                else{
+                    chargedHeight = (this.chargeTime / PlayerConfig.chargeTime) * PlayerConfig.maxChargeJumpHeight;
+                }
             this.player.position.y = this.originalPosition - 5;
             this.player.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: this.lastDirection });
         }
