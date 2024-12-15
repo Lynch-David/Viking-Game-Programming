@@ -1,4 +1,8 @@
 import TileType from "../enums/TileType.js";
+import StickyTile from "../objects/StickyTile.js"
+import SlimeTile from "../objects/SlimeTile.js"
+import IceTile from "../objects/IceTile.js"
+
 /**
  * Encapsulates all definitions for instantiating new tiels.
  */
@@ -8,14 +12,14 @@ export default class TileFactory {
 	 * @param {array} sprites The sprites to be used for the enemy.
 	 * @returns An instance of an tile specified by TileType.
 	 */
-	static createInstance(type, sprites) {
+	static createInstance(type, id, sprites) {
 		switch (type) {
 			case TileType.Sticky:
-				// return new Sticky(sprites);
+				return new StickyTile(id, sprites);
 			case TileType.Slime:
-				// return new Slime(sprites);
+				return new SlimeTile(id, sprites);
 			case TileType.Ice:
-				// return new Ice(sprites);
+				return new IceTile(id, sprites);
 		}
 	}
 }

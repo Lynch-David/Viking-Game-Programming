@@ -102,13 +102,13 @@ export default class Layer {
 	
 				switch (tileId) {
 					case 935, 936:
-						tile = TileFactory.createInstance(TileType.Sticky, sprites);
+						tile = TileFactory.createInstance(TileType.Sticky, tileId - 1, sprites);
 						break;
 					case 518, 519:
-						tile = TileFactory.createInstance(TileType.Slime, sprites);
+						tile = TileFactory.createInstance(TileType.Slime, tileId - 1, sprites);
 						break;
 					case 939, 940, 941, 942:
-						tile = TileFactory.createInstance(TileType.Ice, sprites);
+						tile = TileFactory.createInstance(TileType.Ice, tileId - 1, sprites);
 						break;
 					default:
 						tile = new Tile(tileId - 1, sprites);
