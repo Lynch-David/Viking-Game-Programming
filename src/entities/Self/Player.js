@@ -45,6 +45,8 @@ export default class Player extends GameEntity {
 		this.isSliding = false;
 		this.isBouncing = false;
 
+		this.fallHeight = 0
+
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
 			spriteConfig
@@ -60,7 +62,7 @@ export default class Player extends GameEntity {
 			land: new Animation(this.sprites.land, 0.1, 1),
 			crouch: new Animation(this.sprites.crouch),
 		};
-		  
+
 
 
 
@@ -114,5 +116,19 @@ export default class Player extends GameEntity {
 		this.stateMachine.render(context);
 
 		this.hitbox.render(context)
+	}
+
+	boost() {
+		let lastDirection = 0
+
+		if (!this.facingRight) {
+			lastDirection = -1;
+		} else if (this.facingRight) {
+			lastDirection = 1;
+		}
+		const chargedHeight = (this.position.y - this.fallHeight) * -4
+		console.log(chargedHeight)
+		this.position.y -= 10
+		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, lastDirection });
 	}
 }
