@@ -127,16 +127,16 @@ export default class PlayerState extends State {
 
 	moveRight(acceleration) {
 		this.player.velocity.x = Math.min(
-			this.player.velocity.x + acceleration,
-			PlayerConfig.maxSpeed
+			this.player.velocity.x + PlayerConfig.acceleration,
+			(PlayerConfig.maxSpeed / 2)
 		);
 	}
 	
 	moveLeft(acceleration) {
 		this.player.velocity.x = Math.max(
-			this.player.velocity.x - acceleration,
-			-PlayerConfig.maxSpeed
-		);
+			this.player.velocity.x - PlayerConfig.acceleration ,
+			(-PlayerConfig.maxSpeed / 2)
+		) ;
 	}
 	
 	slowDown(deceleration) {
