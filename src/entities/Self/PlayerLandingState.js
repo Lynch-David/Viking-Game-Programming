@@ -4,6 +4,7 @@ import { input } from '../../globals.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
 import Hitbox from '../../../lib/Hitbox.js';
+import { PlayerConfig } from '../../PlayerConfig.js';
 
 /**
  * Represents the landing state of the player.
@@ -23,38 +24,39 @@ export default class PlayerLandingState extends PlayerState {
 	/**
 	 * Called when entering the landing state.
 	 */
-	
+
 	enter() {
 		this.player.isOnGround = true;
 
-		if(this.player.facingRight){
+		if (this.player.facingRight) {
 			this.player.hitboxOffsets = new Hitbox(
 				16,
 				this.player.dimensions.y,
 				-12,
 				-this.player.dimensions.y
-			);			
+			);
 		}
-		else{
+		else {
 			this.player.hitboxOffsets = new Hitbox(
 				-3,
 				this.player.dimensions.y,
 				-12,
 				-this.player.dimensions.y
-			);	
+			);
 		}
 
 
 		this.player.dimensions.y = 43 * 0.75
 		this.originalPosition = this.player.position.x
-		if(this.player.facingRight)
+		if (this.player.facingRight)
 			this.player.position.x = this.originalPosition - 10
 		else
 			this.player.position.x = this.originalPosition + 10
 
-		console.log(this.player.velocity.x)
-		// if(!this.player.isSliding)
+		if (!this.player.isSliding)
 			this.player.velocity.x = 0;
+		else
+			this.player.velocity.x *= -1;
 
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
@@ -67,14 +69,38 @@ export default class PlayerLandingState extends PlayerState {
 	 */
 	update(dt) {
 		super.update(dt);
-		if(this.player.currentAnimation.isDone()){
-			this.player.position.x = this.originalPosition
+
+		this.handleSliding();
+
+		if (this.player.currentAnimation.isDone()) {
+			if (!this.player.isSliding)
+				this.player.position.x = this.originalPosition
 			this.player.hitboxOffsets = this.originalHitbox
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}
-		console.log(this.player.velocity.x)
 
-		this.handleSliding()
 	}
+
+	handleSliding() {
+		if (this.player.isSliding) {
+			this.slowDown(3);
+			if (Math.abs(this.player.velocity.x) < 0.1) this.player.velocity.x = 0;
+		}
+	}
+
+	slowDown(deceleration) {
+		if (this.player.velocity.x > 0) {
+			this.player.velocity.x = Math.max(
+				0,
+				this.player.velocity.x - deceleration
+			);
+		} else if (this.player.velocity.x < 0) {
+			this.player.velocity.x = Math.min(
+				0,
+				this.player.velocity.x + deceleration
+			);
+		}
+	}
+	
 
 }
