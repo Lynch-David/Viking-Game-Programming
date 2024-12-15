@@ -21,6 +21,7 @@ export default class PlayerIdlingState extends PlayerState {
 	 * Called when entering the idling state.
 	 */
 	enter() {
+		this.player.isOnGround = true;
 		this.player.dimensions.y = 40
 		this.player.velocity.x = 0;
 		this.player.velocity.y = 100;

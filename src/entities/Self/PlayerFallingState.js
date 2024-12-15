@@ -21,9 +21,14 @@ export default class PlayerFallingState extends PlayerState {
      * Called when entering the falling state.
      */
     enter() {
+        this.player.fallHeight = this.player.position.y
         this.player.currentAnimation = this.player.animations.fall;
     }
-
+    
+    exit()
+    {
+        this.player.fallHeight = 0
+    }
     /**
      * Updates the falling state.
      * @param {number} dt - The time passed since the last update.
