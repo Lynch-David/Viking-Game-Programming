@@ -37,14 +37,18 @@ export default class CollisionDetector {
 			if (this.isSolidTileInColumn(tileRight, tileTop, tileBottom)) {
 				// Collision on the right side
 				entity.position.x = tileRight * tileSize - entity.dimensions.x;
-				entity.velocity.x *= -1;
+				if (!entity.isSliding) {
+					entity.velocity.x *= -1;
+				}
 			}
 		} else if (entity.velocity.x < 0) {
 			// Moving left
 			if (this.isSolidTileInColumn(tileLeft, tileTop, tileBottom)) {
 				// Collision on the left side
 				entity.position.x = (tileLeft + 1) * tileSize;
-				entity.velocity.x *= -1;
+				if (!entity.isSliding) {
+					entity.velocity.x *= -1;
+				}
 			}
 		}
 	}

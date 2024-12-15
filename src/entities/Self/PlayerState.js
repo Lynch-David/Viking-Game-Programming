@@ -186,6 +186,7 @@ export default class PlayerState extends State {
 	 */
 	async updatePosition(dt) {
 		// Calculate position change
+		console.log(dt)
 		const dx = this.player.velocity.x * dt;
 		const dy = this.player.velocity.y * dt;
 
