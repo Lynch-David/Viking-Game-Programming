@@ -37,6 +37,7 @@ export default class PlayerWalkingState extends PlayerState {
 		this.checkTransitions();
 		this.handleInput();
 		this.handleHorizontalMovement();
+		this.handleSliding()
 	}
 
 	/**

@@ -2,8 +2,10 @@
 // PlayerConfig object to hold our adjustable values
 export const PlayerConfig = {
     maxSpeed: 150,
-    acceleration: 20,
-    deceleration: 20, // Updated to stop immediately
+    acceleration: 10,       
+    deceleration: 10,       
+    iceAcceleration: 5,     
+    iceDeceleration: 0.3,
 	jumpPower: -500,
 	gravity: 3000,
 	maxFallSpeed: 400,

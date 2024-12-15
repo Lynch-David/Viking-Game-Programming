@@ -32,7 +32,7 @@ export default class PlayerLandingState extends PlayerState {
 				20,
 				this.player.dimensions.y,
 				-15,
-				-this.player.dimensions.y
+				this.player.dimensions.y
 			);			
 		}
 		else{
@@ -45,14 +45,17 @@ export default class PlayerLandingState extends PlayerState {
 		}
 
 
-		this.player.dimensions.y = 43
+		this.player.dimensions.y = 43 * 0.75
 		this.originalPosition = this.player.position.x
 		if(this.player.facingRight)
 			this.player.position.x = this.originalPosition - 10
 		else
 			this.player.position.x = this.originalPosition + 10
 
-		this.player.velocity.x = 0;
+		console.log(this.player.velocity.x)
+		// if(!this.player.isSliding)
+			this.player.velocity.x = 0;
+
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
 		this.player.currentAnimation.timesPlayed = 0
@@ -65,10 +68,13 @@ export default class PlayerLandingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		if(this.player.currentAnimation.isDone()){
-			this.player.position.x = this.originalPosition
+			// this.player.position.x = this.originalPosition
 			this.player.hitboxOffsets = this.originalHitbox
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}
+		console.log(this.player.velocity.x)
+
+		this.handleSliding()
 	}
 
 }

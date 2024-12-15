@@ -22,8 +22,9 @@ export default class PlayerIdlingState extends PlayerState {
 	 */
 	enter() {
 		this.player.isOnGround = true;
-		this.player.dimensions.y = 40
-		this.player.velocity.x = 0;
+		this.player.dimensions.y = 40 * 0.75
+		if(!this.player.isSliding)
+			this.player.velocity.x = 0;
 		this.player.velocity.y = 100;
 		this.player.currentAnimation = this.player.animations.idle;
 
@@ -36,6 +37,7 @@ export default class PlayerIdlingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		this.handleInput();
+		this.handleSliding()
 	}
 
 	/**

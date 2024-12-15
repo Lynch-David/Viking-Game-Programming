@@ -40,30 +40,34 @@ export default class PlayerState extends State {
 		// Call the parent class's render method
 		super.render();
 
-		// Save the current canvas state
-		context.save();
+    // Save the current canvas state
+    context.save();
 
-		// Handle player orientation (facing right or left)
-		if (this.player.facingRight) {
-			// If facing left, just translate to the player's position
-			context.translate(
-				Math.floor(this.player.position.x),
-				Math.floor(this.player.position.y)
-			);
-		} else {
-			// If facing right, flip the sprite horizontally
-			context.scale(-1, 1);
-			// Adjust position to account for the flip
-			context.translate(
-				Math.floor(-this.player.position.x - this.player.dimensions.x),
-				Math.floor(this.player.position.y)
-			);
-		}
+    // Apply the scaling factor
+    const scale = 0.75;  // Example scale factor (50% smaller)
 
+    // Handle player orientation (facing right or left)
+    if (this.player.facingRight) {
+        // If facing right, just translate to the player's position and apply scaling
+        context.translate(Math.floor(this.player.position.x), Math.floor(this.player.position.y));
+        context.scale(scale, scale);  // Apply scaling
+    } else {
+        // If facing left, flip the sprite horizontally and apply scaling
+        context.scale(-1, 1);
+        // Adjust position to account for the flip and scaling
+        context.translate(
+            Math.floor(-this.player.position.x - this.player.dimensions.x),
+            Math.floor(this.player.position.y)
+        );
+        context.scale(scale, scale);  // Apply scaling
+    }
 
-		this.player.currentAnimation.getCurrentFrame().render(0, 0);
+    // Render the current animation frame at the scaled size
+    this.player.currentAnimation.getCurrentFrame().render(0, 0);
 
-		context.restore();
+    // Restore the canvas state to prevent scaling affecting other objects
+    context.restore();
+
 		
 	}
 
@@ -94,49 +98,61 @@ export default class PlayerState extends State {
 	 * and applies acceleration, deceleration, and speed limits.
 	 */
 	handleHorizontalMovement() {
+		let acceleration = 0 
+		let deceleration = 0;
+		if(this.player.isSliding){
+			acceleration = PlayerConfig.iceAcceleration 
+			deceleration = PlayerConfig.iceDeceleration
+		}
+		else{
+			acceleration = PlayerConfig.acceleration 
+			deceleration = PlayerConfig.deceleration
+		}
+	
 		if (input.isKeyHeld(Input.KEYS.A) && input.isKeyHeld(Input.KEYS.D)) {
-			this.slowDown();
+			this.slowDown(deceleration);
 		} else if (input.isKeyHeld(Input.KEYS.A)) {
-			this.moveLeft();
+			this.moveLeft(acceleration);
 			this.player.facingRight = false;
 		} else if (input.isKeyHeld(Input.KEYS.D)) {
-			this.moveRight();
+			this.moveRight(acceleration);
 			this.player.facingRight = true;
 		} else {
-			this.slowDown();
+			this.slowDown(deceleration);
 		}
-
-		// Set speed to zero if it's close to zero to stop the player
+	
+		// Set speed to zero if it's close to zero
 		if (Math.abs(this.player.velocity.x) < 0.1) this.player.velocity.x = 0;
 	}
 
-	moveRight() {
+	moveRight(acceleration) {
 		this.player.velocity.x = Math.min(
-			this.player.velocity.x + PlayerConfig.acceleration,
+			this.player.velocity.x + acceleration,
 			PlayerConfig.maxSpeed
 		);
 	}
-
-	moveLeft() {
+	
+	moveLeft(acceleration) {
 		this.player.velocity.x = Math.max(
-			this.player.velocity.x - PlayerConfig.acceleration,
+			this.player.velocity.x - acceleration,
 			-PlayerConfig.maxSpeed
 		);
 	}
-
-	slowDown() {
+	
+	slowDown(deceleration) {
 		if (this.player.velocity.x > 0) {
 			this.player.velocity.x = Math.max(
 				0,
-				this.player.velocity.x - PlayerConfig.deceleration
+				this.player.velocity.x - deceleration
 			);
 		} else if (this.player.velocity.x < 0) {
 			this.player.velocity.x = Math.min(
 				0,
-				this.player.velocity.x + PlayerConfig.deceleration
+				this.player.velocity.x + deceleration
 			);
 		}
 	}
+	
 
 	/**
 	 * Applies gravity to the player.
@@ -152,6 +168,13 @@ export default class PlayerState extends State {
 				this.player.velocity.y + PlayerConfig.gravity * dt,
 				PlayerConfig.maxFallSpeed
 			);
+		}
+	}
+
+	handleSliding() {
+		if(this.player.isSliding){
+			this.slowDown(PlayerConfig.iceDeceleration);
+			if (Math.abs(this.player.velocity.x) < 0.1) this.player.velocity.x = 0;
 		}
 	}
 

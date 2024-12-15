@@ -28,7 +28,8 @@ export default class PlayerCrouchingState extends PlayerState {
         this.originalPosition = this.player.position.y;
         this.player.dimensions.y = 31;
         // this.player.position.y = this.originalPosition + 10;
-        this.player.velocity.x = 0;
+        if(!this.player.isSliding)
+			this.player.velocity.x = 0;
         this.player.velocity.y = -1;
         this.player.currentAnimation = this.player.animations.crouch;
     }
@@ -39,6 +40,7 @@ export default class PlayerCrouchingState extends PlayerState {
      */
     update(dt) {
         super.update(dt);
+        this.handleSliding()
 
         if (input.isKeyHeld(Input.KEYS.A)) {
             this.lastDirection = -1;
