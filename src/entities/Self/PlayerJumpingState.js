@@ -52,8 +52,10 @@ export default class PlayerJumpingState extends PlayerState {
 
         // Set initial horizontal velocity based on the last held direction
         if (params.direction === -1) {
+            this.player.facingRight = false
             this.player.velocity.x = -PlayerConfig.maxSpeed;
         } else if (params.direction === 1) {
+            this.player.facingRight = true
             this.player.velocity.x = PlayerConfig.maxSpeed;
         } else {
             this.player.velocity.x = 0; // No direction held
