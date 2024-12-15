@@ -25,6 +25,10 @@ export default class PlayerWalkingState extends PlayerState {
 	enter() {
 		this.player.isOnGround = true;
 		this.player.dimensions.y = 42 * 0.75
+		if(this.player.facingRight)
+			this.player.position.x += 2
+		else
+			this.player.position.x -= 2
 		this.player.currentAnimation = this.player.animations.walk;
 	}
 
