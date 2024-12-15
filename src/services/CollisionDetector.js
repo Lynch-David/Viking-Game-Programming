@@ -92,10 +92,15 @@ export default class CollisionDetector {
 						entity.isBouncing = false;
 						break;
 				}
-				entity.position.y = tileBottom * tileSize - entity.dimensions.y;
-				entity.velocity.y = 0;
-
-				entity.isOnGround = true;
+				if(entity.isBouncing && entity.velocity.y >= 400){
+					entity.boost()
+				}
+				else{
+					entity.position.y = tileBottom * tileSize - entity.dimensions.y;
+					entity.velocity.y = 0;
+	
+					entity.isOnGround = true;
+				}
 
 			}
 		} else if (entity.velocity.y < 0) {
