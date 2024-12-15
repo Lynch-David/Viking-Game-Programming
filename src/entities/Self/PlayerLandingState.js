@@ -29,17 +29,17 @@ export default class PlayerLandingState extends PlayerState {
 
 		if(this.player.facingRight){
 			this.player.hitboxOffsets = new Hitbox(
-				20,
+				16,
 				this.player.dimensions.y,
-				-15,
-				this.player.dimensions.y
+				-12,
+				-this.player.dimensions.y
 			);			
 		}
 		else{
 			this.player.hitboxOffsets = new Hitbox(
 				-3,
 				this.player.dimensions.y,
-				-17,
+				-12,
 				-this.player.dimensions.y
 			);	
 		}
@@ -68,7 +68,7 @@ export default class PlayerLandingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		if(this.player.currentAnimation.isDone()){
-			// this.player.position.x = this.originalPosition
+			this.player.position.x = this.originalPosition
 			this.player.hitboxOffsets = this.originalHitbox
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}

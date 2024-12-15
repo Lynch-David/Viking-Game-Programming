@@ -26,7 +26,7 @@ export default class PlayerCrouchingState extends PlayerState {
     enter() {
         this.chargeTime = 0;
         this.originalPosition = this.player.position.y;
-        this.player.dimensions.y = 31;
+        this.player.dimensions.y = 29 * 0.75;
         // this.player.position.y = this.originalPosition + 10;
         if(!this.player.isSliding)
 			this.player.velocity.x = 0;

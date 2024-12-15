@@ -30,23 +30,24 @@ export default class PlayerJumpingState extends PlayerState {
     enter(params = {}) {
         this.player.jumpTime = 0;
 
-        if (this.player.facingRight) {
-            this.player.hitboxOffsets = new Hitbox(
-                0,
-                2,
-                -15,
-                11
-            );
-        }
-        else {
-            this.player.hitboxOffsets = new Hitbox(
-                12,
-                2,
-                -15,
-                11
-            );
-        }
+        // if (this.player.facingRight) {
+        //     this.player.hitboxOffsets = new Hitbox(
+        //         0,
+        //         2,
+        //         -15,
+        //         11
+        //     );
+        // }
+        // else {
+        //     this.player.hitboxOffsets = new Hitbox(
+        //         12,
+        //         2,
+        //         -15,
+        //         11
+        //     );
+        // }
 
+        this.player.dimensions.y = 40 * 0.75
         this.chargedHeight = params.chargedHeight;
 
         // Set initial horizontal velocity based on the last held direction

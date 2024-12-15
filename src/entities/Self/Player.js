@@ -15,6 +15,7 @@ import { sounds } from '../../globals.js';
 import Animation from "../../../lib/Animation.js";
 import PlayerLandingState from './PlayerLandingState.js';
 import PlayerCrouchingState from './PlayerCrouchingState.js';
+import Hitbox from '../../../lib/Hitbox.js';
 
 /**
  * Represents the player character in the game.
@@ -35,6 +36,7 @@ export default class Player extends GameEntity {
 		this.initialPosition = new Vector(x, y);
 		this.position = new Vector(x, y);
 		this.dimensions = new Vector(width, height);
+		
 		this.velocity = new Vector(0, 0);
 		this.map = map;
 		this.jumpTime = 0;

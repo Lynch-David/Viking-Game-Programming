@@ -15,7 +15,7 @@ export default class PlayState extends State {
         super();
 
         this.map = new Map(mapDefinition);
-        this.player = new Player(106, 1800, 42, 40, this.map);
+        this.player = new Player(106, 1800, 38 * 0.75, 40 * 0.75, this.map);
 
         var state = localStorage.getItem('playerState');
 
