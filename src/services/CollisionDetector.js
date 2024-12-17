@@ -126,7 +126,8 @@ export default class CollisionDetector {
 	 */
 	isSolidTileInColumn(x, yStart, yEnd) {
 		for (let y = yStart; y <= yEnd; y++) {
-			if (this.map.isSolidTileAt(x, y)) {
+			console.log(x)
+			if (this.map.isSolidTileAt(x, y) || x === 16 || x === -1) {
 				return true;
 			}
 		}

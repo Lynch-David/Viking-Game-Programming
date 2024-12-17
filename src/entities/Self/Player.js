@@ -107,7 +107,6 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
-		console.log(this.velocity.x)
 		this.stateMachine.update(dt);
 	}
 
