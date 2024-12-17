@@ -9,6 +9,7 @@ import ImageName from '../enums/ImageName.js';
 import GameStateName from '../enums/GameStateName.js';
 import SoundName from '../enums/SoundName.js';
 import SoundPool from '../../lib/SoundPool.js';
+import PlayerStateName from '../enums/PlayerStateName.js';
 
 export default class PlayState extends State {
     constructor(mapDefinition, loadState = false) {
@@ -49,7 +50,7 @@ export default class PlayState extends State {
         if (savedState) {
             this.player.position.x = savedState.x;
             this.player.position.y = savedState.y;
-            this.player.stateMachine.change('idling'); // Reset to idling state
+            this.player.stateMachine.change(PlayerStateName.Idling); // Reset to idling state
         }
     }
 
