@@ -24,7 +24,7 @@ export default class PlayerWalkingState extends PlayerState {
 	 */
 	enter() {
 		this.player.isOnGround = true;
-		this.player.dimensions.y = 42 * 0.75
+		this.player.dimensions.y = 44 * 0.75
 		this.player.currentAnimation = this.player.animations.walk;
 	}
 
@@ -77,19 +77,6 @@ export default class PlayerWalkingState extends PlayerState {
 			}
 		}
 	}
-
-	/**
-	 * Determines if the player should transition to the skidding state.
-	 * @returns {boolean} True if the player should skid, false otherwise.
-	 */
-	// shouldSkid() {
-	// 	return (
-	// 		this.player.isOnGround &&
-	// 		Math.abs(this.player.velocity.x) > PlayerConfig.skidThreshold &&
-	// 		((input.isKeyHeld(Input.KEYS.A) && this.player.velocity.x > 0) ||
-	// 			(input.isKeyHeld(Input.KEYS.D) && this.player.velocity.x < 0))
-	// 	);
-	// }
 
 	/**
 	 * Determines if the player should transition to the idling state.

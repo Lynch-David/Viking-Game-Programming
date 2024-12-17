@@ -21,6 +21,7 @@ export default class PlayerJumpingState extends PlayerState {
         this.chargedHeight = PlayerConfig.jumpPower;
         this.finalVelocity = 0;
 
+        this.originalSlidingBool = false
         this.originalHitbox = this.player.hitboxOffsets
     }
 
@@ -30,22 +31,8 @@ export default class PlayerJumpingState extends PlayerState {
     enter(params = {}) {
         this.player.jumpTime = 0;
 
-        // if (this.player.facingRight) {
-        //     this.player.hitboxOffsets = new Hitbox(
-        //         0,
-        //         2,
-        //         -15,
-        //         11
-        //     );
-        // }
-        // else {
-        //     this.player.hitboxOffsets = new Hitbox(
-        //         12,
-        //         2,
-        //         -15,
-        //         11
-        //     );
-        // }
+        this.originalSlidingBool = this.player.isSliding
+        this.player.isSliding = false
 
         this.player.dimensions.y = 40 * 0.75
         this.chargedHeight = params.chargedHeight;
@@ -69,7 +56,10 @@ export default class PlayerJumpingState extends PlayerState {
     /**
      * Called when exiting the jumping state.
      */
-    exit() { }
+    exit() {
+        this.player.isSliding = this.originalSlidingBool
+
+    }
 
     /**
      * Updates the jumping state.
