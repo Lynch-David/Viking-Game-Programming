@@ -48,13 +48,13 @@ export default class PlayerLandingState extends PlayerState {
 
 		this.player.dimensions.y = 43 * 0.75
 		this.originalPosition = this.player.position.x
-		if (this.player.facingRight)
-		{
-			this.player.position.x = this.originalPosition - 10
-		}
-		else{
-			this.player.position.x = this.originalPosition + 10
-		}
+		// if (this.player.facingRight)
+		// {
+		// 	this.player.position.x = this.originalPosition - 7
+		// }
+		// else{
+		// 	this.player.position.x = this.originalPosition + 7
+		// }
 
 		if (!this.player.isSliding){	
 			this.player.velocity.x = 0;

@@ -21,6 +21,7 @@ export default class PlayerFallingState extends PlayerState {
      * Called when entering the falling state.
      */
     enter() {
+        this.player.dimensions.y += 2
         this.player.fallHeight = this.player.position.y
         this.player.currentAnimation = this.player.animations.fall;
     }

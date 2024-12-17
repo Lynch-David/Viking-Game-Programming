@@ -107,7 +107,8 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
-		console.log(this.position.x)
+		console.log(this.isSliding)
+
 		this.stateMachine.update(dt);
 	}
 

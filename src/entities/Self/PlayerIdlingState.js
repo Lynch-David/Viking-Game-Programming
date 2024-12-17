@@ -37,6 +37,11 @@ export default class PlayerIdlingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		this.handleInput();
+
+		if(!this.player.isSliding){
+			this.player.velocity.x = 0
+		}
+
 		this.handleSliding()
 	}
 
