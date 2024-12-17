@@ -107,6 +107,7 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
+		console.log(this.velocity.x)
 		this.stateMachine.update(dt);
 	}
 
@@ -129,7 +130,6 @@ export default class Player extends GameEntity {
 			lastDirection = 1;
 		}
 		const chargedHeight = (this.position.y - this.fallHeight) * -4
-		console.log(chargedHeight)
 		this.position.y -= 10
 		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, lastDirection });
 	}

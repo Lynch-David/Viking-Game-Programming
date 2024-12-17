@@ -56,24 +56,9 @@ export default class PlayerLandingState extends PlayerState {
 			this.player.position.x = this.originalPosition + 10
 		}
 
-// 		console.log("Debugging Landing State:");
-// console.log("Facing Right:", this.player.facingRight);
-// console.log("Velocity X Before:", this.player.velocity.x);
-// console.log("Sliding?", this.player.isSliding);
-// console.log("Velocity inversion condition met:",
-//     (this.player.facingRight && this.player.velocity.x > 0) ||
-//     (!this.player.facingRight && this.player.velocity.x < 0)
-// );
 		if (!this.player.isSliding){	
-			console.log("1")
 			this.player.velocity.x = 0;
 		}
-		// else
-		// {
-		// 	// console.log("Inverting velocity for correct sliding direction");
-		// 	this.player.velocity.x *= -1;
-		// }
-		
 
 		this.player.velocity.y = 0;
 		this.player.currentAnimation = this.player.animations.land;
