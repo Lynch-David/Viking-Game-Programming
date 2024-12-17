@@ -23,6 +23,9 @@ export default class PlayerWalkingState extends PlayerState {
 	 * Called when entering the walking state.
 	 */
 	enter() {
+		if(this.player.facingRight){
+			this.player.position.x += 5
+		}
 		this.player.isOnGround = true;
 		this.player.dimensions.y = 44 * 0.75
 		this.player.currentAnimation = this.player.animations.walk;

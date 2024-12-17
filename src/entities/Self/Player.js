@@ -107,6 +107,7 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
+		console.log(this.position.x)
 		this.stateMachine.update(dt);
 	}
 
