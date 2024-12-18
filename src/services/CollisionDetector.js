@@ -2,6 +2,9 @@ import GameEntity from '../entities/GameEntity.js';
 import SoundName from '../enums/SoundName.js';
 import TileType from '../enums/TileType.js';
 import { sounds } from '../globals.js';
+import IceTile from '../objects/IceTile.js';
+import SlimeTile from '../objects/SlimeTile.js';
+import StickyTile from '../objects/StickyTile.js';
 import Tile from '../objects/Tile.js';
 import Map from './Map.js';
 
@@ -76,19 +79,13 @@ export default class CollisionDetector {
 				// Collision below
 				switch (this.isSpecialTileInRow(tileBottom, tileLeft, tileRight)) {
 					case TileType.Sticky:
-						entity.isSticky = true;
-						entity.isSliding = false;
-						entity.isBouncing = false;
+						StickyTile.applyBehavior(entity) 
 						break;
 					case TileType.Ice:
-						entity.isSticky = false;
-						entity.isSliding = true;
-						entity.isBouncing = false;
+						IceTile.applyBehavior(entity) 
 						break;
 					case TileType.Slime:
-						entity.isSticky = false;
-						entity.isSliding = false;
-						entity.isBouncing = true;
+						SlimeTile.applyBehavior(entity) 
 						break;
 					default:
 						entity.isSticky = false;

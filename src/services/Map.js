@@ -25,11 +25,7 @@ export default class Map {
 		this.tilesets = mapDefinition.tilesets;
 
 		// Generate sprites from the tileset image
-		const sprites = Sprite.generateSpritesFromSpriteSheet(
-			images.get(ImageName.Tiles),
-			this.tileSize,
-			this.tileSize
-		);
+		a
 
 		// Create Layer instances for each layer in the map definition
 		this.layers = mapDefinition.layers.map(

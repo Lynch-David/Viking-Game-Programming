@@ -5,7 +5,9 @@ export default class IceTile extends Tile {
 	/**
 	 * @param {Player} player - The player currently interacting with.
 	 */
-	applyBehavior(player) {
+	static applyBehavior(player) {
+		player.isSticky = false;
+		player.isBouncing = false;
 		player.isSliding = true; 
 	}
 }

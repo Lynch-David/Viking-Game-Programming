@@ -5,7 +5,9 @@ export default class StickyTile extends Tile {
 	/**
 	 * @param {Player} player - The player currently interacting with.
 	 */
-	applyBehavior(player) {
+	static applyBehavior(player) {
 		player.isSticky = true;
+		player.isBouncing = false;
+		player.isSliding = false; 
 	}
 }
