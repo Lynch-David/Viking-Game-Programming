@@ -81,7 +81,7 @@ export default class Bird extends GameEntity {
 		this.position.y = Math.floor(this.position.y / Tile.SIZE) * Tile.SIZE;
 	
 		// Check wall collision
-		if (this.isCollidingWithWall() || this.position.x == 0 || this.position.x + this.dimensions.x == CANVAS_WIDTH) {			
+		if (this.isCollidingWithWall() || this.position.x <= 0 || this.position.x + this.dimensions.x >= CANVAS_WIDTH) {			
 			// Reverse direction
 			this.direction *= -1; // Reverse direction when colliding with the wall
 		}

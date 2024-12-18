@@ -120,7 +120,7 @@ export default class Layer {
 						tile = TileFactory.createInstance(TileType.Ice, tileId - 1, sprites);
 						break;
 					case 545:
-						this.entitySpawnPoints.push({ x, y }); // Track spawn point
+						this.entitySpawnPoints.push({ x, y });
                 		tile = new Tile(425, sprites);
 						break;
 					default:
