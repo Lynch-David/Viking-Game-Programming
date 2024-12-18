@@ -1,15 +1,19 @@
-import Entity from './Entity.js';
 import Animation from '../../../lib/Animation.js';
-import Sprite from '../../lib/Sprite.js';
-import Tile from '../services/Tile.js';
-import Graphic from '../../lib/Graphic.js';
-import Map from '../services/Map.js';
+import Tile from '../../objects/Tile.js';
+import Graphic from '../../../lib/Graphic.js';
+import Map from '../../services/Map.js';
+import ImageName from '../../enums/ImageName.js';
+import { birdSpriteConfig, loadPlayerSprites } from '../../SpriteConfig.js';
+import GameEntity from '../GameEntity.js';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, images } from '../../globals.js';
+import Hitbox from '../../../lib/Hitbox.js';
+import CollisionDetector from '../../services/CollisionDetector.js';
 
 /**
  * Represents a Goomba enemy in the game.
  * @extends Entity
  */
-export default class Bird extends Entity {
+export default class Bird extends GameEntity {
 	/**
 	 * Creates a new Goomba instance.
 	 * @param {number} x - The initial x-coordinate.
@@ -19,30 +23,27 @@ export default class Bird extends Entity {
 	 * @param {Graphic} spriteSheet - The sprite sheet containing Goomba graphics.
 	 * @param {Map} map - The game map instance.
 	 */
-	constructor(x, y, width, height, spriteSheet, map) {
+	constructor(x, y, width, height, map) {
 		super(x, y, width, height);
 		this.map = map;
 		this.speed = 30; // Pixels per second
 		this.direction = 1; // 1 for right, -1 for left
+		this.hitboxOffset
+		this.position.x += 65
+
+		this.hitbox = new Hitbox(
+			this.position.x + this.hitboxOffsets.position.x,
+			this.position.y + this.hitboxOffsets.position.y,
+			this.dimensions.x + this.hitboxOffsets.dimensions.x,
+			this.dimensions.y + this.hitboxOffsets.dimensions.y,
+		);
 
 		this.sprites = loadPlayerSprites(
-			images.get(ImageName.Player),
-			spriteConfig
+			images.get(ImageName.Crow),
+			birdSpriteConfig
 		);
 
-		this.currentAnimation = new Animation(
-			enemySpriteConfig.goomba.map(
-				(frame) =>
-					new Sprite(
-						spriteSheet,
-						frame.x,
-						frame.y,
-						frame.width,
-						frame.height
-					)
-			),
-			0.2 // Animation interval
-		);
+		this.currentAnimation = new Animation(this.sprites.fly, 0.5);
 	}
 
 	/**
@@ -51,6 +52,12 @@ export default class Bird extends Entity {
 	 */
 	update(dt) {
 		this.updateMovement(dt);
+		this.hitbox = new Hitbox(
+			this.position.x + this.hitboxOffsets.position.x,
+			this.position.y + this.hitboxOffsets.position.y,
+			this.dimensions.x + this.hitboxOffsets.dimensions.x,
+			this.dimensions.y + this.hitboxOffsets.dimensions.y,
+		);
 		this.currentAnimation.update(dt);
 	}
 
@@ -60,7 +67,7 @@ export default class Bird extends Entity {
 	 */
 	updateMovement(dt) {
 		// Move horizontally
-		this.position.x += this.direction * this.speed * dt;
+		this.position.x -= this.direction * this.speed * dt;
 
 		// Check for collisions
 		this.checkCollisions();
@@ -72,12 +79,14 @@ export default class Bird extends Entity {
 	checkCollisions() {
 		// Check ground collision
 		this.position.y = Math.floor(this.position.y / Tile.SIZE) * Tile.SIZE;
-
+	
 		// Check wall collision
-		if (this.isCollidingWithWall()) {
-			this.direction *= -1; // Reverse direction
+		if (this.isCollidingWithWall() || this.position.x == 0 || this.position.x + this.dimensions.x == CANVAS_WIDTH) {			
+			// Reverse direction
+			this.direction *= -1; // Reverse direction when colliding with the wall
 		}
 	}
+	
 
 
 	/**
@@ -91,7 +100,7 @@ export default class Bird extends Entity {
 		);
 		const sideTile = Math.floor(
 			(this.position.x + (this.direction > 0 ? this.dimensions.x : 0)) /
-				Tile.SIZE
+			Tile.SIZE
 		);
 
 		return (
@@ -107,14 +116,9 @@ export default class Bird extends Entity {
 	render(context) {
 		context.save();
 
-		if (this.dying) {
-			context.scale(1, -1); // Flip vertically for dying animation
-			context.translate(
-				Math.floor(this.position.x),
-				Math.floor(-this.position.y - this.dimensions.y)
-			);
-		}
-		else if (this.direction === 1) {
+		this.hitbox.render(context)
+
+		if (this.direction === 1) {
 			context.scale(-1, 1);
 			context.translate(
 				Math.floor(-this.position.x - this.dimensions.x),
@@ -126,9 +130,15 @@ export default class Bird extends Entity {
 				Math.floor(this.position.y)
 			);
 		}
-
+	
 		this.currentAnimation.getCurrentFrame().render(0,0)
-
+	
 		context.restore();
 	}
+	
+	onCollideWithPlayer(player) {
+		player.velocity.y *= -1
+	}
+
+
 }

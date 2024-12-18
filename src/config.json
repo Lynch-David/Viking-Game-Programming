@@ -17,6 +17,12 @@
 			"path": "./assets/images/Background.png",
 			"width": 928,
 			"height": 2327
+		},
+		{
+			"name": "crow",
+			"path": "./assets/images/Crow.png",
+			"width": 192,
+			"height": 192
 		}
 	],
 	"fonts": [
