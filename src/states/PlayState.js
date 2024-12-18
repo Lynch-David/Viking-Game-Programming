@@ -1,7 +1,14 @@
 import State from '../../lib/State.js';
 import Map from '../services/Map.js';
 import Camera from '../services/Camera.js';
-import { canvas, images, sounds, timer, input, stateMachine } from '../globals.js';
+import { 
+    canvas,
+     images, 
+     sounds, timer,
+      input,
+       stateMachine,
+       CANVAS_HEIGHT,
+       CANVAS_WIDTH, } from '../globals.js';
 import Input from '../../../lib/Input.js';
 import Player from '../entities/Self/Player.js';
 import Tile from '../objects/Tile.js';
@@ -10,6 +17,7 @@ import GameStateName from '../enums/GameStateName.js';
 import SoundName from '../enums/SoundName.js';
 import SoundPool from '../../lib/SoundPool.js';
 import PlayerStateName from '../enums/PlayerStateName.js';
+import Easing from '../../../lib/Easing.js';
 
 export default class PlayState extends State {
     constructor(mapDefinition, loadState = false) {
@@ -34,12 +42,19 @@ export default class PlayState extends State {
         ];
 
         this.elapsedTime = 0; // Initialize the timer
+
+        this.message = "Hold [Space] to jump.";
+        this.messagePosition = { x: 20, y: 1920 }; // Adjust as needed
     }
 
     enter(parameters) {
         this.loadPlayerState();
-        // this.elapsedTime = this.player.elapsedTime;
         sounds.stop(SoundName.TitleMusic); // Ensure the music is stopped
+        // this.fadeIn();
+
+        // Set the message position near the player's starting position
+        this.messagePosition.x = 1920;
+        this.messagePosition.y = 20;
     }
 
     exit() {
@@ -113,6 +128,10 @@ export default class PlayState extends State {
     }
 
     render(context) {
+        
+        console.log(this.player.position.x, this.player.position.y)
+        console.log(this.messagePosition.x, this.messagePosition.y)
+
         this.camera.applyTransform(context);
         this.renderParallaxBackground();
         this.map.render(context);
@@ -120,6 +139,17 @@ export default class PlayState extends State {
         this.camera.resetTransform(context);
         this.renderHeightScore(context);
         this.renderTimer(context); // Render the timer
+
+		var playerFeetY = 1920 - (this.player.position.y) - 10;
+		if (playerFeetY < 0) {
+			playerFeetY = 0;
+		}
+        let level = Math.floor(playerFeetY / 320);
+        if (level == 0) {
+            this.renderMessage(context, "Hold [Space]",95, 250 );
+            this.renderMessage(context, " [Space] + A",0, 200 );
+            this.renderMessage(context, " [Space] + D",CANVAS_WIDTH - 80, 200 );
+        }
     }
 
     renderParallaxBackground() {
@@ -138,6 +168,11 @@ export default class PlayState extends State {
             }
         });
     }
+
+    // async fadeIn() {
+    //     // console.log('Starting fadeIn tween');
+    //      await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.5, Easing.easeInQuad);
+    // }
 
     renderHeightScore(context) {
         context.save();
@@ -160,6 +195,15 @@ export default class PlayState extends State {
         const minutes = Math.floor(this.elapsedTime / 60);
         const seconds = Math.floor(this.elapsedTime % 60);
         context.fillText(`Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`, 10, 20);
+        context.restore();
+    }
+
+    renderMessage(context, message, x, y) {
+        context.save();
+        context.font = '6px dogica';
+        context.fillStyle = 'white';
+        context.textAlign = 'left';
+        context.fillText(message, x, y);
         context.restore();
     }
 }
