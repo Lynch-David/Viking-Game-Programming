@@ -165,7 +165,6 @@ export default class TitleScreenState extends State {
         context.closePath();
 
 
-
         // Render a circle
         context.beginPath();
         context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
@@ -246,7 +245,7 @@ export default class TitleScreenState extends State {
         context.font = '15px Alagard';
         context.fillStyle = 'white';
         context.textAlign = 'left';
-        context.fillText(`Height: ${1920 - Math.floor(this.height + 46)}`, boxX + 15, boxY + 23);
+        context.fillText(`Height: ${1920 - Math.floor(this.height + 46)}`, boxX + 10, boxY + 23);
 
         context.textAlign = 'right';
         context.fillText(`Hops: ${Math.floor(this.hops)}`, boxX + boxWidth - 18, boxY + 23);
