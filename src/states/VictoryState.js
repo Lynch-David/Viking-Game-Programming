@@ -133,10 +133,12 @@ export default class VictoryState extends State {
         const playerState = {
             x: 114,
             y: 1874,
+
             hopCount: 0, // Save hop count            
             state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));
+        localStorage.setItem('elapsedTime', 0);
         localStorage.setItem('gameCompleted', 'true');
     }
 
