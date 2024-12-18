@@ -64,7 +64,6 @@ export default class PlayState extends State {
         }
 
         // if (1920 - (this.player.position.y) > 320) { // testing
-
         if (this.player.position.y < 20) {
 			console.log("Player has reached the top of the map!");
             stateMachine.change(GameStateName.Victory, { playState: this, player: this.player });
