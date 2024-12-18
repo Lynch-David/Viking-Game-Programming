@@ -16,6 +16,7 @@ import Animation from "../../../lib/Animation.js";
 import PlayerLandingState from './PlayerLandingState.js';
 import PlayerCrouchingState from './PlayerCrouchingState.js';
 import Hitbox from '../../../lib/Hitbox.js';
+import SoundName from '../../enums/SoundName.js';
 
 /**
  * Represents the player character in the game.
@@ -116,6 +117,7 @@ export default class Player extends GameEntity {
 	checkBirdCollision = () => {
 		this.map.entities.forEach((bird) => {
 			if (this.collidesWith(bird)) {
+				sounds.play(SoundName.Caw);
 				bird.onCollideWithPlayer(this);
 			}
 		});

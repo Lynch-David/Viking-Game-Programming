@@ -8,6 +8,7 @@ const SoundName = {
 	Select: 'select',
 	Bump: 'bump',
 	WallBump: 'wallbump',
+	Caw: 'caw',
 };
 
 export default SoundName;

@@ -50,10 +50,10 @@
 			"volume": 1
 		},
 		{
-			"name": "crow",
-			"path": "./assets/sounds/crow.wav",
+			"name": "caw",
+			"path": "./assets/sounds/Crow.wav",
 			"size": 2,
-			"volume": 1
+			"volume": 0.2
 		},
 		{
 			"name": "menublip",
