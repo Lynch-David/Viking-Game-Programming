@@ -111,6 +111,7 @@ export default class TitleScreenState extends State {
         const playerState = {
             x: 114,
             y: 1874,
+            // y: 40, // Testing
             hopCount: 0, // Save hop count            
             state: 'idling',
         };
