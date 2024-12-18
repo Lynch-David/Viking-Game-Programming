@@ -9,6 +9,7 @@ const SoundName = {
 	Bump: 'bump',
 	WallBump: 'wallbump',
 	Caw: 'caw',
+	slimeBounce: 'slimebounce'
 };
 
 export default SoundName;
