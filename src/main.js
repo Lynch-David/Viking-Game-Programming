@@ -60,6 +60,7 @@ stateMachine.add(GameStateName.Victory, new VictoryState());
 stateMachine.add(GameStateName.Transition, new TransitionState());
 stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
 stateMachine.add(GameStateName.Pause, new PauseState());
+stateMachine.add(GameStateName.Victory, new VictoryState());
 
 stateMachine.change(GameStateName.TitleScreen);
 

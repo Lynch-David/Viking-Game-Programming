@@ -63,10 +63,10 @@ export default class Camera {
 	 */
 	update(dt) {
 		// Calculate the center position of the player
-		const playerCenter = new Vector(
-			this.player.position.x + this.player.dimensions.x / 2,
-			this.player.position.y + this.player.dimensions.y / 2
-		);
+		// const playerCenter = new Vector(
+		// 	this.player.position.x + this.player.dimensions.x / 2,
+		// 	this.player.position.y + this.player.dimensions.y / 2
+		// );
 
 		var playerFeetY = 1920 - (this.player.position.y) - 10;
 		if (playerFeetY < 0) {
