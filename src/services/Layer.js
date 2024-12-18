@@ -121,7 +121,7 @@ export default class Layer {
 						break;
 					case 545:
 						this.entitySpawnPoints.push({ x, y });
-                		tile = new Tile(425, sprites);
+                		tile = null;
 						break;
 					default:
 						tile = new Tile(tileId - 1, sprites);

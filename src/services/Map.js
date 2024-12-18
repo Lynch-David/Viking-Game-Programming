@@ -97,7 +97,7 @@ export default class Map {
 	 */
 	isSolidTileAt(col, row) {
 		const tile = this.foregroundLayer.getTile(col, row);
-		return tile !== null && tile.id !== -1 && tile.id !== 425 && tile.id !== 545 && tile.id !== 544 && tile.id !== 424;
+		return tile !== null && tile.id !== -1 ;
 	}
 
 	isStickyTileAt(col, row) {
