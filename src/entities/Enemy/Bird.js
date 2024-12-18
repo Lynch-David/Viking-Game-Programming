@@ -26,10 +26,10 @@ export default class Bird extends GameEntity {
 	constructor(x, y, width, height, map) {
 		super(x, y, width, height);
 		this.map = map;
-		this.speed = 30; // Pixels per second
+		this.speed = 90; // Pixels per second
 		this.direction = 1; // 1 for right, -1 for left
 		this.hitboxOffset
-		this.position.x += 65
+
 
 		this.hitbox = new Hitbox(
 			this.position.x + this.hitboxOffsets.position.x,
@@ -43,7 +43,7 @@ export default class Bird extends GameEntity {
 			birdSpriteConfig
 		);
 
-		this.currentAnimation = new Animation(this.sprites.fly, 0.5);
+		this.currentAnimation = new Animation(this.sprites.fly, 0.14);
 	}
 
 	/**
