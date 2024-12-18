@@ -75,6 +75,13 @@
 			"size": 10,
 			"volume": 0.1,
 			"loop": true
+		},
+		{
+			"name": "bump",
+			"path": "./assets/sounds/Bump.wav",
+			"size": 1,
+			"volume": 1,
+			"loop": false
 		}
 	]
 }

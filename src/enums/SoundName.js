@@ -6,6 +6,7 @@ const SoundName = {
 	MenuBlip: 'menublip',
 	TitleMusic: 'titlemusic',
 	Select: 'select',
+	Bump: 'bump',
 };
 
 export default SoundName;

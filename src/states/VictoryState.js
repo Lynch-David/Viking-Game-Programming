@@ -8,6 +8,10 @@ import Easing from '../../../lib/Easing.js';
 export default class VictoryState extends State {
     constructor() {
         super();
+        this.reset();
+    }
+
+    reset() {
         this.textAlpha = { alpha: 1 }; // Start with full opacity
         this.textPosition = { y: -CANVAS_HEIGHT }; // Start text off-screen above
         this.backgroundAlpha = { alpha: 0 }; // Start with a transparent background
@@ -16,6 +20,7 @@ export default class VictoryState extends State {
     }
 
     async enter(parameters) {
+        this.reset(); 
         this.playState = parameters.playState; // Assign the playState from parameters
         this.player = parameters.player; // Assign the player from parameters
         console.log('Entering VictoryState, starting fadeInBackground');
@@ -39,8 +44,10 @@ export default class VictoryState extends State {
     async tweenTextPosition() {
         console.log('Starting tweenTextPosition tween');
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.5, Easing.easeInQuad);
+		sounds.play(SoundName.Bump);
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 - 20 }, 0.1, Easing.easeOutQuad);
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.1, Easing.easeInQuad);
+		sounds.play(SoundName.Bump);
         console.log('Completed tweenTextPosition tween');
     }
 
