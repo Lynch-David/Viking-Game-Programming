@@ -54,6 +54,12 @@ export default class VictoryState extends State {
 
         // Set the game completion flag in local storage
         localStorage.setItem('gameCompleted', 'true');
+
+        // Save the fastest time
+        const savedFastestTime = JSON.parse(localStorage.getItem('fastestTime')) || Infinity;
+        if (this.player.elapsedTime < savedFastestTime) {
+        localStorage.setItem('fastestTime', JSON.stringify(this.player.elapsedTime));
+        }
     }
 
     async exit() {
@@ -140,6 +146,12 @@ export default class VictoryState extends State {
         localStorage.setItem('playerState', JSON.stringify(playerState));
         localStorage.setItem('elapsedTime', 0);
         localStorage.setItem('gameCompleted', 'true');
+        
+        const savedFastestTime = JSON.parse(localStorage.getItem('fastestTime')) || Infinity;
+        this.fastestTime = savedFastestTime;
+        if (this.time < savedFastestTime) {
+            localStorage.setItem('fastestTime', JSON.stringify(this.time));
+        }
     }
 
     render() {

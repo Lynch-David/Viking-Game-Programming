@@ -114,7 +114,7 @@ export default class TitleScreenState extends State {
         localStorage.setItem("gameCompleted", "false");
         break;
       case "Stats":
-          stateMachine.change(GameStateName.Stats, { hops: this.hops, time: this.time, height: this.height });
+          stateMachine.change(GameStateName.Stats, { hops: this.hops, time: this.time, height: this.height, fastestTime: this.fastestTime });
           
           break;
       case "Quit":
@@ -132,6 +132,9 @@ export default class TitleScreenState extends State {
     }
     const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
     this.time = savedTime || 0;
+
+    const savedFastestTime = JSON.parse(localStorage.getItem('fastestTime')) || Infinity;
+    this.fastestTime = savedFastestTime;
   }
 
   resetPlayerState() {

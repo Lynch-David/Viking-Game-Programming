@@ -21,6 +21,7 @@ export default class StatsState extends State {
       hops: 0,
       time: 0,
       height: 0,
+      fastestTime: Infinity, // Initialize with a high value
     };
     this.alpha = 1;
   }
@@ -37,6 +38,7 @@ export default class StatsState extends State {
     this.stats.hops = parameters.hops;
     this.stats.time = parameters.time;
     this.stats.height = parameters.height;
+    this.stats.fastestTime = parameters.fastestTime || Infinity;
     this.alpha = 1;
 
     // this.fadeIn();
@@ -99,8 +101,6 @@ export default class StatsState extends State {
     context.fillStyle = "black";
     context.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-
-
     context.fillStyle = "#121212"; // Dark grey
     context.fillRect(
       CANVAS_WIDTH / 6,
@@ -117,86 +117,93 @@ export default class StatsState extends State {
       CANVAS_HEIGHT / 2.5
     );
 
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
-    context.fillStyle = "#47474f";
-    context.fill();
-    context.closePath();
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
-    context.fillStyle = "black";
-    context.fill();
-    context.closePath();
-
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
-    context.fillStyle = "#47474f";
-    context.fill();
-    context.closePath();
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
-    context.fillStyle = "black";
-    context.fill();
-    context.closePath();
-
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
-    context.fillStyle = "#47474f";
-    context.fill();
-    context.closePath();
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
-    context.fillStyle = "black";
-    context.fill();
-    context.closePath();
-
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
-    context.fillStyle = "#47474f";
-    context.fill();
-    context.closePath();
-    // Render a circle
-    context.beginPath();
-    context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
-    context.fillStyle = "black";
-    context.fill();
-    context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
+        context.fillStyle = "#47474f";
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = "black";
+        context.fill();
+        context.closePath();
+    
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
+        context.fillStyle = "#47474f";
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = "black";
+        context.fill();
+        context.closePath();
+    
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+        context.fillStyle = "#47474f";
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+        context.fillStyle = "black";
+        context.fill();
+        context.closePath();
+    
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+        context.fillStyle = "#47474f";
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+        context.fillStyle = "black";
+        context.fill();
+        context.closePath();
 
     context.fillStyle = "white";
     context.font = "40px Alagard";
     context.textAlign = "left";
-
-    context.fillText("Stats", CANVAS_WIDTH / 3, CANVAS_HEIGHT / 4);
+    context.fillText("Stats", CANVAS_WIDTH / 3 - 5, CANVAS_HEIGHT / 3);
 
     context.fillStyle = "white";
     context.font = "20px Alagard";
     context.textAlign = "left";
-
-    // context.fillText("Stats", CANVAS_WIDTH / 2, CANVAS_HEIGHT / 4);
     context.fillText(
       `Hops: ${this.stats.hops}`,
       CANVAS_WIDTH / 4,
       CANVAS_HEIGHT / 2
     );
+
+    context.fillText(
+      `Height: ${1874 - this.stats.height}ft`,
+      CANVAS_WIDTH / 4,
+      CANVAS_HEIGHT / 2 + 28
+    );
+
     const minutes = Math.floor(this.stats.time / 60);
     const seconds = Math.floor(this.stats.time % 60);
     context.fillText(
       `Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`,
       CANVAS_WIDTH / 4,
-      CANVAS_HEIGHT / 2 + 40
+      CANVAS_HEIGHT / 2 + 55
     );
+
+    const fastestMinutes = Math.floor(this.stats.fastestTime / 60);
+    const fastestSeconds = Math.floor(this.stats.fastestTime % 60);
     context.fillText(
-      `Height: ${1874 - this.stats.height}ft`,
+      `Record: ${fastestMinutes}:${fastestSeconds < 10 ? '0' : ''}${fastestSeconds}`,
       CANVAS_WIDTH / 4,
       CANVAS_HEIGHT / 2 + 80
     );
 
-    // Render the "Press Enter to Continue" text
+     // Render the "Press Enter to Continue" text
     context.font = "7px Dogica";
     context.fillStyle = `rgba(255, 255, 255, ${this.continueTextAlpha.alpha})`;
     context.fillText(
