@@ -92,7 +92,7 @@
 			"name": "wallbump",
 			"path": "./assets/sounds/WallBump.wav",
 			"size": 1,
-			"volume": 1,
+			"volume": 0.2,
 			"loop": false
 		}
 	]

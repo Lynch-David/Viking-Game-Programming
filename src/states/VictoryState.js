@@ -75,6 +75,7 @@ export default class VictoryState extends State {
     update(dt) {
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             console.log('Returning to title screen');
+			sounds.play(SoundName.MenuBlip);
             stateMachine.change(GameStateName.TitleScreen);
         }
     }
