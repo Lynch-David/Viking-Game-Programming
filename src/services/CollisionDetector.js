@@ -36,7 +36,7 @@ export default class CollisionDetector {
 			// Moving right
 			if (this.isSolidTileInColumn(tileRight, tileTop, tileBottom)) {
 				// Collision on the right side
-				sounds.play(SoundName.Bump);
+				sounds.play(SoundName.WallBump);
 				entity.position.x = tileRight * tileSize - entity.dimensions.x;
 				if (!entity.isSliding) {
 					entity.velocity.x *= -1;
@@ -46,7 +46,7 @@ export default class CollisionDetector {
 			// Moving left
 			if (this.isSolidTileInColumn(tileLeft, tileTop, tileBottom)) {
 				// Collision on the left side
-				sounds.play(SoundName.Bump);
+				sounds.play(SoundName.WallBump);
 				entity.position.x = (tileLeft + 1) * tileSize;
 				if (!entity.isSliding) {
 					entity.velocity.x *= -1;

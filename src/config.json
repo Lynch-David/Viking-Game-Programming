@@ -25,7 +25,7 @@
 			"path": "../assets/fonts/alagard.ttf"
 		},
 		{
-			
+
 			"name": "Dogica",
 			"path": "../assets/fonts/dogica.ttf"
 		}
@@ -84,6 +84,13 @@
 		{
 			"name": "bump",
 			"path": "./assets/sounds/Bump.wav",
+			"size": 1,
+			"volume": 1,
+			"loop": false
+		},
+		{
+			"name": "wallbump",
+			"path": "./assets/sounds/WallBump.wav",
 			"size": 1,
 			"volume": 1,
 			"loop": false

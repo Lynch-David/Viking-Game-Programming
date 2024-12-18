@@ -7,6 +7,7 @@ const SoundName = {
 	TitleMusic: 'titlemusic',
 	Select: 'select',
 	Bump: 'bump',
+	WallBump: 'wallbump',
 };
 
 export default SoundName;
