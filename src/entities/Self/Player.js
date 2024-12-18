@@ -47,7 +47,7 @@ export default class Player extends GameEntity {
 		this.isSliding = false;
 		this.isBouncing = false;
 
-		this.fallHeight = 0
+		this.fallHeight = this.position.y
 
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
@@ -125,13 +125,14 @@ export default class Player extends GameEntity {
 	boost() {
 		let lastDirection = 0
 
-		if (!this.facingRight) {
+		if (this.velocity.x < 0) {
 			lastDirection = -1;
-		} else if (this.facingRight) {
+		} else if (this.velocity.x > 0) {
 			lastDirection = 1;
 		}
 		const chargedHeight = (this.position.y - this.fallHeight) * -4
+		console.log(this.fallHeight)
 		this.position.y -= 10
-		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, lastDirection });
+		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: lastDirection });
 	}
 }
