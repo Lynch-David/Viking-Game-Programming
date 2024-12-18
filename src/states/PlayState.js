@@ -61,7 +61,10 @@ export default class PlayState extends State {
             this.player.stateMachine.change(PlayerStateName.Idling); // Reset to idling state
         }
 
-        console.log("extracted: " + savedState.z)
+        const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
+        this.elapsedTime = savedTime || 0;
+
+        console.log("extracted: " + savedTime)
     }
 
     savePlayerState() {
@@ -77,6 +80,7 @@ export default class PlayState extends State {
         };
         console.log(`const: ${playerState.z}`)
         localStorage.setItem('playerState', JSON.stringify(playerState));
+        localStorage.setItem('elapsedTime', this.player.elapsedTime);
     }
 
     update(dt) {

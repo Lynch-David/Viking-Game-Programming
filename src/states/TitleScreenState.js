@@ -17,7 +17,7 @@ import {
 export default class TitleScreenState extends State {
   constructor() {
     super();
-    this.menuOptions = ["Continue", "New Game", "Quit"];
+    this.menuOptions = ["Continue", "New Game","Stats", "Quit"];
     this.currentSelection = 0;
     this.blinking = false;
     this.blinkState = true;
@@ -27,6 +27,7 @@ export default class TitleScreenState extends State {
 
     this.height = 0;
     this.hops = 0;
+    this.time = 0;
     this.continueColor = "white";
 
     // Set up a timer to toggle the target color
@@ -112,6 +113,10 @@ export default class TitleScreenState extends State {
         stateMachine.change(GameStateName.Play);
         localStorage.setItem("gameCompleted", "false");
         break;
+      case "Stats":
+          stateMachine.change(GameStateName.Stats, { hops: this.hops, time: this.time, height: this.height });
+          
+          break;
       case "Quit":
         window.close();
         break;
@@ -125,6 +130,8 @@ export default class TitleScreenState extends State {
       this.height = savedState.y;
       this.hops = savedState.hopCount || 0; // Load hop count
     }
+    const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
+    this.time = savedTime || 0;
   }
 
   resetPlayerState() {
@@ -135,6 +142,7 @@ export default class TitleScreenState extends State {
       state: "idling",
     };
     localStorage.setItem("playerState", JSON.stringify(playerState));
+    localStorage.setItem("elapsedTime", 0);
   }
 
   checkGameCompletion() {
@@ -297,32 +305,32 @@ export default class TitleScreenState extends State {
       
     });
 
-    // Render the small rectangular box near the bottom
-    const boxWidth = 170;
-    const boxHeight = 35;
-    const boxX = (CANVAS_WIDTH - boxWidth) / 2;
-    const boxY = CANVAS_HEIGHT - boxHeight - 20;
+    // // Render the small rectangular box near the bottom
+    // const boxWidth = 170;
+    // const boxHeight = 35;
+    // const boxX = (CANVAS_WIDTH - boxWidth) / 2;
+    // const boxY = CANVAS_HEIGHT - boxHeight - 20;
 
-    context.fillStyle = "#121212"; // Dark grey
-    context.fillRect(boxX, boxY, boxWidth, boxHeight);
+    // context.fillStyle = "#121212"; // Dark grey
+    // context.fillRect(boxX, boxY, boxWidth, boxHeight);
 
-    context.strokeStyle = "#47474f"; // Dark grey
-    context.strokeRect(boxX, boxY, boxWidth, boxHeight);
+    // context.strokeStyle = "#47474f"; // Dark grey
+    // context.strokeRect(boxX, boxY, boxWidth, boxHeight);
 
-    context.font = "15px Alagard";
-    context.fillStyle = "white";
-    context.textAlign = "left";
-    context.fillText(
-      `Height: ${1920 - Math.floor(this.height + 46)}`,
-      boxX + 10,
-      boxY + 23
-    );
+    // context.font = "15px Alagard";
+    // context.fillStyle = "white";
+    // context.textAlign = "left";
+    // context.fillText(
+    //   `Height: ${1920 - Math.floor(this.height + 46)}`,
+    //   boxX + 10,
+    //   boxY + 23
+    // );
 
-    context.textAlign = "right";
-    context.fillText(
-      `Hops: ${Math.floor(this.hops)}`,
-      boxX + boxWidth - 18,
-      boxY + 23
-    );
+    // context.textAlign = "right";
+    // context.fillText(
+    //   `Hops: ${Math.floor(this.hops)}`,
+    //   boxX + boxWidth - 18,
+    //   boxY + 23
+    // );
   }
 }

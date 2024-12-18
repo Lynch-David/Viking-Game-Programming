@@ -11,6 +11,9 @@ export default class VictoryState extends State {
     constructor() {
         super();
         this.reset();
+
+        this.hops = 0;
+        this.time = 0;
     }
 
     reset() {
@@ -19,18 +22,34 @@ export default class VictoryState extends State {
         this.backgroundAlpha = { alpha: 0 }; // Start with a transparent background
         this.subtextAlpha = { alpha: 0 }; // Start with a transparent subtext
         this.continueTextAlpha = { alpha: 0 }; // Start with a transparent continue text
+
+        // this.hops = 0;
+        // this.time = 0;
     }
 
     async enter(parameters) {
-        this.resetPlayerState(); // Reset the player state
+        this.loadPlayerState(); // Load the player state
+        // this.resetPlayerState(); // Reset the player state
+        // this.loadPlayerState(); // Load the player state
+        
         this.reset(); 
+        this.loadPlayerState(); // Load the player state
+        console.log("HOPS: " + this.hops)
+        console.log("TIME: " + this.time)
+
+
         this.playState = parameters.playState; // Assign the playState from parameters
         this.player = parameters.player; // Assign the player from parameters
-        // console.log('Entering VictoryState, starting fadeInBackground');
+
+        this.resetPlayerState(); // Reset the player state
+        
         await this.fadeInBackground(); // Tween in the black background
         await this.tweenTextPosition(); // Tween in the text position
         await this.fadeInSubtext(); // Fade in the subtext
         await this.fadeInContinueText(); // Fade in the continue text
+
+
+
         this.startPulsatingContinueText(); // Start pulsating the continue text
 
         // Set the game completion flag in local storage
@@ -86,6 +105,30 @@ export default class VictoryState extends State {
         }
     }
 
+    // loadPlayerState() {
+    //     console.log("LOADING")
+    //     const savedState = JSON.parse(localStorage.getItem('playerState'));
+    //     if (savedState) {
+    //         console.log("hops " + savedState.hopCount);
+    //         this.hops = savedState.hopCount || 0; // Load hop count
+    //     }
+
+    //     const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
+    //     this.time = savedTime || 0;
+
+    //     console.log("extracted: " + savedTime)
+    // }
+
+    loadPlayerState() {
+        const savedState = JSON.parse(localStorage.getItem("playerState"));
+        if (savedState) {
+          console.log("Loading player state");
+          this.hops = savedState.hopCount || 0; // Load hop count
+        }
+        const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
+        this.time = savedTime || 0;
+      }
+
     resetPlayerState() {
         const playerState = {
             x: 114,
@@ -116,7 +159,7 @@ export default class VictoryState extends State {
         // Render the "Press Enter to Continue" text
         context.font = '7px Dogica';
         context.fillStyle = `rgba(255, 255, 255, ${this.continueTextAlpha.alpha})`;
-        context.fillText('Press ENTER to Continue...', CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2 + 150);
+        context.fillText('Press ENTER to Continue...', CANVAS_WIDTH / 1.55, CANVAS_HEIGHT / 2 + 150);
     }
 
     wrapText(context, text, x, y, maxWidth, lineHeight) {
