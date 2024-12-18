@@ -29,7 +29,7 @@ export default class Bird extends GameEntity {
 		this.speed = 30; // Pixels per second
 		this.direction = 1; // 1 for right, -1 for left
 		this.hitboxOffset
-		this.position.x += 65
+
 
 		this.hitbox = new Hitbox(
 			this.position.x + this.hitboxOffsets.position.x,
