@@ -69,7 +69,7 @@
 		},
 		{
 			"name": "slimebounce",
-			"path": "./assets/sounds/slimebounce.wav",
+			"path": "./assets/sounds/Bounce.wav",
 			"size": 10,
 			"volume": 1
 		},
