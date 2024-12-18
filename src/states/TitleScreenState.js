@@ -187,7 +187,7 @@ export default class TitleScreenState extends State {
       CANVAS_WIDTH / 6,
       CANVAS_HEIGHT / 2.5,
       CANVAS_WIDTH / 1.5,
-      CANVAS_HEIGHT / 2.5
+      CANVAS_HEIGHT / 1.9
     );
 
     context.strokeStyle = "#47474f"; // Dark grey
@@ -195,7 +195,7 @@ export default class TitleScreenState extends State {
       CANVAS_WIDTH / 6,
       CANVAS_HEIGHT / 2.5,
       CANVAS_WIDTH / 1.5,
-      CANVAS_HEIGHT / 2.5
+      CANVAS_HEIGHT / 1.9
     );
 
         // Render a circle
@@ -226,25 +226,25 @@ export default class TitleScreenState extends State {
 
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.1, 12, 0, Math.PI * 2);
         context.fillStyle = '#47474f';
         context.fill();
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.086, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();
         
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.1, 12, 0, Math.PI * 2);
         context.fillStyle = '#47474f';
         context.fill();
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.086, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();

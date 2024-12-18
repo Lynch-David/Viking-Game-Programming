@@ -148,7 +148,7 @@ export default class PlayState extends State {
         if (playerFeetY < 0) {
             playerFeetY = 0;
         }
-        context.fillText(`Height: ${Math.floor(playerFeetY)}`, canvas.width - 10, 20);
+        context.fillText(`Height: ${Math.floor(playerFeetY)}ft`, canvas.width - 10, 20);
         context.restore();
     }
 
