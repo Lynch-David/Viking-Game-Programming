@@ -1,5 +1,5 @@
 const SoundName = {
-	Bump: 'bump',
+	// Bump: 'bump',
 	Coin: 'coin',
 	Jump: 'jump',
 	Landing: 'landing',

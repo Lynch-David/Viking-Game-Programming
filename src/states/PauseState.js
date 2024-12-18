@@ -42,25 +42,25 @@ export default class PauseState extends State {
     }
 
     async fadeInText() {
-        console.log('Starting fadeInText tween');
+        // console.log('Starting fadeInText tween');
         // await timer.tweenAsync(this.textAlpha, { alpha: 1 }, 0.5, Easing.easeOutQuad, (value) => {
         //     console.log(`Text Alpha: ${value.alpha}`);
         // });
         await timer.tweenAsync(this.textPosition, { x: CANVAS_WIDTH / 2 }, 0.5, Easing.easeOutQuad, (value) => {
             console.log(`Text Position X: ${value.x}`);
         });
-        console.log('Completed fadeInText tween');
+        // console.log('Completed fadeInText tween');
     }
 
     async fadeOutText() {
-        console.log('Starting fadeOutText tween');
+        // console.log('Starting fadeOutText tween');
         // await timer.tweenAsync(this.textAlpha, { alpha: 0 }, 0.5, Easing.easeInQuad, (value) => {
         //     console.log(`Text Alpha: ${value.alpha}`);
         // });
         await timer.tweenAsync(this.textPosition, { x: -CANVAS_WIDTH }, 0.5, Easing.easeInQuad, (value) => {
             console.log(`Text Position X: ${value.x}`);
         });
-        console.log('Completed fadeOutText tween');
+        // console.log('Completed fadeOutText tween');
     }
 
     async update(dt) {
@@ -68,13 +68,13 @@ export default class PauseState extends State {
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             switch (this.menuOptions[this.currentSelection]) {
                 case 'Resume':
-                    console.log('Resuming game');
+                    // console.log('Resuming game');
                     sounds.play(SoundName.MenuBlip);
                     await this.fadeOutText();
                     stateMachine.change(GameStateName.Play);
                     break;
                 case 'Save & Exit':
-                    console.log('Saving and exiting game');
+                    // console.log('Saving and exiting game');
                     sounds.play(SoundName.MenuBlip);
                     stateMachine.change(GameStateName.TitleScreen);
                     break;

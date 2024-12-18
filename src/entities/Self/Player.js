@@ -50,6 +50,7 @@ export default class Player extends GameEntity {
 
 		this.fallHeight = this.position.y
 		this.hopCount = 0; // Initialize hop count
+		this.elapsedTime = 0; // Initialize the timer
 
 
 		this.sprites = loadPlayerSprites(
@@ -112,6 +113,9 @@ export default class Player extends GameEntity {
 		super.update()
 		this.checkBirdCollision();
 		this.stateMachine.update(dt);
+
+		// this.elapsedTime += dt; // Update the timer
+		// console.log("Player: " + this.elapsedTime);
 	}
 
 	checkBirdCollision = () => {
