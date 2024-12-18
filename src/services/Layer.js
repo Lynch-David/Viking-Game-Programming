@@ -1,3 +1,5 @@
+import Bird from '../entities/Enemy/Bird.js';
+import ImageName from '../enums/ImageName.js';
 import TileType from '../enums/TileType.js';
 import Tile from '../objects/Tile.js';
 import TileFactory from './TileFactory.js';
@@ -17,9 +19,13 @@ export default class Layer {
 	 * @param {Array} sprites - The sprite objects used to render the tiles.
 	 */
 	constructor(layerDefinition, sprites) {
-		this.tiles = Layer.generateTiles(layerDefinition.data, sprites);
+		this.tiles = []
 		this.width = layerDefinition.width;
 		this.height = layerDefinition.height;
+		
+		
+		this.entitySpawnPoints = [];
+		this.generateTiles(layerDefinition.data, sprites);
 	}
 
 	/**
@@ -91,12 +97,15 @@ export default class Layer {
 	 * @param {Array} sprites - The sprite objects used to render the tiles.
 	 * @returns {Array} An array of Tile objects.
 	 */
-	static generateTiles(layerData, sprites) {
+	generateTiles(layerData, sprites) {
 		const tiles = [];
 
-		layerData.forEach((tileId) => {
+		layerData.forEach((tileId, index) => {
+			const x = index % this.width; // Calculate column
+        	const y = Math.floor(index / this.width); // Calculate row
+
 			if (tileId === 0) {
-				tiles.push(null);
+				this.tiles.push(null);
 			} else {
 				let tile;
 	
@@ -110,16 +119,17 @@ export default class Layer {
 					case 939, 940, 941, 942:
 						tile = TileFactory.createInstance(TileType.Ice, tileId - 1, sprites);
 						break;
+					case 545:
+						this.entitySpawnPoints.push({ x, y });
+                		tile = null;
+						break;
 					default:
 						tile = new Tile(tileId - 1, sprites);
 						break;
 				}
 	
-				tiles.push(tile);
+				this.tiles.push(tile);
 			}
-		});
-	
-		return tiles;
-	
+		});	
 	}
 }

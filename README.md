@@ -33,24 +33,23 @@ This is a recreation of the game *Jump King*, it is a single player game that is
 12. The user can encounter slime platforms that make the Viking bounce upon landing.
 13. The user can encounter sloped platforms that cause the Viking to slide.
 14. The user can encounter birds that the Viking can collide with.
-15. The system shall introduce wind mechanics that push the Viking horizontally mid-jump.
 
 ### Environmental Interactions
-16. The system shall render walls on both sides of the screen to trap the Viking within the game area.
-17. The user should collide with tiles/platform from the side.
-18. The user should stop falling when landing on a tile/platform (except slope and slime)
+15. The system shall render walls on both sides of the screen to trap the Viking within the game area.
+16. The user should collide with tiles/platform from the side.
+17. The user should stop falling when landing on a tile/platform (except slope and slime)
 
 ### UI/UX
-19. The system shall include a pause screen that the user can access during gameplay.
-20. The system shall display the Viking's height as a progress indicator on the side of the screen.
-21. The system shall include a button to return to the main menu from the pause screen.
-22. The system shall play a celebratory sound effect upon reaching the victory screen.
+18. The system shall include a pause screen that the user can access during gameplay.
+19. The system shall display the Viking's height as a progress indicator on the side of the screen.
+20. The system shall include a button to return to the main menu from the pause screen.
+21. The system shall play a celebratory sound effect upon reaching the victory screen.
 
 ### Persistance
-23. The system shall track the highest point reached by the Viking as a user record.
-24. The system shall track the players last idle state position values to save.
-25. The system shall load the players previous idle state and highscore upon opening the game.
-26. The system shall remove the players save once they complete the game.
+22. The system shall track the highest point reached by the Viking as a user record.
+23. The system shall track the players last idle state position values to save.
+24. The system shall load the players previous idle state and highscore upon opening the game.
+25. The system shall remove the players save once they complete the game.
 
 
 ## 🤖 State Diagram

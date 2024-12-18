@@ -24,11 +24,12 @@ export default class PlayerState extends State {
 	 * Updates the player state.
 	 * @param {number} dt - Delta time.
 	 */
-	update(dt) {
-		this.applyGravity(dt);
-		this.updatePosition(dt);
-		this.player.currentAnimation.update(dt);
-	}
+    update(dt) {
+        this.applyGravity(dt);
+        this.updatePosition(dt);
+        this.player.currentAnimation.update(dt);
+
+    }
 
 	/**
 	 * Renders the player on the canvas.

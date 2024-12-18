@@ -1,6 +1,7 @@
 import { CameraSettings } from '../CameraConfig.js';
 import { PlayerConfig } from '../PlayerConfig.js';
 import Vector from '../../lib/Vector.js';
+import Tile from '../../src/objects/Tile.js'; // Import the Tile object
 
 /**
  * Represents a camera that follows the player in a 2D game world.
@@ -62,73 +63,86 @@ export default class Camera {
 	 */
 	update(dt) {
 		// Calculate the center position of the player
-		const playerCenter = new Vector(
-			this.player.position.x + this.player.dimensions.x / 2,
-			this.player.position.y + this.player.dimensions.y / 2
-		);
+		// const playerCenter = new Vector(
+		// 	this.player.position.x + this.player.dimensions.x / 2,
+		// 	this.player.position.y + this.player.dimensions.y / 2
+		// );
 
-
-		let currentDirectionX = 0;
-		let isMoving = false;
-
-		// Determine if the player is moving and in which direction
-		if (Math.abs(this.player.velocity.x) > 0.1) {
-			currentDirectionX = this.player.velocity.x > 0 ? 1 : -1;
-			isMoving = true;
+		var playerFeetY = 1920 - (this.player.position.y) - 10;
+		if (playerFeetY < 0) {
+			playerFeetY = 0;
 		}
 
-		// Calculate the player's speed ratio (current speed / max speed)
-		const playerSpeedX = Math.abs(this.player.velocity.x);
-		const maxSpeedX = PlayerConfig.maxSpeed;
-		const speedRatioX = Math.min(playerSpeedX / maxSpeedX, 1);
+		let level = Math.floor(playerFeetY / 320);
+		this.position.y = 1920 - 320*(level + 1);
 
-		// Calculate target horizontal lookahead based on player's movement
-		let targetLookaheadX = isMoving
-			? CameraSettings.lookahead * speedRatioX * currentDirectionX
-			: 0;
 
-		// Update lastGroundedY when player lands
-		if (this.player.isOnGround) {
-			this.lastGroundedY = playerCenter.y;
-		}
 
+	
+		// let currentDirectionX = 0;
+		// let isMoving = false;
+	
+		// // Determine if the player is moving and in which direction
+		// if (Math.abs(this.player.velocity.x) > 0.1) {
+		// 	currentDirectionX = this.player.velocity.x > 0 ? 1 : -1;
+		// 	isMoving = true;
+		// }
+	
+		// // Calculate the player's speed ratio (current speed / max speed)
+		// const playerSpeedX = Math.abs(this.player.velocity.x);
+		// const maxSpeedX = PlayerConfig.maxSpeed;
+		// const speedRatioX = Math.min(playerSpeedX / maxSpeedX, 1);
+	
+		// // Calculate target horizontal lookahead based on player's movement
+		// let targetLookaheadX = isMoving
+		// 	? CameraSettings.lookahead * speedRatioX * currentDirectionX
+		// 	: 0;
+	
+		// // Check if player landed and update grounded position
+		// const groundedThreshold = 10; // Minimum Y change to update camera
+		// if (this.player.isOnGround) {
+		// 	if (Math.abs(playerCenter.y - this.lastGroundedY) > groundedThreshold) {
+		// 		this.lastGroundedY = playerCenter.y;
+		// 	}
+		// }
+	
 		// Calculate vertical camera adjustment
-		let verticalAdjustment = 0;
-		if (
-			Math.abs(playerCenter.y - this.lastGroundedY) >
-			this.verticalDeadzone
-		) {
-			verticalAdjustment = playerCenter.y - this.lastGroundedY;
-		}
-
-		// Calculate target camera position
-		const target = new Vector(
-			playerCenter.x + targetLookaheadX - this.center.x,
-			this.lastGroundedY +
-				verticalAdjustment +
-				this.targetLookaheadY -
-				this.center.y
-		);
-
-		if (CameraSettings.damping > 0) {
-			// Use exponential smoothing for camera movement if damping is enabled
-			const smoothFactor = 1 - Math.exp(-CameraSettings.damping * dt);
-			this.position.x += (target.x - this.position.x) * smoothFactor;
-			this.position.y += (target.y - this.position.y) * smoothFactor;
-
-			// Apply smoothing to lookahead
-			this.lookahead.x +=
-				(targetLookaheadX - this.lookahead.x) * smoothFactor;
-			this.lookahead.y +=
-				(this.targetLookaheadY - this.lookahead.y) * smoothFactor;
-		} else {
-			// Snap to target positions if damping is zero (instant camera movement)
-			this.position.x = target.x;
-			this.position.y = target.y;
-			this.lookahead.x = targetLookaheadX;
-			this.lookahead.y = this.targetLookaheadY;
-		}
-
+		// let verticalAdjustment = 0;
+		// if (
+		// 	Math.abs(playerCenter.y - this.lastGroundedY) >
+		// 	this.verticalDeadzone
+		// ) {
+		// 	verticalAdjustment = playerCenter.y - this.lastGroundedY;
+		// }
+	
+		// // Calculate target camera position
+		// const target = new Vector(
+		// 	playerCenter.x + targetLookaheadX - this.center.x,
+		// 	this.lastGroundedY +
+		// 		verticalAdjustment +
+		// 		this.targetLookaheadY -
+		// 		this.center.y
+		// );
+	
+		// if (CameraSettings.damping > 0) {
+		// 	// Use exponential smoothing for camera movement if damping is enabled
+		// 	const smoothFactor = 1 - Math.exp(-CameraSettings.damping * dt);
+		// 	this.position.x += (target.x - this.position.x) * smoothFactor;
+		// 	this.position.y += (target.y - this.position.y) * smoothFactor;
+	
+		// 	// Apply smoothing to lookahead
+		// 	this.lookahead.x +=
+		// 		(targetLookaheadX - this.lookahead.x) * smoothFactor;
+		// 	this.lookahead.y +=
+		// 		(this.targetLookaheadY - this.lookahead.y) * smoothFactor;
+		// } else {
+		// 	// Snap to target positions if damping is zero (instant camera movement)
+		// 	this.position.x = target.x;
+		// 	this.position.y = target.y;
+		// 	this.lookahead.x = targetLookaheadX;
+		// 	this.lookahead.y = this.targetLookaheadY;
+		// }
+	
 		// Ensure camera stays within world bounds
 		this.position.x = Math.max(
 			0,
@@ -138,12 +152,12 @@ export default class Camera {
 			0,
 			Math.min(this.worldHeight - this.viewportHeight, this.position.y)
 		);
-
+	
 		// Round camera position to prevent sub-pixel rendering
 		this.position.x = Math.round(this.position.x);
 		this.position.y = Math.round(this.position.y);
-
 	}
+	
 
 	/**
 	 * Applies the camera transform to the rendering context.

@@ -27,7 +27,7 @@ export default class PlayerIdlingState extends PlayerState {
 			this.player.velocity.x = 0;
 		this.player.velocity.y = 100;
 		this.player.currentAnimation = this.player.animations.idle;
-
+		this.player.isBouncing = false
 	}
 
 	/**
@@ -37,6 +37,11 @@ export default class PlayerIdlingState extends PlayerState {
 	update(dt) {
 		super.update(dt);
 		this.handleInput();
+
+		if(!this.player.isSliding){
+			this.player.velocity.x = 0
+		}
+
 		this.handleSliding()
 	}
 

@@ -3,6 +3,7 @@ import ImageName from '../enums/ImageName.js';
 import Tile from '../objects/Tile.js';
 import Layer from './Layer.js';
 import { images } from '../globals.js';
+import Bird from '../entities/Enemy/Bird.js';
 
 /**
  * Represents the game map, including layers, blocks, and entities.
@@ -36,15 +37,33 @@ export default class Map {
 			(layerData) => new Layer(layerData, sprites)
 		);
 		this.foregroundLayer = this.layers[Map.FOREGROUND_LAYER];
+
+		this.entities = []; // Store all spawned entities
+   		this.spawnEntities();
+
 	}
 
+	spawnEntities() {
+		this.layers.forEach((layer) => {
+			layer.entitySpawnPoints.forEach(({ x, y }) => {
+				const bird = new Bird(
+					x * this.tileSize,
+					y * this.tileSize,
+					32,
+					19,
+					this
+				);
+				this.entities.push(bird);
+			});
+		});
+	}
 
 	/**
 	 * Updates all entities in the map.
 	 * @param {number} dt - The time passed since the last update.
 	 */
 	update(dt) {
-
+		this.entities.forEach((entity) => entity.update(dt));
 	}
 
 	/**
@@ -54,6 +73,9 @@ export default class Map {
 	render(context) {
 		
 		this.foregroundLayer.render();
+
+		this.entities.forEach((entity) => entity.render(context));
+
 	}
 
 	/**
@@ -75,7 +97,7 @@ export default class Map {
 	 */
 	isSolidTileAt(col, row) {
 		const tile = this.foregroundLayer.getTile(col, row);
-		return tile !== null && tile.id !== -1;
+		return tile !== null && tile.id !== -1 ;
 	}
 
 	isStickyTileAt(col, row) {

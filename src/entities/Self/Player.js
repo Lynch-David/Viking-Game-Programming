@@ -16,6 +16,7 @@ import Animation from "../../../lib/Animation.js";
 import PlayerLandingState from './PlayerLandingState.js';
 import PlayerCrouchingState from './PlayerCrouchingState.js';
 import Hitbox from '../../../lib/Hitbox.js';
+import SoundName from '../../enums/SoundName.js';
 
 /**
  * Represents the player character in the game.
@@ -47,7 +48,10 @@ export default class Player extends GameEntity {
 		this.isSliding = false;
 		this.isBouncing = false;
 
-		this.fallHeight = 0
+		this.fallHeight = this.position.y
+		this.hopCount = 0; // Initialize hop count
+		this.elapsedTime = 0; // Initialize the timer
+
 
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
@@ -107,8 +111,22 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
+		this.checkBirdCollision();
 		this.stateMachine.update(dt);
+
+		// this.elapsedTime += dt; // Update the timer
+		// console.log("Player: " + this.elapsedTime);
+
+		console.log(`x: ${this.position.x} y: ${this.position.y}` )
 	}
+
+	checkBirdCollision = () => {
+		this.map.entities.forEach((bird) => {
+			if (this.collidesWith(bird)) {
+				bird.onCollideWithPlayer(this);
+			}
+		});
+	};
 
 	/**
 	 * Renders the player.
@@ -117,20 +135,29 @@ export default class Player extends GameEntity {
 	render(context) {
 		this.stateMachine.render(context);
 
-		this.hitbox.render(context)
+		// this.hitbox.render(context)
 	}
 
 	boost() {
 		let lastDirection = 0
 
-		if (!this.facingRight) {
+		if (this.velocity.x < 0) {
 			lastDirection = -1;
-		} else if (this.facingRight) {
+		} else if (this.velocity.x > 0) {
 			lastDirection = 1;
 		}
 		const chargedHeight = (this.position.y - this.fallHeight) * -4
-		console.log(chargedHeight)
+		// console.log(this.fallHeight)
 		this.position.y -= 10
-		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, lastDirection });
+		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: lastDirection });
 	}
+
+	// Method to increment hop count
+    incrementHopCount() {
+        this.hopCount++;
+    }
+
+	fall(){
+		this.stateMachine.change(PlayerStateName.Falling);
+		}	
 }

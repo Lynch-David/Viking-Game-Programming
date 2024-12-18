@@ -26,6 +26,7 @@ import GameOverState from './states/GameOverState.js';
 import VictoryState from './states/VictoryState.js';
 import TitleScreenState from './states/TitleScreenState.js';
 import TransitionState from './states/TransitionState.js';
+import StatsState from './states/StatsState.js';
 import PauseState from './states/PauseState.js';
 import SoundName from './enums/SoundName.js';
 
@@ -60,6 +61,8 @@ stateMachine.add(GameStateName.Victory, new VictoryState());
 stateMachine.add(GameStateName.Transition, new TransitionState());
 stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
 stateMachine.add(GameStateName.Pause, new PauseState());
+stateMachine.add(GameStateName.Victory, new VictoryState());
+stateMachine.add(GameStateName.Stats, new StatsState());
 
 stateMachine.change(GameStateName.TitleScreen);
 
