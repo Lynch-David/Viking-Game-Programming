@@ -79,11 +79,11 @@ export default class PlayState extends State {
         const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
         this.elapsedTime = savedTime || 0;
 
-        console.log("extracted: " + savedTime)
+        // console.log("extracted: " + savedTime)
     }
 
     savePlayerState() {
-        console.log(this.elapsedTime)
+        // console.log(this.elapsedTime)
         const playerState = {
             x: this.player.position.x,
             y: this.player.position.y,
@@ -93,14 +93,14 @@ export default class PlayState extends State {
             // elapsedTime: this.elapsed2, // Save actual elapsed time
             state: this.player.stateMachine.currentState.name,
         };
-        console.log(`const: ${playerState.z}`)
+        // console.log(`const: ${playerState.z}`)
         localStorage.setItem('playerState', JSON.stringify(playerState));
         localStorage.setItem('elapsedTime', this.player.elapsedTime);
     }
 
     update(dt) {
         this.elapsedTime += dt; // Update the timer
-        console.log("The Elapsed time: " + this.elapsedTime.toFixed(0));
+        // console.log("The Elapsed time: " + this.elapsedTime.toFixed(0));
         this.elapsed2 = this.elapsedTime.toFixed(0)
         this.player.elapsedTime = this.elapsed2
         // console.log(this.elapsed2)
@@ -110,11 +110,42 @@ export default class PlayState extends State {
             stateMachine.change(GameStateName.Pause, { playState: this, player: this.player });
         }
 
-        if (input.isKeyPressed(Input.KEYS.O)) {
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_0)) {
+            sounds.play(SoundName.MenuBlip);
+            this.player.position.y = 1800;
+            this.player.position.x = 106;
+        }
+
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_1)) {
+            sounds.play(SoundName.MenuBlip);
+            this.player.position.y = 1474;
+            this.player.position.x = 106;
+        }
+
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_2)) {
+            sounds.play(SoundName.MenuBlip);
+            this.player.position.y = 1234;
+            this.player.position.x = 156;
+        }
+
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_3)) {
+            sounds.play(SoundName.MenuBlip);
+            this.player.position.y = 882;
+            this.player.position.x = 168;
+        }
+
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_4)) {
+            sounds.play(SoundName.MenuBlip);
+            this.player.position.y = 546;
+            this.player.position.x = 187;
+        }
+
+        if (input.isKeyPressed(Input.KEYS.NUMPAD_5)) {
             sounds.play(SoundName.MenuBlip);
             this.player.position.y = 80;
             this.player.position.x = 170;
         }
+
 
         if (this.player.position.y < 20) {
             console.log("Player has reached the top of the map!");
@@ -129,8 +160,8 @@ export default class PlayState extends State {
 
     render(context) {
         
-        console.log(this.player.position.x, this.player.position.y)
-        console.log(this.messagePosition.x, this.messagePosition.y)
+        // console.log(this.player.position.x, this.player.position.y)
+        // console.log(this.messagePosition.x, this.messagePosition.y)
 
         this.camera.applyTransform(context);
         this.renderParallaxBackground();

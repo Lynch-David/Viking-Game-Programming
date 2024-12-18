@@ -152,6 +152,9 @@ export default class VictoryState extends State {
         if (this.time < savedFastestTime) {
             localStorage.setItem('fastestTime', JSON.stringify(this.time));
         }
+        // if (1==1) {
+        //     localStorage.setItem('fastestTime', JSON.stringify(Infinity));
+        // }
     }
 
     render() {

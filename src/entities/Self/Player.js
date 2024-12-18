@@ -116,6 +116,8 @@ export default class Player extends GameEntity {
 
 		// this.elapsedTime += dt; // Update the timer
 		// console.log("Player: " + this.elapsedTime);
+
+		console.log(`x: ${this.position.x} y: ${this.position.y}` )
 	}
 
 	checkBirdCollision = () => {
@@ -145,7 +147,7 @@ export default class Player extends GameEntity {
 			lastDirection = 1;
 		}
 		const chargedHeight = (this.position.y - this.fallHeight) * -4
-		console.log(this.fallHeight)
+		// console.log(this.fallHeight)
 		this.position.y -= 10
 		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, direction: lastDirection });
 	}

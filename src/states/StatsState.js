@@ -195,13 +195,23 @@ export default class StatsState extends State {
       CANVAS_HEIGHT / 2 + 55
     );
 
-    const fastestMinutes = Math.floor(this.stats.fastestTime / 60);
-    const fastestSeconds = Math.floor(this.stats.fastestTime % 60);
-    context.fillText(
-      `Record: ${fastestMinutes}:${fastestSeconds < 10 ? '0' : ''}${fastestSeconds}`,
-      CANVAS_WIDTH / 4,
-      CANVAS_HEIGHT / 2 + 80
-    );
+    if (this.stats.fastestTime == Infinity) {
+      context.fillText(
+        `Record: N/A`,
+        CANVAS_WIDTH / 4,
+        CANVAS_HEIGHT / 2 + 80
+      );
+    }
+    else
+    {
+      const fastestMinutes = Math.floor(this.stats.fastestTime / 60);
+      const fastestSeconds = Math.floor(this.stats.fastestTime % 60);
+      context.fillText(
+        `Record: ${fastestMinutes}:${fastestSeconds < 10 ? '0' : ''}${fastestSeconds}`,
+        CANVAS_WIDTH / 4,
+        CANVAS_HEIGHT / 2 + 80
+      );
+    }
 
      // Render the "Press Enter to Continue" text
     context.font = "7px Dogica";
