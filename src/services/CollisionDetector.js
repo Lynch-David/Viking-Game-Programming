@@ -25,6 +25,7 @@ export default class CollisionDetector {
 	 * @param {GameEntity} entity - The entity to check collisions for.
 	 */
 	checkHorizontalCollisions(entity) {
+		
 		const tileSize = this.map.tileSize;
 		const tileLeft = Math.floor(entity.position.x / tileSize);
 		const tileRight = Math.floor(
@@ -34,7 +35,7 @@ export default class CollisionDetector {
 		const tileBottom = Math.floor(
 			(entity.position.y + entity.dimensions.y - 1) / tileSize
 		);
-
+		
 		if (entity.velocity.x > 0) {
 			// Moving right
 			if (this.isSolidTileInColumn(tileRight, tileTop, tileBottom)) {

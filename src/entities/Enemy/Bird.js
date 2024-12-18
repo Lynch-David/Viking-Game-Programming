@@ -5,8 +5,9 @@ import Map from '../../services/Map.js';
 import ImageName from '../../enums/ImageName.js';
 import { birdSpriteConfig, loadPlayerSprites } from '../../SpriteConfig.js';
 import GameEntity from '../GameEntity.js';
-import { images } from '../../globals.js';
+import { CANVAS_HEIGHT, CANVAS_WIDTH, images } from '../../globals.js';
 import Hitbox from '../../../lib/Hitbox.js';
+import CollisionDetector from '../../services/CollisionDetector.js';
 
 /**
  * Represents a Goomba enemy in the game.
@@ -42,7 +43,7 @@ export default class Bird extends GameEntity {
 			birdSpriteConfig
 		);
 
-		this.currentAnimation = new Animation(this.sprites.fly);
+		this.currentAnimation = new Animation(this.sprites.fly, 0.5);
 	}
 
 	/**
@@ -51,7 +52,13 @@ export default class Bird extends GameEntity {
 	 */
 	update(dt) {
 		this.updateMovement(dt);
-		// this.currentAnimation.update(dt);
+		this.hitbox = new Hitbox(
+			this.position.x + this.hitboxOffsets.position.x,
+			this.position.y + this.hitboxOffsets.position.y,
+			this.dimensions.x + this.hitboxOffsets.dimensions.x,
+			this.dimensions.y + this.hitboxOffsets.dimensions.y,
+		);
+		this.currentAnimation.update(dt);
 	}
 
 	/**
@@ -60,7 +67,7 @@ export default class Bird extends GameEntity {
 	 */
 	updateMovement(dt) {
 		// Move horizontally
-		this.position.x += this.direction * this.speed * dt;
+		this.position.x -= this.direction * this.speed * dt;
 
 		// Check for collisions
 		this.checkCollisions();
@@ -72,12 +79,14 @@ export default class Bird extends GameEntity {
 	checkCollisions() {
 		// Check ground collision
 		this.position.y = Math.floor(this.position.y / Tile.SIZE) * Tile.SIZE;
-
+	
 		// Check wall collision
-		if (this.isCollidingWithWall()) {
-			this.direction *= -1; // Reverse direction
+		if (this.isCollidingWithWall() || this.position.x == 0 || this.position.x + this.dimensions.x == CANVAS_WIDTH) {			
+			// Reverse direction
+			this.direction *= -1; // Reverse direction when colliding with the wall
 		}
 	}
+	
 
 
 	/**
@@ -106,6 +115,7 @@ export default class Bird extends GameEntity {
 	 */
 	render(context) {
 		context.save();
+
 		this.hitbox.render(context)
 
 		if (this.direction === 1) {
@@ -126,6 +136,9 @@ export default class Bird extends GameEntity {
 		context.restore();
 	}
 	
+	onCollideWithPlayer(player) {
+		player.velocity.y *= -1
+	}
 
 
 }

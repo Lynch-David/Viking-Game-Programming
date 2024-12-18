@@ -107,9 +107,17 @@ export default class Player extends GameEntity {
 	 */
 	update(dt) {
 		super.update()
-
+		this.checkBirdCollision();
 		this.stateMachine.update(dt);
 	}
+
+	checkBirdCollision = () => {
+		this.map.entities.forEach((bird) => {
+			if (this.collidesWith(bird)) {
+				bird.onCollideWithPlayer(this);
+			}
+		});
+	};
 
 	/**
 	 * Renders the player.
