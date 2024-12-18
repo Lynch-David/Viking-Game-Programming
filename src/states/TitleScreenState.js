@@ -30,7 +30,8 @@ export default class TitleScreenState extends State {
     }
 
     enter() {
-        // sounds.play(SoundName.TitleMusic);
+        localStorage.getItem('playerState');
+        
     }
 
     exit() {

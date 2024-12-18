@@ -50,6 +50,7 @@ export default class PlayState extends State {
         if (savedState) {
             this.player.position.x = savedState.x;
             this.player.position.y = savedState.y;
+            this.player.hopCount = savedState.hopCount || 0; // Load hop count
             this.player.stateMachine.change(PlayerStateName.Idling); // Reset to idling state
         }
     }

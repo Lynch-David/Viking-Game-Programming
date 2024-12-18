@@ -51,6 +51,9 @@ export default class PlayerJumpingState extends PlayerState {
         this.player.velocity.y = 0;
         this.player.currentAnimation = this.player.animations.jump;
         sounds.play(SoundName.Jump);
+
+        // Increment hop count
+        this.player.incrementHopCount();
     }
 
     /**

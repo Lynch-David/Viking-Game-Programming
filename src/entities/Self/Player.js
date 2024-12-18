@@ -48,6 +48,7 @@ export default class Player extends GameEntity {
 		this.isBouncing = false;
 
 		this.fallHeight = 0
+		this.hopCount = 0; // Initialize hop count
 
 		this.sprites = loadPlayerSprites(
 			images.get(ImageName.Player),
@@ -134,4 +135,9 @@ export default class Player extends GameEntity {
 		this.position.y -= 10
 		this.stateMachine.change(PlayerStateName.Jumping, { chargedHeight, lastDirection });
 	}
+
+	// Method to increment hop count
+    incrementHopCount() {
+        this.hopCount++;
+    }
 }

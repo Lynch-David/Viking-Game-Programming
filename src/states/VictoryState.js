@@ -53,7 +53,7 @@ export default class VictoryState extends State {
 
     async fadeInSubtext() {
         console.log('Starting fadeInSubtext tween');
-        await timer.tweenAsync(this.subtextAlpha, { alpha: 1 }, 1, Easing.easeInOutQuad);
+        await timer.tweenAsync(this.subtextAlpha, { alpha: 1 }, 2, Easing.easeInOutQuad);
         console.log('Completed fadeInSubtext tween');
     }
 

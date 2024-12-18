@@ -35,6 +35,7 @@ export default class PauseState extends State {
         const playerState = {
             x: player.position.x,
             y: player.position.y,
+            hopCount: this.player.hopCount, // Save hop count
             state: player.stateMachine.currentState.name,
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));
