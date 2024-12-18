@@ -117,7 +117,6 @@ export default class Player extends GameEntity {
 	checkBirdCollision = () => {
 		this.map.entities.forEach((bird) => {
 			if (this.collidesWith(bird)) {
-				sounds.play(SoundName.Caw);
 				bird.onCollideWithPlayer(this);
 			}
 		});
@@ -151,4 +150,8 @@ export default class Player extends GameEntity {
     incrementHopCount() {
         this.hopCount++;
     }
+
+	fall(){
+		this.stateMachine.change(PlayerStateName.Falling);
+		}	
 }
