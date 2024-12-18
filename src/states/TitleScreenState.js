@@ -141,25 +141,25 @@ export default class TitleScreenState extends State {
 
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 5.4, CANVAS_HEIGHT / 2.4, 12, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
         context.fillStyle = '#47474f';
         context.fill();
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();
         
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.39, 12, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
         context.fillStyle = '#47474f';
         context.fill();
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.2, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();
@@ -174,19 +174,19 @@ export default class TitleScreenState extends State {
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();
         
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.39, 12, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
         context.fillStyle = '#47474f';
         context.fill();
         context.closePath();
         // Render a circle
         context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.2, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
         context.fillStyle = 'black';
         context.fill();
         context.closePath();

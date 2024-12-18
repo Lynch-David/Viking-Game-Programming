@@ -96,9 +96,9 @@ export default class VictoryState extends State {
         this.wrapText(context, 'You have reached Valhalla, now enjoy your sweet booze and endless treasure.', CANVAS_WIDTH / 2, this.textPosition.y + 60, CANVAS_WIDTH - 40, 25);
 
         // Render the "Press Enter to Continue" text
-        context.font = '12px Alagard';
+        context.font = '7px Dogica';
         context.fillStyle = `rgba(255, 255, 255, ${this.continueTextAlpha.alpha})`;
-        context.fillText('Press Enter to Continue...', CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2 + 150);
+        context.fillText('Press ENTER to Continue...', CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2 + 150);
     }
 
     wrapText(context, text, x, y, maxWidth, lineHeight) {
