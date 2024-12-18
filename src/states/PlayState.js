@@ -93,8 +93,8 @@ export default class PlayState extends State {
 
         if (input.isKeyPressed(Input.KEYS.O)) {
             sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 130;
-            this.player.position.x = 30;
+            this.player.position.y = 80;
+            this.player.position.x = 170;
         }
 
         if (this.player.position.y < 20) {

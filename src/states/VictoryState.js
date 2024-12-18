@@ -94,6 +94,7 @@ export default class VictoryState extends State {
             state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));
+        localStorage.setItem('gameCompleted', 'true');
     }
 
     render() {

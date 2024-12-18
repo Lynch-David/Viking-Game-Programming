@@ -140,6 +140,7 @@ export default class TitleScreenState extends State {
   checkGameCompletion() {
     console.log("Checking game completion");
     const gameCompleted = localStorage.getItem("gameCompleted");
+    console.log("Game completed: " + gameCompleted);
     if (gameCompleted === "true") {
         console.log("Game completed");
         this.menuOptions[0] = "---";
