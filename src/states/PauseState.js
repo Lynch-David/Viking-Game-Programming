@@ -64,6 +64,9 @@ export default class PauseState extends State {
     }
 
     async update(dt) {
+
+    
+
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             switch (this.menuOptions[this.currentSelection]) {
                 case 'Resume':

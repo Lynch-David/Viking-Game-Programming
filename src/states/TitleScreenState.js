@@ -23,6 +23,9 @@ export default class TitleScreenState extends State {
         this.targetColor = { r: 0, g: 0, b: 255 }; // Target color (blue)
         this.colorTransitionSpeed = 0.01; // Speed of color transition
 
+        this.height = 0;
+        this.hops = 0;
+
         // Set up a timer to toggle the target color
         setInterval(() => {
             this.targetColor = this.targetColor.r === 0 ? { r: 255, g: 0, b: 0 } : { r: 0, g: 0, b: 255 };
@@ -30,8 +33,7 @@ export default class TitleScreenState extends State {
     }
 
     enter() {
-        localStorage.getItem('playerState');
-        
+        this.loadPlayerState();
     }
 
     exit() {
@@ -96,6 +98,15 @@ export default class TitleScreenState extends State {
         }
     }
 
+    loadPlayerState() {
+        const savedState = JSON.parse(localStorage.getItem('playerState'));
+        if (savedState) {
+            console.log('Loading player state');
+            this.height = savedState.y;
+            this.hops = savedState.hopCount || 0; // Load hop count
+        }
+    }
+
     resetPlayerState() {
         const playerState = {
             x: 106,
@@ -122,11 +133,63 @@ export default class TitleScreenState extends State {
         context.lineWidth = 2;
         context.strokeRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 12, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 4);
 
-        context.fillStyle = '#121212';
+        context.fillStyle = '#121212'; // Dark grey
         context.fillRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2.5);
 
-        context.strokeStyle = '#47474f';
+        context.strokeStyle = '#47474f'; // Dark grey
         context.strokeRect(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, CANVAS_WIDTH / 1.5, CANVAS_HEIGHT / 2.5);
+
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 5.4, CANVAS_HEIGHT / 2.4, 12, 0, Math.PI * 2);
+        context.fillStyle = '#47474f';
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = 'black';
+        context.fill();
+        context.closePath();
+        
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.39, 12, 0, Math.PI * 2);
+        context.fillStyle = '#47474f';
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.2, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = 'black';
+        context.fill();
+        context.closePath();
+
+
+
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+        context.fillStyle = '#47474f';
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 6, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = 'black';
+        context.fill();
+        context.closePath();
+        
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.39, 12, 0, Math.PI * 2);
+        context.fillStyle = '#47474f';
+        context.fill();
+        context.closePath();
+        // Render a circle
+        context.beginPath();
+        context.arc(CANVAS_WIDTH / 1.2, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+        context.fillStyle = 'black';
+        context.fill();
+        context.closePath();
 
         // Smoothly transition the title color
         this.titleColor = this.lerpColor(this.titleColor, this.targetColor, this.colorTransitionSpeed);
@@ -142,7 +205,7 @@ export default class TitleScreenState extends State {
 
         // Render shadow effect by duplicating the text
         this.menuOptions.forEach((option, index) => {
-            const x = CANVAS_WIDTH / 5;
+            const x = CANVAS_WIDTH / 4; // Shifted to the right
             const y = CANVAS_HEIGHT / 2 + index * 40;
 
             // Render shadow
@@ -167,5 +230,25 @@ export default class TitleScreenState extends State {
                 context.fillText(option, x, y);
             }
         });
+
+        // Render the small rectangular box near the bottom
+        const boxWidth = 170;
+        const boxHeight = 35;
+        const boxX = (CANVAS_WIDTH - boxWidth) / 2;
+        const boxY = CANVAS_HEIGHT - boxHeight - 20;
+
+        context.fillStyle = '#121212'; // Dark grey
+        context.fillRect(boxX, boxY, boxWidth, boxHeight);
+
+        context.strokeStyle = '#47474f'; // Dark grey
+        context.strokeRect(boxX, boxY, boxWidth, boxHeight);
+
+        context.font = '15px Alagard';
+        context.fillStyle = 'white';
+        context.textAlign = 'left';
+        context.fillText(`Height: ${1920 - Math.floor(this.height + 46)}`, boxX + 15, boxY + 23);
+
+        context.textAlign = 'right';
+        context.fillText(`Hops: ${Math.floor(this.hops)}`, boxX + boxWidth - 18, boxY + 23);
     }
 }

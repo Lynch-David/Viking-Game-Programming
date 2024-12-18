@@ -56,6 +56,10 @@ export default class PlayState extends State {
     }
 
     update(dt) {
+
+        console.log(this.player.hopCount);
+
+        
         if (input.isKeyPressed(Input.KEYS.P)) {
             sounds.play(SoundName.MenuBlip);
             stateMachine.change(GameStateName.Pause, { playState: this, player: this.player });
