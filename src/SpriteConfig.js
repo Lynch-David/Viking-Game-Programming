@@ -30,10 +30,10 @@ export const spriteConfig = {
 
 export const birdSpriteConfig = {
 	fly: [
-		{x: 0, y: 144, width: 48, height: 48},
-		{x: 48, y: 144, width: 48, height: 48},
-		{x: 96, y: 144, width: 48, height: 48},
-		{x: 144, y: 144, width: 48, height: 48},
+		{x: 6, y: 112, width: 34, height: 16},
+		{x: 55, y: 111, width: 34, height: 16},
+		{x: 102, y: 107, width: 34, height: 21},
+		{x: 155, y: 111, width: 29, height: 19},
 	]
 };
 
