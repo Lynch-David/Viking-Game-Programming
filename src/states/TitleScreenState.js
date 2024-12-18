@@ -109,8 +109,9 @@ export default class TitleScreenState extends State {
 
     resetPlayerState() {
         const playerState = {
-            x: 106,
-            y: 1800,
+            x: 114,
+            y: 1874,
+            hopCount: 0, // Save hop count            
             state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));

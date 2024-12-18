@@ -65,17 +65,17 @@ export default class PauseState extends State {
 
     async update(dt) {
 
-    
-
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             switch (this.menuOptions[this.currentSelection]) {
                 case 'Resume':
                     console.log('Resuming game');
+                    sounds.play(SoundName.MenuBlip);
                     await this.fadeOutText();
                     stateMachine.change(GameStateName.Play);
                     break;
                 case 'Save & Exit':
                     console.log('Saving and exiting game');
+                    sounds.play(SoundName.MenuBlip);
                     stateMachine.change(GameStateName.TitleScreen);
                     break;
             }

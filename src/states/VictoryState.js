@@ -20,6 +20,7 @@ export default class VictoryState extends State {
     }
 
     async enter(parameters) {
+		this.resetPlayerState(); // Reset the player state
         this.reset(); 
         this.playState = parameters.playState; // Assign the playState from parameters
         this.player = parameters.player; // Assign the player from parameters
@@ -78,6 +79,16 @@ export default class VictoryState extends State {
 			sounds.play(SoundName.MenuBlip);
             stateMachine.change(GameStateName.TitleScreen);
         }
+    }
+
+    resetPlayerState() {
+        const playerState = {
+            x: 114,
+            y: 1874,
+            hopCount: 0, // Save hop count            
+            state: 'idling',
+        };
+        localStorage.setItem('playerState', JSON.stringify(playerState));
     }
 
     render() {
