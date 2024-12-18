@@ -120,7 +120,7 @@ export default class Player extends GameEntity {
 	render(context) {
 		this.stateMachine.render(context);
 
-		this.hitbox.render(context)
+		// this.hitbox.render(context)
 	}
 
 	boost() {
