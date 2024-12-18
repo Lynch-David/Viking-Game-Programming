@@ -28,7 +28,7 @@ export default class PlayerFallingState extends PlayerState {
     
     exit()
     {
-        this.player.fallHeight = 0
+        this.player.fallHeight = this.player.position.y
     }
     /**
      * Updates the falling state.

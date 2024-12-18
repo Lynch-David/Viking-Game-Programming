@@ -9,7 +9,7 @@ import Map from '../services/Map.js';
  * Represents a Goomba enemy in the game.
  * @extends Entity
  */
-export default class Goomba extends Entity {
+export default class Bird extends Entity {
 	/**
 	 * Creates a new Goomba instance.
 	 * @param {number} x - The initial x-coordinate.
@@ -25,8 +25,12 @@ export default class Goomba extends Entity {
 		this.speed = 30; // Pixels per second
 		this.direction = 1; // 1 for right, -1 for left
 
-		// Create walk animation
-		this.walkAnimation = new Animation(
+		this.sprites = loadPlayerSprites(
+			images.get(ImageName.Player),
+			spriteConfig
+		);
+
+		this.currentAnimation = new Animation(
 			enemySpriteConfig.goomba.map(
 				(frame) =>
 					new Sprite(
@@ -39,8 +43,6 @@ export default class Goomba extends Entity {
 			),
 			0.2 // Animation interval
 		);
-
-		this.currentAnimation = this.walkAnimation;
 	}
 
 	/**
