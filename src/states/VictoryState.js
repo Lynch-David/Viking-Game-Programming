@@ -29,8 +29,6 @@ export default class VictoryState extends State {
         
         this.reset(); 
         this.loadPlayerState(); // Load the player state
-        console.log("HOPS: " + this.hops)
-        console.log("TIME: " + this.time)
 
 
         this.playState = parameters.playState; // Assign the playState from parameters
@@ -96,7 +94,6 @@ export default class VictoryState extends State {
     loadPlayerState() {
         const savedState = JSON.parse(localStorage.getItem("playerState"));
         if (savedState) {
-          console.log("Loading player state");
           this.hops = savedState.hopCount || 0; // Load hop count
         }
         const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));

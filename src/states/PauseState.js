@@ -17,8 +17,6 @@ export default class PauseState extends State {
     async enter(parameters) {
         this.playState = parameters.playState; // Assign the playState from parameters
         this.player = parameters.player; // Assign the player from parameters
-        // timer.pause(); // Pause the timer when entering the pause state
-        // console.log('Entering PauseState, starting fadeInText');
         await this.fadeInText(); // Tween in the text
     }
 
@@ -26,7 +24,6 @@ export default class PauseState extends State {
         if (this.player) {
             this.savePlayerState(this.player);
         }
-        // console.log('Exiting PauseState, starting fadeOutText');
         await this.fadeOutText(); // Tween out the text
         timer.resume(); // Resume the timer when exiting the pause state
     }
@@ -42,25 +39,11 @@ export default class PauseState extends State {
     }
 
     async fadeInText() {
-        // console.log('Starting fadeInText tween');
-        // await timer.tweenAsync(this.textAlpha, { alpha: 1 }, 0.5, Easing.easeOutQuad, (value) => {
-        //     console.log(`Text Alpha: ${value.alpha}`);
-        // });
-        await timer.tweenAsync(this.textPosition, { x: CANVAS_WIDTH / 2 }, 0.5, Easing.easeOutQuad, (value) => {
-            console.log(`Text Position X: ${value.x}`);
-        });
-        // console.log('Completed fadeInText tween');
+        await timer.tweenAsync(this.textPosition, { x: CANVAS_WIDTH / 2 }, 0.5, Easing.easeOutQuad);
     }
 
     async fadeOutText() {
-        // console.log('Starting fadeOutText tween');
-        // await timer.tweenAsync(this.textAlpha, { alpha: 0 }, 0.5, Easing.easeInQuad, (value) => {
-        //     console.log(`Text Alpha: ${value.alpha}`);
-        // });
-        await timer.tweenAsync(this.textPosition, { x: -CANVAS_WIDTH }, 0.5, Easing.easeInQuad, (value) => {
-            console.log(`Text Position X: ${value.x}`);
-        });
-        // console.log('Completed fadeOutText tween');
+        await timer.tweenAsync(this.textPosition, { x: -CANVAS_WIDTH }, 0.5, Easing.easeInQuad);
     }
 
     async update(dt) {
@@ -68,13 +51,11 @@ export default class PauseState extends State {
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
             switch (this.menuOptions[this.currentSelection]) {
                 case 'Resume':
-                    // console.log('Resuming game');
                     sounds.play(SoundName.MenuBlip);
                     await this.fadeOutText();
                     stateMachine.change(GameStateName.Play);
                     break;
                 case 'Save & Exit':
-                    // console.log('Saving and exiting game');
                     sounds.play(SoundName.MenuBlip);
                     stateMachine.change(GameStateName.TitleScreen);
                     break;
