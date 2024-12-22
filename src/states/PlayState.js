@@ -32,8 +32,8 @@ export default class PlayState extends State {
             canvas.height,
             this.map.width * Tile.SIZE,
             this.map.height * Tile.SIZE,
-            0, // initialCameraX
-            this.map.height * Tile.SIZE - canvas.height // initialCameraY
+            0, // Camera X
+            this.map.height * Tile.SIZE - canvas.height // Camera Y
         );
 
         this.backgroundImage = images.get(ImageName.Background);
@@ -50,7 +50,6 @@ export default class PlayState extends State {
     enter(parameters) {
         this.loadPlayerState();
         sounds.stop(SoundName.TitleMusic); // Ensure the music is stopped
-        // this.fadeIn();
 
         // Set the message position near the player's starting position
         this.messagePosition.x = 1920;
@@ -63,47 +62,34 @@ export default class PlayState extends State {
     }
 
     loadPlayerState() {
-        console.log("LOADING")
         const savedState = JSON.parse(localStorage.getItem('playerState'));
+
         if (savedState) {
-            // console.log("Loaded time: " + savedState.elapsedTime);
-            // console.log("player position: " + savedState.x)
             this.player.position.x = savedState.x;
             this.player.position.y = savedState.y;
-            // this.player.elapsedTime = savedState.z || 0; // Load elapsed time
-            this.player.hopCount = savedState.hopCount || 0; // Load hop count
-            // this.player.elapsedTime = savedState.elapsedTime || 0; // Load elapsed time
+            this.player.hopCount = savedState.hopCount || 0;
             this.player.stateMachine.change(PlayerStateName.Idling); // Reset to idling state
         }
 
         const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
         this.elapsedTime = savedTime || 0;
-
-        // console.log("extracted: " + savedTime)
     }
 
     savePlayerState() {
-        // console.log(this.elapsedTime)
         const playerState = {
             x: this.player.position.x,
             y: this.player.position.y,
-            // z: this.player.elapsedTime, // Save actual elapsed time,
             hopCount: this.player.hopCount, // Save hop count
-            // elapsedTime: this.player.elapsedTime, // Save actual elapsed time
-            // elapsedTime: this.elapsed2, // Save actual elapsed time
             state: this.player.stateMachine.currentState.name,
         };
-        // console.log(`const: ${playerState.z}`)
         localStorage.setItem('playerState', JSON.stringify(playerState));
         localStorage.setItem('elapsedTime', this.player.elapsedTime);
     }
 
     update(dt) {
         this.elapsedTime += dt; // Update the timer
-        // console.log("The Elapsed time: " + this.elapsedTime.toFixed(0));
         this.elapsed2 = this.elapsedTime.toFixed(0)
         this.player.elapsedTime = this.elapsed2
-        // console.log(this.elapsed2)
 
         if (input.isKeyPressed(Input.KEYS.P)) {
             sounds.play(SoundName.MenuBlip);
@@ -159,16 +145,13 @@ export default class PlayState extends State {
     }
 
     render(context) {
-        
-        // console.log(this.player.position.x, this.player.position.y)
-        // console.log(this.messagePosition.x, this.messagePosition.y)
-
         this.camera.applyTransform(context);
         this.renderParallaxBackground();
         this.map.render(context);
         this.player.render(context);
         this.camera.resetTransform(context);
         this.renderHeightScore(context);
+
         this.renderTimer(context); // Render the timer
 
 		var playerFeetY = 1920 - (this.player.position.y) - 10;
@@ -199,11 +182,6 @@ export default class PlayState extends State {
             }
         });
     }
-
-    // async fadeIn() {
-    //     // console.log('Starting fadeIn tween');
-    //      await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.5, Easing.easeInQuad);
-    // }
 
     renderHeightScore(context) {
         context.save();
