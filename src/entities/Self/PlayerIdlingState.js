@@ -22,11 +22,18 @@ export default class PlayerIdlingState extends PlayerState {
 	 */
 	enter() {
 		this.player.isOnGround = true;
+
+		// Makes the sprite smaller so that it fits the rest of our tile sizes better
 		this.player.dimensions.y = 40 * 0.75
-		if(!this.player.isSliding)
+
+		if(!this.player.isSliding){
 			this.player.velocity.x = 0;
+		}
+
 		this.player.velocity.y = 100;
 		this.player.currentAnimation = this.player.animations.idle;
+
+		// We dont want to bounce when idling, only falling or jumping states are allowed while bouncing
 		this.player.isBouncing = false
 	}
 
