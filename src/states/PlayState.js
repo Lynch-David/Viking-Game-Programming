@@ -96,41 +96,41 @@ export default class PlayState extends State {
             stateMachine.change(GameStateName.Pause, { playState: this, player: this.player });
         }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_0)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 1800;
-            this.player.position.x = 106;
-        }
+        // if (input.isKeyPressed(Input.KEYS.NUMPAD_0)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 1800;
+        //     this.player.position.x = 106;
+        // }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_1)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 1474;
-            this.player.position.x = 106;
-        }
+        // if (input.isKeyPressed(Input.KEYS.NUMPAD_1)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 1474;
+        //     this.player.position.x = 106;
+        // }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_2)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 1234;
-            this.player.position.x = 156;
-        }
+        // if (input.isKeyPressed(Input.KEYS.NUMPAD_2)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 1234;
+        //     this.player.position.x = 156;
+        // }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_3)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 882;
-            this.player.position.x = 168;
-        }
+        // if (input.isKeyPressed(Input.KEYS.NUMPAD_3)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 882;
+        //     this.player.position.x = 168;
+        // }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_4)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 546;
-            this.player.position.x = 187;
-        }
+        // if (input.isKeyPressed(Input.KEYS.NUMPAD_4)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 546;
+        //     this.player.position.x = 187;
+        // }
 
-        if (input.isKeyPressed(Input.KEYS.MINUS)) {
-            sounds.play(SoundName.MenuBlip);
-            this.player.position.y = 80;
-            this.player.position.x = 170;
-        }
+        // if (input.isKeyPressed(Input.KEYS.MINUS)) {
+        //     sounds.play(SoundName.MenuBlip);
+        //     this.player.position.y = 80;
+        //     this.player.position.x = 170;
+        // }
 
 
         if (this.player.position.y < 20) {
