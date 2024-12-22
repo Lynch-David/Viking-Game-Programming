@@ -79,7 +79,7 @@ export default class CollisionDetector {
 		if (entity.velocity.y >= 0) {
 			// Falling or on ground
 			if (this.isSolidTileInRow(tileBottom, tileLeft, tileRight)) {
-				// Collision below
+				// Collision below while checking for if that tile is a special tile type
 				switch (this.isSpecialTileInRow(tileBottom, tileLeft, tileRight)) {
 					case TileType.Sticky:
 						StickyTile.applyBehavior(entity) 
@@ -91,12 +91,15 @@ export default class CollisionDetector {
 						SlimeTile.applyBehavior(entity) 
 						break;
 					default:
+						// Set entity values to default
 						entity.isSticky = false;
 						entity.isSliding = false;
 						entity.isBouncing = false;
 						break;
 				}
 				if(entity.isBouncing && entity.velocity.y >= 400){
+					// Checks for if the entity is on a slime tile block, if so we boost the player essentially causing
+					// the player to jump, checking for the velocity so that the player had a long enough time to fall before bouncing.
 					entity.boost()
 				}
 				else{
