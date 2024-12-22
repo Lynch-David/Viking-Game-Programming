@@ -56,7 +56,6 @@ const mapDefinition = await fetch('./src/tilemap.json').then((response) =>
 
 // Add all the states to the state machine.
 stateMachine.add(GameStateName.TitleScreen, new TitleScreenState());
-stateMachine.add(GameStateName.GameOver, new GameOverState());
 stateMachine.add(GameStateName.Victory, new VictoryState());
 stateMachine.add(GameStateName.Transition, new TransitionState());
 stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
