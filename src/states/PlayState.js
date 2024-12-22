@@ -9,7 +9,7 @@ import {
        stateMachine,
        CANVAS_HEIGHT,
        CANVAS_WIDTH, } from '../globals.js';
-import Input from '../../../lib/Input.js';
+import Input from '../../lib/Input.js';
 import Player from '../entities/Self/Player.js';
 import Tile from '../objects/Tile.js';
 import ImageName from '../enums/ImageName.js';
@@ -140,7 +140,7 @@ export default class PlayState extends State {
             this.player.position.x = 187;
         }
 
-        if (input.isKeyPressed(Input.KEYS.NUMPAD_5)) {
+        if (input.isKeyPressed(Input.KEYS.MINUS)) {
             sounds.play(SoundName.MenuBlip);
             this.player.position.y = 80;
             this.player.position.x = 170;

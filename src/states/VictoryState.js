@@ -22,15 +22,10 @@ export default class VictoryState extends State {
         this.backgroundAlpha = { alpha: 0 }; // Start with a transparent background
         this.subtextAlpha = { alpha: 0 }; // Start with a transparent subtext
         this.continueTextAlpha = { alpha: 0 }; // Start with a transparent continue text
-
-        // this.hops = 0;
-        // this.time = 0;
     }
 
     async enter(parameters) {
         this.loadPlayerState(); // Load the player state
-        // this.resetPlayerState(); // Reset the player state
-        // this.loadPlayerState(); // Load the player state
         
         this.reset(); 
         this.loadPlayerState(); // Load the player state
@@ -62,36 +57,24 @@ export default class VictoryState extends State {
         }
     }
 
-    async exit() {
-        // console.log('Exiting VictoryState');
-    }
-
     async fadeInBackground() {
-        // console.log('Starting fadeInBackground tween');
         await timer.tweenAsync(this.backgroundAlpha, { alpha: 1 }, 0.5, Easing.easeInOutQuad);
-        // console.log('Completed fadeInBackground tween');
     }
 
     async tweenTextPosition() {
-        // console.log('Starting tweenTextPosition tween');
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.5, Easing.easeInQuad);
         sounds.play(SoundName.Bump);
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 - 20 }, 0.1, Easing.easeOutQuad);
         await timer.tweenAsync(this.textPosition, { y: CANVAS_HEIGHT / 4 }, 0.1, Easing.easeInQuad);
         sounds.play(SoundName.Bump);
-        // console.log('Completed tweenTextPosition tween');
     }
 
     async fadeInSubtext() {
-        // console.log('Starting fadeInSubtext tween');
         await timer.tweenAsync(this.subtextAlpha, { alpha: 1 }, 2, Easing.easeInOutQuad);
-        // console.log('Completed fadeInSubtext tween');
     }
 
     async fadeInContinueText() {
-        // console.log('Starting fadeInContinueText tween');
         await timer.tweenAsync(this.continueTextAlpha, { alpha: 1 }, 0.5, Easing.easeInOutQuad);
-        // console.log('Completed fadeInContinueText tween');
     }
 
     startPulsatingContinueText() {
@@ -105,25 +88,10 @@ export default class VictoryState extends State {
 
     update(dt) {
         if (input.isKeyPressed(Input.KEYS.ENTER)) {
-            // console.log('Returning to title screen');
             sounds.play(SoundName.MenuBlip);
             stateMachine.change(GameStateName.TitleScreen);
         }
     }
-
-    // loadPlayerState() {
-    //     console.log("LOADING")
-    //     const savedState = JSON.parse(localStorage.getItem('playerState'));
-    //     if (savedState) {
-    //         console.log("hops " + savedState.hopCount);
-    //         this.hops = savedState.hopCount || 0; // Load hop count
-    //     }
-
-    //     const savedTime = JSON.parse(localStorage.getItem('elapsedTime'));
-    //     this.time = savedTime || 0;
-
-    //     console.log("extracted: " + savedTime)
-    // }
 
     loadPlayerState() {
         const savedState = JSON.parse(localStorage.getItem("playerState"));
@@ -140,7 +108,7 @@ export default class VictoryState extends State {
             x: 114,
             y: 1874,
 
-            hopCount: 0, // Save hop count            
+            hopCount: 0, 
             state: 'idling',
         };
         localStorage.setItem('playerState', JSON.stringify(playerState));
@@ -152,9 +120,6 @@ export default class VictoryState extends State {
         if (this.time < savedFastestTime) {
             localStorage.setItem('fastestTime', JSON.stringify(this.time));
         }
-        // if (1==1) {
-        //     localStorage.setItem('fastestTime', JSON.stringify(Infinity));
-        // }
     }
 
     render() {
