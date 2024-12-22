@@ -31,13 +31,18 @@ export default class PlayerJumpingState extends PlayerState {
     enter(params = {}) {
         this.player.jumpTime = 0;
 
+        // Sets originalSlidingBool to if the player is currently sliding, we dont want to slide while jumping as it will
+        // mess with our x velocity and will not create a consistent jumping animations.
         this.originalSlidingBool = this.player.isSliding
         this.player.isSliding = false
 
+        // Makes the player sprite smaller to match up with our tile sprite sizes 
         this.player.dimensions.y = 40 * 0.75
+
+        // We pass in a charged height that is used to calculate how high to jump
         this.chargedHeight = params.chargedHeight;
 
-        // Set initial horizontal velocity based on the last held direction
+        // Set initial horizontal velocity based on the last held direction and changes the direction the player is facing
         if (params.direction === -1) {
             this.player.facingRight = false
             this.player.velocity.x = -PlayerConfig.maxSpeed;
@@ -48,7 +53,9 @@ export default class PlayerJumpingState extends PlayerState {
             this.player.velocity.x = 0; // No direction held
         }
 
+        // Set the y velocity to 0 to prevent issues that can be caused when calculating this in update
         this.player.velocity.y = 0;
+
         this.player.currentAnimation = this.player.animations.jump;
         sounds.play(SoundName.Jump);
 
@@ -60,8 +67,8 @@ export default class PlayerJumpingState extends PlayerState {
      * Called when exiting the jumping state.
      */
     exit() {
+        // Resets player sliding bool back to what it was originally
         this.player.isSliding = this.originalSlidingBool
-
     }
 
     /**
@@ -71,14 +78,15 @@ export default class PlayerJumpingState extends PlayerState {
     update(dt) {
         super.update(dt);
 
-        this.handleInput(dt);
+        this.handleJumping(dt);
         this.checkTransitions();
     }
 
     /**
-     * Handles player input.
+     * Handles player jumping.
      */
-    handleInput(dt) {
+    handleJumping(dt) {
+        // Calculates how high to jump based off of how long we've been jumping for and how high we set the jump height to be
         if (this.player.jumpTime <= PlayerConfig.maxJumpTime) {
             this.player.velocity.y = this.chargedHeight * (1 - this.player.jumpTime / PlayerConfig.maxJumpTime);
             this.player.jumpTime += dt;
@@ -91,6 +99,7 @@ export default class PlayerJumpingState extends PlayerState {
      * Checks for state transitions.
      */
     checkTransitions() {
+        // If player stops moving upwards or starts to fall then switch to the falling state
         if (this.player.velocity.y >= 0) {
             this.player.stateMachine.change(PlayerStateName.Falling);
         }
