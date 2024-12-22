@@ -22,10 +22,8 @@ import {
 	stateMachine,
 } from './globals.js';
 import PlayState from './states/PlayState.js';
-import GameOverState from './states/GameOverState.js';
 import VictoryState from './states/VictoryState.js';
 import TitleScreenState from './states/TitleScreenState.js';
-import TransitionState from './states/TransitionState.js';
 import StatsState from './states/StatsState.js';
 import PauseState from './states/PauseState.js';
 import SoundName from './enums/SoundName.js';
@@ -57,7 +55,6 @@ const mapDefinition = await fetch('./src/tilemap.json').then((response) =>
 // Add all the states to the state machine.
 stateMachine.add(GameStateName.TitleScreen, new TitleScreenState());
 stateMachine.add(GameStateName.Victory, new VictoryState());
-stateMachine.add(GameStateName.Transition, new TransitionState());
 stateMachine.add(GameStateName.Play, new PlayState(mapDefinition));
 stateMachine.add(GameStateName.Pause, new PauseState());
 stateMachine.add(GameStateName.Victory, new VictoryState());
