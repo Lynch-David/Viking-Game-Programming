@@ -96,6 +96,11 @@ export default class PlayState extends State {
             stateMachine.change(GameStateName.Pause, { playState: this, player: this.player });
         }
 
+        /*
+         * These are shortcuts that can be used to get to each of our levels in the game, if you wish to just test the levels or skip through them 
+         * for an easier experience uncomment these.
+         */
+
         // if (input.isKeyPressed(Input.KEYS.NUMPAD_0)) {
         //     sounds.play(SoundName.MenuBlip);
         //     this.player.position.y = 1800;
