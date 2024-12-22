@@ -21,8 +21,12 @@ export default class PlayerFallingState extends PlayerState {
      * Called when entering the falling state.
      */
     enter() {
+        // Adjusts the player dimensions to make the sprite transition more seamless
         this.player.dimensions.y += 2
+
+        // Sets the fallHeight parameter of player, this is used to calculate boosting if we land on a bouncy tile (check player.boost)
         this.player.fallHeight = this.player.position.y
+
         this.player.currentAnimation = this.player.animations.fall;
     }
     
@@ -36,9 +40,6 @@ export default class PlayerFallingState extends PlayerState {
      */
     update(dt) {
         super.update(dt);
-
-        // Prevent horizontal movement during falling
-        // this.player.velocity.x = 0;
 
         this.checkTransitions();
     }
