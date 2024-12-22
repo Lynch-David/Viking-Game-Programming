@@ -4,12 +4,12 @@ import SlimeTile from "../objects/SlimeTile.js"
 import IceTile from "../objects/IceTile.js"
 
 /**
- * Encapsulates all definitions for instantiating new tiels.
+ * Encapsulates all definitions for instantiating new tiles.
  */
 export default class TileFactory {
 	/**
 	 * @param {string} type A string using the TileType enum.
-	 * @param {array} sprites The sprites to be used for the enemy.
+	 * @param {array} sprites The sprites to be used for the tiles.
 	 * @returns An instance of an tile specified by TileType.
 	 */
 	static createInstance(type, id, sprites) {
