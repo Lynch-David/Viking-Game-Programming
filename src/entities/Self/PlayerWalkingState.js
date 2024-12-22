@@ -23,11 +23,13 @@ export default class PlayerWalkingState extends PlayerState {
 	 * Called when entering the walking state.
 	 */
 	enter() {
+		// Modifies position and dimensions of player for sprite matching and handling
 		if(this.player.facingRight){
 			this.player.position.x += 5
 		}
-		this.player.isOnGround = true;
 		this.player.dimensions.y = 44 * 0.75
+
+		this.player.isOnGround = true;
 		this.player.currentAnimation = this.player.animations.walk;
 	}
 
