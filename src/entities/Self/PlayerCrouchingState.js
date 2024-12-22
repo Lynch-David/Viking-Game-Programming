@@ -26,10 +26,15 @@ export default class PlayerCrouchingState extends PlayerState {
     enter() {
         this.chargeTime = 0;
         this.originalPosition = this.player.position.y;
+
+        // Adjusts the player dimensions so that the sprite appears smaller. 
         this.player.dimensions.y = 29 * 0.75;
-        // this.player.position.y = this.originalPosition + 10;
-        if(!this.player.isSliding)
+
+        if(!this.player.isSliding){
 			this.player.velocity.x = 0;
+        }
+
+        // Adds slight down velocity so that the crouching state falls to the ground when we enter it
         this.player.velocity.y = -1;
         this.player.currentAnimation = this.player.animations.crouch;
     }
@@ -42,6 +47,7 @@ export default class PlayerCrouchingState extends PlayerState {
         super.update(dt);
         this.handleSliding()
 
+        // Calculates the direction we want to jump to
         if (input.isKeyHeld(Input.KEYS.A)) {
             this.lastDirection = -1;
         } else if (input.isKeyHeld(Input.KEYS.D)) {
