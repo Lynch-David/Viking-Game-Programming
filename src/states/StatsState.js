@@ -41,7 +41,6 @@ export default class StatsState extends State {
     this.stats.fastestTime = parameters.fastestTime || Infinity;
     this.alpha = 1;
 
-    // this.fadeIn();
     this.fadeInContinueText(); // Fade in the continue text
 
     this.startPulsatingContinueText(); // Start pulsating the continue text
@@ -51,20 +50,18 @@ export default class StatsState extends State {
     timer.update(dt);
 
     if (input.isKeyPressed(Input.KEYS.ENTER)) {
-        sounds.play(SoundName.MenuBlip);
-        stateMachine.change(GameStateName.TitleScreen);
+      sounds.play(SoundName.MenuBlip);
+      stateMachine.change(GameStateName.TitleScreen);
     }
   }
 
   async fadeInContinueText() {
-    // console.log('Starting fadeInContinueText tween');
     await timer.tweenAsync(
       this.continueTextAlpha,
       { alpha: 1 },
       0.5,
       Easing.easeInOutQuad
     );
-    // console.log('Completed fadeInContinueText tween');
   }
 
   startPulsatingContinueText() {
@@ -116,62 +113,62 @@ export default class StatsState extends State {
       CANVAS_WIDTH / 1.5,
       CANVAS_HEIGHT / 2.5
     );
+    // Renders circles
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
+    context.fillStyle = "#47474f"; // Dark grey
+    context.fill();
+    context.closePath();
 
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
-        context.fillStyle = "#47474f";
-        context.fill();
-        context.closePath();
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
-        context.fillStyle = "black";
-        context.fill();
-        context.closePath();
-    
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
-        context.fillStyle = "#47474f";
-        context.fill();
-        context.closePath();
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
-        context.fillStyle = "black";
-        context.fill();
-        context.closePath();
-    
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
-        context.fillStyle = "#47474f";
-        context.fill();
-        context.closePath();
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
-        context.fillStyle = "black";
-        context.fill();
-        context.closePath();
-    
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
-        context.fillStyle = "#47474f";
-        context.fill();
-        context.closePath();
-        // Render a circle
-        context.beginPath();
-        context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
-        context.fillStyle = "black";
-        context.fill();
-        context.closePath();
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+    context.fillStyle = "black";
+    context.fill();
+    context.closePath();
 
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 2.42, 12, 0, Math.PI * 2);
+    context.fillStyle = "#47474f"; // Dark grey
+    context.fill();
+    context.closePath();
+
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 2.5, 15, 0, Math.PI * 2);
+    context.fillStyle = "black";
+    context.fill();
+    context.closePath();
+
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 5.6, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+    context.fillStyle = "#47474f"; // Dark grey
+    context.fill();
+    context.closePath();
+
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 6.1, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+    context.fillStyle = "black";
+    context.fill();
+    context.closePath();
+
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 1.236, CANVAS_HEIGHT / 1.26, 12, 0, Math.PI * 2);
+    context.fillStyle = "#47474f"; // Dark grey
+    context.fill();
+    context.closePath();
+
+    context.beginPath();
+    context.arc(CANVAS_WIDTH / 1.216, CANVAS_HEIGHT / 1.24, 15, 0, Math.PI * 2);
+    context.fillStyle = "black";
+    context.fill();
+    context.closePath();
+
+    // Renders header text for 'Stats'
     context.fillStyle = "white";
     context.font = "40px Alagard";
     context.textAlign = "left";
     context.fillText("Stats", CANVAS_WIDTH / 3 - 5, CANVAS_HEIGHT / 3);
 
+    // Render stat text for 'Hops'
     context.fillStyle = "white";
     context.font = "20px Alagard";
     context.textAlign = "left";
@@ -181,12 +178,14 @@ export default class StatsState extends State {
       CANVAS_HEIGHT / 2
     );
 
+    // Render stat text for 'Height'
     context.fillText(
       `Height: ${1874 - this.stats.height}ft`,
       CANVAS_WIDTH / 4,
       CANVAS_HEIGHT / 2 + 28
     );
 
+    // Render stat text for 'Time'
     const minutes = Math.floor(this.stats.time / 60);
     const seconds = Math.floor(this.stats.time % 60);
     context.fillText(
@@ -195,6 +194,7 @@ export default class StatsState extends State {
       CANVAS_HEIGHT / 2 + 55
     );
 
+    // Render stat text for 'Record', 
     if (this.stats.fastestTime == Infinity) {
       context.fillText(
         `Record: N/A`,
@@ -202,8 +202,7 @@ export default class StatsState extends State {
         CANVAS_HEIGHT / 2 + 80
       );
     }
-    else
-    {
+    else {
       const fastestMinutes = Math.floor(this.stats.fastestTime / 60);
       const fastestSeconds = Math.floor(this.stats.fastestTime % 60);
       context.fillText(
@@ -213,7 +212,7 @@ export default class StatsState extends State {
       );
     }
 
-     // Render the "Press Enter to Continue" text
+    // Render the "Press Enter to Continue" text
     context.font = "7px Dogica";
     context.fillStyle = `rgba(255, 255, 255, ${this.continueTextAlpha.alpha})`;
     context.fillText(
