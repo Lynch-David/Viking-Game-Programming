@@ -101,8 +101,8 @@ export default class Layer {
 		const tiles = [];
 
 		layerData.forEach((tileId, index) => {
-			const x = index % this.width; // Calculate column
-        	const y = Math.floor(index / this.width); // Calculate row
+			const x = index % this.width; // Calculate column (0-16)
+        	const y = Math.floor(index / this.width); // Calculate row till (0-20)
 
 			if (tileId === 0) {
 				this.tiles.push(null);
