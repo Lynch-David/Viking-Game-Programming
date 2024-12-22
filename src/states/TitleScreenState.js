@@ -126,7 +126,6 @@ export default class TitleScreenState extends State {
   loadPlayerState() {
     const savedState = JSON.parse(localStorage.getItem("playerState"));
     if (savedState) {
-      console.log("Loading player state");
       this.height = savedState.y;
       this.hops = savedState.hopCount || 0; // Load hop count
     }
@@ -150,11 +149,8 @@ export default class TitleScreenState extends State {
   }
 
   checkGameCompletion() {
-    console.log("Checking game completion");
     const gameCompleted = localStorage.getItem("gameCompleted");
-    console.log("Game completed: " + gameCompleted);
     if (gameCompleted === "true") {
-        console.log("Game completed");
         this.menuOptions[0] = "---";
         this.continueColor = "grey";
     } else {
@@ -276,7 +272,6 @@ export default class TitleScreenState extends State {
     this.menuOptions.forEach((option, index) => {
       const x = CANVAS_WIDTH / 4; // Shifted to the right
       const y = CANVAS_HEIGHT / 2 + index * 40;
-      // console.log(option)
       if (option === "Continue" && this.continueColor === "grey") {
         option = "---";
       }
@@ -308,33 +303,5 @@ export default class TitleScreenState extends State {
         }
       
     });
-
-    // // Render the small rectangular box near the bottom
-    // const boxWidth = 170;
-    // const boxHeight = 35;
-    // const boxX = (CANVAS_WIDTH - boxWidth) / 2;
-    // const boxY = CANVAS_HEIGHT - boxHeight - 20;
-
-    // context.fillStyle = "#121212"; // Dark grey
-    // context.fillRect(boxX, boxY, boxWidth, boxHeight);
-
-    // context.strokeStyle = "#47474f"; // Dark grey
-    // context.strokeRect(boxX, boxY, boxWidth, boxHeight);
-
-    // context.font = "15px Alagard";
-    // context.fillStyle = "white";
-    // context.textAlign = "left";
-    // context.fillText(
-    //   `Height: ${1920 - Math.floor(this.height + 46)}`,
-    //   boxX + 10,
-    //   boxY + 23
-    // );
-
-    // context.textAlign = "right";
-    // context.fillText(
-    //   `Hops: ${Math.floor(this.hops)}`,
-    //   boxX + boxWidth - 18,
-    //   boxY + 23
-    // );
   }
 }
