@@ -1,10 +1,7 @@
 import PlayerState from './PlayerState.js';
-import Input from '../../../lib/Input.js';
-import { input } from '../../globals.js';
 import PlayerStateName from '../../enums/PlayerStateName.js';
 import Player from './Player.js';
 import Hitbox from '../../../lib/Hitbox.js';
-import { PlayerConfig } from '../../PlayerConfig.js';
 
 /**
  * Represents the landing state of the player.
@@ -24,10 +21,11 @@ export default class PlayerLandingState extends PlayerState {
 	/**
 	 * Called when entering the landing state.
 	 */
-
 	enter() {
 		this.player.isOnGround = true;
 
+		// Sets new player hitbox sizes, dimensions and position based on what direction were facing as 
+		// the landing sprite is much larger than the normal ones
 		if (this.player.facingRight) {
 			this.player.hitboxOffsets = new Hitbox(
 				16,
@@ -44,17 +42,8 @@ export default class PlayerLandingState extends PlayerState {
 				-this.player.dimensions.y
 			);
 		}
-
-
 		this.player.dimensions.y = 43 * 0.75
 		this.originalPosition = this.player.position.x
-		// if (this.player.facingRight)
-		// {
-		// 	this.player.position.x = this.originalPosition - 7
-		// }
-		// else{
-		// 	this.player.position.x = this.originalPosition + 7
-		// }
 
 		if (!this.player.isSliding){	
 			this.player.velocity.x = 0;
@@ -74,22 +63,32 @@ export default class PlayerLandingState extends PlayerState {
 
 		this.handleSliding();
 
+		// When the animation finishes for the landing handle resetting values and changing to idle state
 		if (this.player.currentAnimation.isDone()) {
-			if (!this.player.isSliding)
+			if (!this.player.isSliding){
 				this.player.position.x = this.originalPosition
+			}
 			this.player.hitboxOffsets = this.originalHitbox
 			this.player.stateMachine.change(PlayerStateName.Idling);
 		}
 
 	}
 
+	/**
+	 * Handles the sliding of the player.
+	 */
 	handleSliding() {
+		// If were sliding slow down the player and check for if the velocity gets below a certain threshold to stop the sliding
 		if (this.player.isSliding) {
 			this.slowDown(3);
 			if (Math.abs(this.player.velocity.x) < 0.1) this.player.velocity.x = 0;
 		}
 	}
 
+	/**
+	 * Handles slowing down the x velocity of the player
+	 * @param {number} deceleration  - The speed at which the player should slow down. 
+	 */
 	slowDown(deceleration) {
 		if (this.player.velocity.x > 0) {
 			this.player.velocity.x = Math.max(
