@@ -11,7 +11,6 @@ export const spriteConfig = {
 		{ x: 997, y: 211, width: 40, height: 43 },
 	],
 	jump: [
-		//   { x: 126, y: 600, width: 37, height: 38 },
 		{ x: 416, y: 595, width: 38, height: 43 },
 	],
 	fall: [
